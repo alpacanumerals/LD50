@@ -1,13 +1,17 @@
 extends Node
 
 var Orchestrion
+var Jingler
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass
+    pause_mode = Node.PAUSE_MODE_PROCESS
+
+func setup_sounds():
+    setup_music()
+    setup_button_jingle()
 
 func setup_music():
-    pause_mode = Node.PAUSE_MODE_PROCESS
     Orchestrion = AudioStreamPlayer.new()
     var music = load("res://assets/amusic.mp3")
     yield(get_tree().create_timer(0.5), "timeout")
@@ -16,6 +20,18 @@ func setup_music():
     Orchestrion.volume_db = 0
     Orchestrion.pitch_scale = 1
     Orchestrion.play()
+    
+func setup_button_jingle():
+    Jingler = AudioStreamPlayer.new()
+    var jingle = load("res://assets/select.wav")
+    yield(get_tree().create_timer(0.5), "timeout")
+    add_child(Jingler)
+    Jingler.set_stream(jingle)
+    Jingler.volume_db = -15
+    Jingler.pitch_scale = 1
+    
+func play_button_jingle():
+    Jingler.play()
     
 func master_volume_up():
     var volume = AudioServer.get_bus_volume_db(

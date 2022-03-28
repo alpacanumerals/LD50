@@ -85,5 +85,7 @@ margin_right = 1240.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer4/VolumeUp" to="." method="_on_VolumeUp_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer4/VolumeDown" to="." method="_on_VolumeDown_pressed"]
