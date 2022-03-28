@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Ld 50"
+config/name="LD50"
 config/icon="res://icon.png"
 
 [physics]
