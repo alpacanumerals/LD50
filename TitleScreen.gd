@@ -16,6 +16,7 @@ func _on_VolumeDown_pressed():
     Sound.master_volume_down()
 
 func _on_StartButton_pressed():
+    Switcher.switch_scene("res://GameplayScene.tscn")
     Sound.play_button_jingle()
 
 func _on_OptionsButton_pressed():
