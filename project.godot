@@ -23,6 +23,7 @@ Switcher="*res://autoload/switcher.gd"
 
 window/size/width=1280
 window/size/height=720
+window/size/resizable=false
 
 [input]
 
