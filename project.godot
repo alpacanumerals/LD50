@@ -8,6 +8,40 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Card",
+"language": "GDScript",
+"path": "res://cards/card.gd"
+}, {
+"base": "Card",
+"class": "Dragon",
+"language": "GDScript",
+"path": "res://cards/dragon.gd"
+}, {
+"base": "Card",
+"class": "Knight",
+"language": "GDScript",
+"path": "res://cards/knight.gd"
+}, {
+"base": "Card",
+"class": "Loves",
+"language": "GDScript",
+"path": "res://cards/loves.gd"
+}, {
+"base": "Card",
+"class": "Princess",
+"language": "GDScript",
+"path": "res://cards/princess.gd"
+} ]
+_global_script_class_icons={
+"Card": "",
+"Dragon": "",
+"Knight": "",
+"Loves": "",
+"Princess": ""
+}
+
 [application]
 
 config/name="LD50"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://stat_bar.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
 [ext_resource path="res://plot_button.gd" type="Script" id=3]
+[ext_resource path="res://CardsContainer.gd" type="Script" id=6]
 
 [node name="StoryScene" type="MarginContainer"]
 anchor_right = 1.0
@@ -38,32 +39,15 @@ margin_right = 1240.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
+max_value = 10.0
+step = 1.0
 script = ExtResource( 1 )
 stat_name = "boredom"
 
-[node name="DisbeliefContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="AnnoyanceContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 36.0
 margin_right = 1240.0
 margin_bottom = 50.0
-
-[node name="Label" type="Label" parent="VBoxContainer/DisbeliefContainer"]
-margin_right = 57.0
-margin_bottom = 14.0
-text = "Disbelief"
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/DisbeliefContainer"]
-margin_left = 61.0
-margin_right = 1240.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-script = ExtResource( 1 )
-stat_name = "disbelief"
-
-[node name="AnnoyanceContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 54.0
-margin_right = 1240.0
-margin_bottom = 68.0
 
 [node name="Label" type="Label" parent="VBoxContainer/AnnoyanceContainer"]
 margin_right = 70.0
@@ -76,42 +60,62 @@ margin_right = 1240.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
+max_value = 10.0
+step = 1.0
 script = ExtResource( 1 )
 stat_name = "annoyance"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 72.0
+[node name="ButtonsContainer" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 54.0
 margin_right = 1240.0
-margin_bottom = 92.0
+margin_bottom = 74.0
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_right = 109.0
+[node name="Button" type="Button" parent="VBoxContainer/ButtonsContainer"]
+margin_right = 148.0
 margin_bottom = 20.0
-text = "Shocking Twist!"
+text = "Princess loves Knight"
 script = ExtResource( 3 )
-boredom_effect = -5
-disbelief_effect = 5
-annoyance_effect = 5
+verb_id = 3
+object_id = 1
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 113.0
-margin_right = 260.0
+[node name="Button2" type="Button" parent="VBoxContainer/ButtonsContainer"]
+margin_left = 152.0
+margin_right = 300.0
 margin_bottom = 20.0
-text = "Logical Development"
+text = "Knight loves Princess"
 script = ExtResource( 3 )
-boredom_effect = 5
-disbelief_effect = -5
-annoyance_effect = 5
+subject_id = 1
+verb_id = 3
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 264.0
-margin_right = 348.0
+[node name="Button3" type="Button" parent="VBoxContainer/ButtonsContainer"]
+margin_left = 304.0
+margin_right = 457.0
 margin_bottom = 20.0
-text = "Fan Service"
+text = "Princess loves Dragon"
 script = ExtResource( 3 )
-disbelief_effect = 10
-annoyance_effect = -5
+verb_id = 3
+object_id = 2
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="VBoxContainer/HBoxContainer/Button" method="_on_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="VBoxContainer/HBoxContainer/Button2" method="_on_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button3" to="VBoxContainer/HBoxContainer/Button3" method="_on_Button_pressed"]
+[node name="OperandContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 54.0
+margin_right = 1240.0
+margin_bottom = 54.0
+script = ExtResource( 6 )
+
+[node name="OperatorContainer2" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 116.0
+margin_right = 1240.0
+margin_bottom = 174.0
+script = ExtResource( 6 )
+verbs = true
+
+[node name="WindowsContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 58.0
+margin_right = 1240.0
+margin_bottom = 58.0
+
+[connection signal="pressed" from="VBoxContainer/ButtonsContainer/Button" to="VBoxContainer/ButtonsContainer/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonsContainer/Button2" to="VBoxContainer/ButtonsContainer/Button2" method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonsContainer/Button3" to="VBoxContainer/ButtonsContainer/Button3" method="_on_Button_pressed"]
