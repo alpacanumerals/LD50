@@ -3,11 +3,8 @@ extends Node
 var Orchestrion
 var Jingler
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
     pause_mode = Node.PAUSE_MODE_PROCESS
-
-func setup_sounds():
     setup_music()
     setup_button_jingle()
 

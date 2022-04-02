@@ -1,7 +1,6 @@
 extends MarginContainer
 
 func _ready():
-    Sound.setup_sounds()
     initialise_game_values()
 
 func initialise_game_values():

@@ -15,7 +15,9 @@ const princess = preload("res://cards/princess.gd")
 const knight = preload("res://cards/knight.gd")
 const dragon = preload("res://cards/dragon.gd")
 
-const loves = preload("res://cards/loves.gd")
+const love = preload("res://cards/love.gd")
+const slay = preload("res://cards/slay.gd")
+const reward = preload("res://cards/reward.gd")
 
 var cards = {}
 
@@ -63,7 +65,7 @@ func tell_story(subject_id, verb_id, object_id):
         boredom += repeats
     
     # handle logic based on story content
-    if (verb is Loves):
+    if (verb is Love):
         if (subject.female == true
         && subject.monster == false
         && object.monster == true):
@@ -102,7 +104,9 @@ func setup_cards():
     setup_card(dragon.new(get_new_id()))
     
     operator_id_start = new_id
-    setup_card(loves.new(get_new_id()))
+    setup_card(love.new(get_new_id()))
+    setup_card(slay.new(get_new_id()))
+    setup_card(reward.new(get_new_id()))
 
 func setup_card(card):
     cards[card.id] = card
@@ -115,3 +119,4 @@ func add_word(card_id):
         current_phase = phase.OBJECT
     elif current_phase == phase.OBJECT:
         current_phase = phase.NONE
+    return current_phase == phase.VERB
