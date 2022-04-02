@@ -1,7 +1,7 @@
 extends Card
-class_name Loves
+class_name Reward
 
-const card_name: String = "Loves"
+const card_name: String = "rewarded"
 const action: bool = true
 
 const texture: StreamTexture = preload("res://assets/asset.png")

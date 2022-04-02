@@ -25,21 +25,33 @@ _global_script_classes=[ {
 "path": "res://cards/knight.gd"
 }, {
 "base": "Card",
-"class": "Loves",
+"class": "Love",
 "language": "GDScript",
-"path": "res://cards/loves.gd"
+"path": "res://cards/love.gd"
 }, {
 "base": "Card",
 "class": "Princess",
 "language": "GDScript",
 "path": "res://cards/princess.gd"
+}, {
+"base": "Card",
+"class": "Reward",
+"language": "GDScript",
+"path": "res://cards/reward.gd"
+}, {
+"base": "Card",
+"class": "Slay",
+"language": "GDScript",
+"path": "res://cards/slay.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
 "Dragon": "",
 "Knight": "",
-"Loves": "",
-"Princess": ""
+"Love": "",
+"Princess": "",
+"Reward": "",
+"Slay": ""
 }
 
 [application]

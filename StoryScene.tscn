@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://stat_bar.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
@@ -8,8 +8,13 @@
 [ext_resource path="res://CardsContainer.gd" type="Script" id=6]
 [ext_resource path="res://window.gd" type="Script" id=7]
 [ext_resource path="res://assets/asset.png" type="Texture" id=8]
+[ext_resource path="res://OpCard.gd" type="Script" id=9]
+[ext_resource path="res://wall_cards.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 26, 26 )
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26, 26 )
 
 [node name="StoryScene" type="MarginContainer"]
@@ -19,8 +24,11 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = -20.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 margin_right = 1240.0
 margin_bottom = 680.0
 
@@ -42,9 +50,8 @@ text = "Boredom"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/BoredomContainer"]
 margin_left = 63.0
-margin_right = 1240.0
+margin_right = 67.0
 margin_bottom = 14.0
-size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 10.0
 step = 1.0
@@ -63,19 +70,20 @@ text = "Annoyance"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/AnnoyanceContainer"]
 margin_left = 74.0
-margin_right = 1240.0
+margin_right = 78.0
 margin_bottom = 14.0
-size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 10.0
 step = 1.0
 script = ExtResource( 1 )
 stat_name = "annoyance"
 
-[node name="OperandContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="OperandContainer" type="GridContainer" parent="VBoxContainer"]
+visible = false
 margin_top = 54.0
 margin_right = 1240.0
 margin_bottom = 54.0
+columns = 2
 script = ExtResource( 6 )
 
 [node name="OperatorContainer2" type="HBoxContainer" parent="VBoxContainer"]
@@ -87,37 +95,30 @@ script = ExtResource( 6 )
 verbs = true
 
 [node name="SubjectLabel" type="Label" parent="VBoxContainer"]
-margin_top = 58.0
+margin_top = 54.0
 margin_right = 1240.0
-margin_bottom = 72.0
+margin_bottom = 68.0
 text = "Subject: "
 script = ExtResource( 4 )
 label_text = "Subject: "
 
 [node name="VerbLabel" type="Label" parent="VBoxContainer"]
-margin_top = 76.0
+margin_top = 72.0
 margin_right = 1240.0
-margin_bottom = 90.0
+margin_bottom = 86.0
 text = "Verb: "
 script = ExtResource( 4 )
 part_of_speech = 1
 label_text = "Verb: "
 
 [node name="ObjectLabel" type="Label" parent="VBoxContainer"]
-margin_top = 94.0
+margin_top = 90.0
 margin_right = 1240.0
-margin_bottom = 108.0
+margin_bottom = 104.0
 text = "Object: "
 script = ExtResource( 4 )
 part_of_speech = 2
 label_text = "Object: "
-
-[node name="DoneButton" type="Button" parent="VBoxContainer"]
-margin_top = 112.0
-margin_right = 1240.0
-margin_bottom = 132.0
-text = "Done"
-script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 z_index = -1
@@ -166,4 +167,37 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="ObjectWindow"]
 texture = ExtResource( 8 )
 
-[connection signal="pressed" from="VBoxContainer/DoneButton" to="VBoxContainer/DoneButton" method="_on_DoneButton_pressed"]
+[node name="WallCards" type="Node2D" parent="."]
+script = ExtResource( 10 )
+
+[node name="OpCard" type="Area2D" parent="WallCards"]
+position = Vector2( 453, 62 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard"]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 1013, 391 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DoneButton" type="Button" parent="Node2D"]
+margin_right = 39.0
+margin_bottom = 20.0
+text = "Tell!"
+script = ExtResource( 3 )
+
+[connection signal="input_event" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_mouse_entered"]
+[connection signal="player_click" from="WallCards/OpCard" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="pressed" from="Node2D/DoneButton" to="WallCards" method="_on_DoneButton_pressed"]
+[connection signal="pressed" from="Node2D/DoneButton" to="Node2D/DoneButton" method="_on_DoneButton_pressed"]
