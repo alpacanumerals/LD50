@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://stat_bar.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
 [ext_resource path="res://plot_button.gd" type="Script" id=3]
 [ext_resource path="res://WordLabel.gd" type="Script" id=4]
+[ext_resource path="res://assets/chamber.png" type="Texture" id=5]
 [ext_resource path="res://CardsContainer.gd" type="Script" id=6]
 
 [node name="StoryScene" type="MarginContainer"]
@@ -112,5 +113,11 @@ margin_right = 1240.0
 margin_bottom = 132.0
 text = "Done"
 script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = -1
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( -20, -20 )
 
 [connection signal="pressed" from="VBoxContainer/DoneButton" to="VBoxContainer/DoneButton" method="_on_DoneButton_pressed"]
