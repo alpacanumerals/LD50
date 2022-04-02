@@ -17,8 +17,6 @@ func setup(verbs: bool):
         index += 1
 
 func _on_OpCard_player_click(card_id):
-    print("foo")
-    print(card_id)
     var verb_toggle = Story.add_word(card_id)
     setup(verb_toggle)
 

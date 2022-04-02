@@ -182,7 +182,32 @@ texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard"]
 shape = SubResource( 2 )
-disabled = true
+
+[node name="OpCard2" type="Area2D" parent="WallCards"]
+position = Vector2( 506, 62 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard2"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard2"]
+shape = SubResource( 2 )
+
+[node name="OpCard3" type="Area2D" parent="WallCards"]
+position = Vector2( 453, 115 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard3"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard3"]
+shape = SubResource( 2 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 1013, 391 )
@@ -199,5 +224,11 @@ script = ExtResource( 3 )
 [connection signal="input_event" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_input_event"]
 [connection signal="mouse_entered" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_mouse_entered"]
 [connection signal="player_click" from="WallCards/OpCard" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="input_event" from="WallCards/OpCard2" to="WallCards/OpCard2" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard2" to="WallCards/OpCard2" method="_on_OpCard_mouse_entered"]
+[connection signal="player_click" from="WallCards/OpCard2" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="input_event" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_mouse_entered"]
+[connection signal="player_click" from="WallCards/OpCard3" to="WallCards" method="_on_OpCard_player_click"]
 [connection signal="pressed" from="Node2D/DoneButton" to="WallCards" method="_on_DoneButton_pressed"]
 [connection signal="pressed" from="Node2D/DoneButton" to="Node2D/DoneButton" method="_on_DoneButton_pressed"]
