@@ -20,12 +20,23 @@ func initialise():
     annoyance = 20
 
 func tell_story(boredom_effect, disbelief_effect, annoyance_effect):
-    disbelief += disbelief_effect
     boredom += boredom_effect
+    disbelief += disbelief_effect
     annoyance += annoyance_effect
     night += 1
+
+    bound_values()
     
-    if (boredom > boredom_threshold
-        || disbelief > disbelief_threshold
-        || annoyance > annoyance_threshold):
+    if (threshold_exceeded()):
         Switcher.switch_scene("res://TitleScreen.tscn")
+
+func threshold_exceeded():
+    return boredom > boredom_threshold || disbelief > disbelief_threshold || annoyance > annoyance_threshold
+
+func bound_values():
+    if (boredom < 0):
+        boredom = 0
+    if (disbelief < 0):
+        disbelief = 0
+    if (annoyance < 0):
+        annoyance = 0
