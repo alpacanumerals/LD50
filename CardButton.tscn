@@ -1,10 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Cardbutton.gd" type="Script" id=1]
+[ext_resource path="res://CardButton.gd" type="Script" id=1]
 [ext_resource path="res://assets/asset.png" type="Texture" id=2]
 
-[node name="Cardbutton" type="Button"]
+[node name="CardButton" type="Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 icon = ExtResource( 2 )
 script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_CardButton_pressed"]

@@ -17,10 +17,13 @@ const dragon = preload("res://cards/dragon.gd")
 
 const loves = preload("res://cards/loves.gd")
 
-var operators = {}
-var operands = {}
+var cards = {}
 
 var memory = {}
+
+enum phase { SUBJECT, VERB, OBJECT, NONE }
+var current_phase: int = phase.SUBJECT
+var current_tale = {}
 
 func get_new_id():
     var id = new_id
@@ -36,19 +39,19 @@ func initialise():
     annoyance = 0
     memory = {}
     setup_cards()
+    current_phase = phase.SUBJECT
+    current_tale = {}
 
 func tell_story(subject_id, verb_id, object_id):
-    night += 1
-    
     var story_key = subject_id*10000 + verb_id*100 + object_id
     
     var repeats = memory.get(story_key, 0)
     memory[story_key] = repeats+1
     
-    var subject = operands[subject_id]
-    var object = operands[object_id]
+    var subject = cards[subject_id]
+    var object = cards[object_id]
     
-    var verb = operators[verb_id]
+    var verb = cards[verb_id]
     
     print("key: " + str(story_key))
     
@@ -72,8 +75,15 @@ func tell_story(subject_id, verb_id, object_id):
     print("boredom: " + str(boredom))
     print("annoyance: " + str(annoyance))
     
+    next_night()
+    
     if (threshold_exceeded()):
         Switcher.switch_scene("res://TitleScreen.tscn")
+
+func next_night():
+    night += 1
+    current_tale = {}
+    current_phase = phase.SUBJECT
 
 func threshold_exceeded():
     var exceeded: bool = false
@@ -86,18 +96,22 @@ func threshold_exceeded():
     return exceeded
 
 func setup_cards():
-    operands = {}
-    setup_operand(princess.new(get_new_id()))
-    setup_operand(knight.new(get_new_id()))
-    setup_operand(dragon.new(get_new_id()))
+    cards = {}
+    setup_card(princess.new(get_new_id()))
+    setup_card(knight.new(get_new_id()))
+    setup_card(dragon.new(get_new_id()))
     
     operator_id_start = new_id
-    operators = {}
-    setup_operator(loves.new(get_new_id()))
+    setup_card(loves.new(get_new_id()))
 
-func setup_operator(card):
-    operators[card.id] = card
-
-func setup_operand(card):
-    operands[card.id] = card
+func setup_card(card):
+    cards[card.id] = card
     
+func add_word(card_id):
+    current_tale[current_phase] = card_id
+    if current_phase == phase.SUBJECT:
+        current_phase = phase.VERB
+    elif current_phase == phase.VERB:
+        current_phase = phase.OBJECT
+    elif current_phase == phase.OBJECT:
+        current_phase = phase.NONE
