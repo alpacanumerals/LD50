@@ -1,6 +1,8 @@
 extends Node
 
-var new_id: int = -1
+var new_id: int = 0
+
+var operator_id_start: int
 
 var night: int
 var boredom: int
@@ -15,12 +17,15 @@ const dragon = preload("res://cards/dragon.gd")
 
 const loves = preload("res://cards/loves.gd")
 
-var cards = {}
+var operators = {}
+var operands = {}
+
 var memory = {}
 
 func get_new_id():
+    var id = new_id
     new_id += 1
-    return new_id
+    return id
 
 func _ready():
     pass
@@ -40,7 +45,10 @@ func tell_story(subject_id, verb_id, object_id):
     var repeats = memory.get(story_key, 0)
     memory[story_key] = repeats+1
     
-    var subject = cards[subject_id]
+    var subject = operands[subject_id]
+    var object = operands[object_id]
+    
+    var verb = operators[verb_id]
     
     print("key: " + str(story_key))
     
@@ -52,10 +60,10 @@ func tell_story(subject_id, verb_id, object_id):
         boredom += repeats
     
     # handle logic based on story content
-    if (cards[verb_id] is Loves):
-        if (cards[subject_id].female == true
-        && cards[subject_id].monster == false
-        && cards[object_id].monster == true):
+    if (verb is Loves):
+        if (subject.female == true
+        && subject.monster == false
+        && object.monster == true):
             print("a maiden would never love a monster")
             annoyance += 1
     else:
@@ -78,13 +86,18 @@ func threshold_exceeded():
     return exceeded
 
 func setup_cards():
-    cards = {}
+    operands = {}
+    setup_operand(princess.new(get_new_id()))
+    setup_operand(knight.new(get_new_id()))
+    setup_operand(dragon.new(get_new_id()))
     
-    setup_card(princess.new(get_new_id()))
-    setup_card(knight.new(get_new_id()))
-    setup_card(dragon.new(get_new_id()))
-    
-    setup_card(loves.new(get_new_id()))
+    operator_id_start = new_id
+    operators = {}
+    setup_operator(loves.new(get_new_id()))
 
-func setup_card(card):
-    cards[card.id] = card
+func setup_operator(card):
+    operators[card.id] = card
+
+func setup_operand(card):
+    operands[card.id] = card
+    
