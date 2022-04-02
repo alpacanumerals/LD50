@@ -1,8 +1,8 @@
 extends Node
 
 var night: int
-var disbelief: int
 var boredom: int
+var disbelief: int
 var annoyance: int
 
 # Called when the node enters the scene tree for the first time.
@@ -14,3 +14,9 @@ func initialise():
     disbelief = 20
     boredom = 20
     annoyance = 20
+
+func tell_story(boredom_effect, disbelief_effect, annoyance_effect):
+    disbelief += disbelief_effect
+    boredom += boredom_effect
+    annoyance += annoyance_effect
+    night += 1

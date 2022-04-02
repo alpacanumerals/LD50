@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://stat_bar.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
+[ext_resource path="res://plot_button.gd" type="Script" id=3]
 
 [node name="StoryScene" type="MarginContainer"]
 anchor_right = 1.0
@@ -77,3 +78,40 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 script = ExtResource( 1 )
 stat_name = "annoyance"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 72.0
+margin_right = 1240.0
+margin_bottom = 92.0
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 109.0
+margin_bottom = 20.0
+text = "Shocking Twist!"
+script = ExtResource( 3 )
+boredom_effect = -5
+disbelief_effect = 5
+annoyance_effect = 5
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 113.0
+margin_right = 260.0
+margin_bottom = 20.0
+text = "Logical Development"
+script = ExtResource( 3 )
+boredom_effect = 5
+disbelief_effect = -5
+annoyance_effect = 5
+
+[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 264.0
+margin_right = 348.0
+margin_bottom = 20.0
+text = "Fan Service"
+script = ExtResource( 3 )
+disbelief_effect = 10
+annoyance_effect = -5
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="VBoxContainer/HBoxContainer/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="VBoxContainer/HBoxContainer/Button2" method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button3" to="VBoxContainer/HBoxContainer/Button3" method="_on_Button_pressed"]
