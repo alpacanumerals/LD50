@@ -1,11 +1,10 @@
 extends Button
 
-export(int) var subject_id
-export(int) var verb_id
-export(int) var object_id
-
 func _ready():
     pass
 
-func _on_Button_pressed():
-    Story.tell_story(subject_id, verb_id, object_id)
+func _on_DoneButton_pressed():
+    var subject = Story.current_tale[Story.phase.SUBJECT]
+    var verb = Story.current_tale[Story.phase.VERB]
+    var object = Story.current_tale[Story.phase.OBJECT]
+    Story.tell_story(subject, verb, object)
