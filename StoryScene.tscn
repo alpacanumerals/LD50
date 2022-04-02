@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://stat_bar.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://WordLabel.gd" type="Script" id=4]
 [ext_resource path="res://assets/chamber.png" type="Texture" id=5]
 [ext_resource path="res://CardsContainer.gd" type="Script" id=6]
+[ext_resource path="res://window.gd" type="Script" id=7]
+[ext_resource path="res://assets/asset.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 26, 26 )
 
 [node name="StoryScene" type="MarginContainer"]
 anchor_right = 1.0
@@ -119,5 +124,46 @@ z_index = -1
 texture = ExtResource( 5 )
 centered = false
 offset = Vector2( -20, -20 )
+
+[node name="SubjectWindow" type="Area2D" parent="."]
+position = Vector2( 479, 404 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubjectWindow"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="SubjectWindow"]
+texture = ExtResource( 8 )
+
+[node name="VerbWindow" type="Area2D" parent="."]
+position = Vector2( 664, 405 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+part_of_speech = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VerbWindow"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="VerbWindow"]
+texture = ExtResource( 8 )
+
+[node name="ObjectWindow" type="Area2D" parent="."]
+position = Vector2( 849, 407 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+part_of_speech = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectWindow"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="ObjectWindow"]
+texture = ExtResource( 8 )
 
 [connection signal="pressed" from="VBoxContainer/DoneButton" to="VBoxContainer/DoneButton" method="_on_DoneButton_pressed"]
