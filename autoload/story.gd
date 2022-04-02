@@ -1,21 +1,19 @@
 extends Node
 
-var new_id: int = 0
+var new_id: int = -1
 
 var night: int
 var boredom: int
-var disbelief: int
 var annoyance: int
 
-const boredom_threshold: int = 100
-const disbelief_threshold: int = 100
-const annoyance_threshold: int = 100
+const boredom_threshold: int = 10
+const annoyance_threshold: int = 10
 
-const princess = preload("../cards/princess.gd")
-const knight = preload("../cards/knight.gd")
-const dragon = preload("../cards/dragon.gd")
+const princess = preload("res://cards/princess.gd")
+const knight = preload("res://cards/knight.gd")
+const dragon = preload("res://cards/dragon.gd")
 
-const loves = preload("../cards/loves.gd")
+const loves = preload("res://cards/loves.gd")
 
 var cards = {}
 var memory = {}
@@ -24,12 +22,13 @@ func get_new_id():
     new_id += 1
     return new_id
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
+    pass
 
 func initialise():
     night = 1
+    boredom = 0
+    annoyance = 0
     memory = {}
     setup_cards()
 
@@ -43,15 +42,40 @@ func tell_story(subject_id, verb_id, object_id):
     
     var subject = cards[subject_id]
     
+    print("key: " + str(story_key))
+    
     # handle logic based on repeats
+    if (repeats <= 0):
+        print("how interesting")
+    else:
+        print("didn't that aready happen?")
+        boredom += repeats
     
     # handle logic based on story content
+    if (cards[verb_id] is Loves):
+        if (cards[subject_id].female == true
+        && cards[subject_id].monster == false
+        && cards[object_id].monster == true):
+            print("a maiden would never love a monster")
+            annoyance += 1
+    else:
+        print("makes sense")
+    
+    print("boredom: " + str(boredom))
+    print("annoyance: " + str(annoyance))
     
     if (threshold_exceeded()):
         Switcher.switch_scene("res://TitleScreen.tscn")
 
 func threshold_exceeded():
-    return boredom > boredom_threshold || disbelief > disbelief_threshold || annoyance > annoyance_threshold
+    var exceeded: bool = false
+    if (boredom > boredom_threshold):
+        print("this is too boring!")
+        exceeded = true
+    if (annoyance > annoyance_threshold):
+        print("this is too silly!")
+        exceeded = true
+    return exceeded
 
 func setup_cards():
     cards = {}
