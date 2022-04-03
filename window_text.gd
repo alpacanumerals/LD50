@@ -7,6 +7,10 @@ func _on_blank_walls_mouse_entered():
     update_text("")
 
 func _on_WallCards_card_chosen(card_id):
+    if (Story.current_phase == Story.phase.VERB):
+        card_id += Story.operator_id_start
+    elif (Story.current_phase == Story.phase.OBJECT):
+        card_id -= Story.operator_id_start
     update_text_by_card_id(card_id)
 
 func _on_NightArea_night_over():
