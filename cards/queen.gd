@@ -1,8 +1,8 @@
 extends Card
-class_name Princess
+class_name Queen
 
-const card_name: String = "Princess"
-const texture: StreamTexture = preload("res://assets/noun/princess.png")
+const card_name: String = "Queen"
+const texture: StreamTexture = preload("res://assets/noun/queen.png")
 
 
 const aflame: bool = false

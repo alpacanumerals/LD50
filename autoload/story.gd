@@ -15,9 +15,7 @@ const princess = preload("res://cards/princess.gd")
 const knight = preload("res://cards/knight.gd")
 const dragon = preload("res://cards/dragon.gd")
 
-const love = preload("res://cards/love.gd")
-const slay = preload("res://cards/slay.gd")
-const reward = preload("res://cards/reward.gd")
+const rewarded = preload("res://cards2/rewarded.gd")
 
 var cards = {}
 
@@ -100,9 +98,7 @@ func setup_cards():
     setup_card(dragon.new(get_new_id()))
     
     operator_id_start = new_id
-    setup_card(love.new(get_new_id()))
-    setup_card(slay.new(get_new_id()))
-    setup_card(reward.new(get_new_id()))
+    setup_card(rewarded.new(get_new_id()))
 
 func setup_card(card):
     cards[card.id] = card
