@@ -25,7 +25,7 @@ func _on_OpCard_mouse_entered():
 
 func _on_OpCard_mouse_exited():
     #unhighlight
-    emit_signal("player_highlight", null)
+    #emit_signal("player_highlight", null)
     pass
 
 func _process(_delta):

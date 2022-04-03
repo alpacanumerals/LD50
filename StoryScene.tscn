@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://stat_bar.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
 [ext_resource path="res://plot_button.gd" type="Script" id=3]
 [ext_resource path="res://window_text.gd" type="Script" id=4]
 [ext_resource path="res://assets/chamber.png" type="Texture" id=5]
+[ext_resource path="res://blank_wall.gd" type="Script" id=6]
 [ext_resource path="res://window.gd" type="Script" id=7]
 [ext_resource path="res://assets/asset.png" type="Texture" id=8]
 [ext_resource path="res://OpCard.gd" type="Script" id=9]
@@ -15,6 +16,9 @@ extents = Vector2( 26, 26 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26, 26 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 77, 8 )
 
 [node name="StoryScene" type="MarginContainer"]
 anchor_right = 1.0
@@ -140,6 +144,32 @@ texture = ExtResource( 8 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard"]
 shape = SubResource( 2 )
 
+[node name="OpCard2" type="Area2D" parent="WallCards"]
+position = Vector2( 506, 62 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard2"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard2"]
+shape = SubResource( 2 )
+
+[node name="OpCard3" type="Area2D" parent="WallCards"]
+position = Vector2( 453, 115 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard3"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard3"]
+shape = SubResource( 2 )
+
 [node name="DoneNode" type="Node2D" parent="."]
 position = Vector2( 1013, 391 )
 __meta__ = {
@@ -180,10 +210,30 @@ margin_bottom = 19.0
 text = "test"
 align = 1
 
+[node name="BlankWalls" type="Node2D" parent="."]
+
+[node name="WallTop" type="Area2D" parent="BlankWalls"]
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlankWalls/WallTop"]
+position = Vector2( 481, 25 )
+shape = SubResource( 3 )
+
 [connection signal="input_event" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_input_event"]
 [connection signal="mouse_entered" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_mouse_entered"]
 [connection signal="mouse_exited" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_mouse_exited"]
 [connection signal="player_click" from="WallCards/OpCard" to="WallCards" method="_on_OpCard_player_click"]
 [connection signal="player_highlight" from="WallCards/OpCard" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard2" to="WallCards/OpCard2" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard2" to="WallCards/OpCard2" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard2" to="WallCards/OpCard2" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard2" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard2" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard3" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard3" to="WindowText" method="_on_OpCard_player_highlight"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="WallCards" method="_on_DoneButton_pressed"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="DoneNode/DoneButton" method="_on_DoneButton_pressed"]
+[connection signal="mouse_entered" from="BlankWalls/WallTop" to="WindowText" method="_on_blank_walls_mouse_entered"]
