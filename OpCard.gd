@@ -5,10 +5,8 @@ var id : int
 signal player_click(card_id)
 signal player_highlight(card_id)
 
-func _ready():
-    pass
-
 func setup(card_id):
+    $Highlight.visible = false
     var card = Story.cards[card_id]
     id = card.id
     $Sprite.set_texture(card.texture)
@@ -19,14 +17,11 @@ func _on_OpCard_input_event(viewport, event, shape_idx):
         emit_signal("player_click", id)
 
 func _on_OpCard_mouse_entered():
-    #highlight
+    $Highlight.visible = true
     emit_signal("player_highlight", id)
-    pass
 
 func _on_OpCard_mouse_exited():
-    #unhighlight
-    #emit_signal("player_highlight", null)
-    pass
+    $Highlight.visible = false
 
 func _process(_delta):
     if (Story.current_phase == Story.phase.NONE):

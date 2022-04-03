@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://night.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://story_scene.gd" type="Script" id=12]
 [ext_resource path="res://assets/shez1.png" type="Texture" id=13]
 [ext_resource path="res://assets/sultan1.png" type="Texture" id=14]
+[ext_resource path="res://assets/box.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 26, 26 )
@@ -115,6 +116,9 @@ texture = ExtResource( 8 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard"]
 shape = SubResource( 2 )
 
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard"]
+texture = ExtResource( 15 )
+
 [node name="OpCard2" type="Area2D" parent="WallCards"]
 position = Vector2( 506, 62 )
 script = ExtResource( 9 )
@@ -128,6 +132,9 @@ texture = ExtResource( 8 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard2"]
 shape = SubResource( 2 )
 
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard2"]
+texture = ExtResource( 15 )
+
 [node name="OpCard3" type="Area2D" parent="WallCards"]
 position = Vector2( 453, 115 )
 script = ExtResource( 9 )
@@ -140,6 +147,9 @@ texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard3"]
 shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard3"]
+texture = ExtResource( 15 )
 
 [node name="DoneNode" type="Node2D" parent="."]
 position = Vector2( 1014, 324 )
