@@ -21,7 +21,11 @@ const resourceful: bool = true
 const structure: bool = false
 const weak: bool = true
 const marriageable: bool = true
+const lovelist = []
+const hatelist = []
 
+var lovelist_now
+var hatelist_now
 var marriageable_now
 var aflame_now
 var airborne_now
@@ -59,3 +63,5 @@ func _init(new_id):
     structure_now = structure
     weak_now = weak
     marriageable_now = marriageable
+    lovelist_now = lovelist
+    hatelist_now = hatelist
