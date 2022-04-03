@@ -4,19 +4,24 @@ enum stages { START, STORY, SULTAN, MOOD, END, STAB }
 var stage : int
 var failed : bool
 
+var block : bool
+
 const story_format = "Scheherazade: The %s %s the %s"
 
 signal night_over
+signal game_over
 
 func _ready():
     $NightSprite.modulate.a = 0
     $NightSprite.visible = false
     set_process_input(false)
     failed = false
+    block = false
 
 func initialise():
     blank_text()
     stage = stages.START
+    block = false
 
 func night_fall(has_failed):
     initialise()
@@ -38,8 +43,6 @@ func dawn_break():
         1.5)
     $Dawn.start()
     blank_text()
-    Story.next_night()
-    set_process_input(false)
 
 func _input(event):
     if (event.is_pressed()):
@@ -55,6 +58,15 @@ func _input(event):
                     $SultanMood.text = "Scheherazade: Oh shut up, you bloviating bore!"
                     stage = stages.END
                 stages.END:
+                    if (!block):
+                        block = true
+                        Sound.play_stab()
+                        emit_signal("game_over")
+                        yield(get_tree().create_timer(1), "timeout")
+                        dawn_break()
+                        stage = stages.STAB
+                stages.STAB:
+                    yield(get_tree().create_timer(0.5), "timeout")
                     Switcher.switch_scene("res://TitleScreen.tscn")
         else:
             match stage:
@@ -70,6 +82,8 @@ func _input(event):
                 stages.END:
                     emit_signal("night_over")
                     dawn_break()
+                    set_process_input(false)
+                    Story.next_night()
     get_tree().set_input_as_handled()
 
 func compose_story_text():

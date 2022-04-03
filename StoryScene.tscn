@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://night.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://assets/sultan1.png" type="Texture" id=14]
 [ext_resource path="res://assets/box.png" type="Texture" id=15]
 [ext_resource path="res://time_limit.gd" type="Script" id=16]
+[ext_resource path="res://assets/sultan2.png" type="Texture" id=17]
+[ext_resource path="res://assets/shez2.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 26, 26 )
@@ -560,6 +562,16 @@ texture = ExtResource( 13 )
 position = Vector2( 1040, 485 )
 texture = ExtResource( 14 )
 
+[node name="Shez2" type="Sprite" parent="."]
+position = Vector2( 565, 532 )
+z_index = -1
+texture = ExtResource( 18 )
+
+[node name="Sultan2" type="Sprite" parent="."]
+position = Vector2( 748, 630 )
+z_index = -1
+texture = ExtResource( 17 )
+
 [connection signal="time_up" from="VBoxContainer/TimeLimit" to="." method="_on_TimeLimit_time_up"]
 [connection signal="card_chosen" from="WallCards" to="WindowText" method="_on_WallCards_card_chosen"]
 [connection signal="input_event" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_input_event"]
@@ -662,5 +674,6 @@ texture = ExtResource( 14 )
 [connection signal="mouse_entered" from="BlankWalls/WallMid2" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="mouse_entered" from="BlankWalls/WallMid3" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="mouse_entered" from="BlankWalls/WallMid4" to="WindowText" method="_on_blank_walls_mouse_entered"]
+[connection signal="game_over" from="NightArea" to="." method="_on_NightArea_game_over"]
 [connection signal="night_over" from="NightArea" to="VBoxContainer/TimeLimit" method="_on_NightArea_night_over"]
 [connection signal="night_over" from="NightArea" to="WindowText" method="_on_NightArea_night_over"]

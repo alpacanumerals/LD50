@@ -1,12 +1,14 @@
 extends Node
 
-var Orchestrion
-var Jingler
+var Orchestrion : AudioStreamPlayer
+var Jingler : AudioStreamPlayer
+var Stabber : AudioStreamPlayer
 
 func _ready():
     pause_mode = Node.PAUSE_MODE_PROCESS
     setup_music()
     setup_button_jingle()
+    setup_stab()
 
 func setup_music():
     Orchestrion = AudioStreamPlayer.new()
@@ -21,15 +23,25 @@ func setup_music():
 func setup_button_jingle():
     Jingler = AudioStreamPlayer.new()
     var jingle = load("res://assets/select.wav")
-    yield(get_tree().create_timer(0.5), "timeout")
     add_child(Jingler)
     Jingler.set_stream(jingle)
     Jingler.volume_db = -15
     Jingler.pitch_scale = 1
     
+func setup_stab():
+    Stabber = AudioStreamPlayer.new()
+    var stab = load("res://assets/stab.wav")
+    add_child(Stabber)
+    Stabber.set_stream(stab)
+    Stabber.volume_db = -15
+    Stabber.pitch_scale = 1
+
 func play_button_jingle():
     Jingler.play()
-    
+
+func play_stab():
+    Stabber.play()
+
 func master_volume_up():
     var volume = AudioServer.get_bus_volume_db(
         AudioServer.get_bus_index("Master"))
