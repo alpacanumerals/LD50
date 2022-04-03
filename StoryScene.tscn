@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://night.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://wall_cards.gd" type="Script" id=10]
 [ext_resource path="res://assets/night.png" type="Texture" id=11]
 [ext_resource path="res://story_scene.gd" type="Script" id=12]
+[ext_resource path="res://assets/shez1.png" type="Texture" id=13]
+[ext_resource path="res://assets/sultan1.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 26, 26 )
@@ -140,7 +142,7 @@ texture = ExtResource( 8 )
 shape = SubResource( 2 )
 
 [node name="DoneNode" type="Node2D" parent="."]
-position = Vector2( 1013, 391 )
+position = Vector2( 1014, 324 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -221,6 +223,7 @@ position = Vector2( 0, 1 )
 shape = SubResource( 4 )
 
 [node name="NightArea" type="Area2D" parent="."]
+visible = false
 script = ExtResource( 1 )
 
 [node name="NightSprite" type="Sprite" parent="NightArea"]
@@ -256,6 +259,14 @@ margin_top = 204.0
 margin_right = 318.0
 margin_bottom = 218.0
 text = "SultanMood"
+
+[node name="Shez" type="Sprite" parent="."]
+position = Vector2( 269, 483 )
+texture = ExtResource( 13 )
+
+[node name="Sultan" type="Sprite" parent="."]
+position = Vector2( 1040, 485 )
+texture = ExtResource( 14 )
 
 [connection signal="card_chosen" from="WallCards" to="WindowText" method="_on_WallCards_card_chosen"]
 [connection signal="input_event" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_input_event"]
