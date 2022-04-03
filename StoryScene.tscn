@@ -194,7 +194,6 @@ margin_left = -13.0
 margin_top = 4.0
 margin_right = 101.0
 margin_bottom = 18.0
-text = "test"
 align = 1
 
 [node name="VerbLabel" type="Label" parent="WindowText"]
@@ -202,7 +201,6 @@ margin_left = 171.0
 margin_top = 3.0
 margin_right = 285.0
 margin_bottom = 17.0
-text = "test"
 align = 1
 
 [node name="ObjectLabel" type="Label" parent="WindowText"]
@@ -210,7 +208,6 @@ margin_left = 354.0
 margin_top = 5.0
 margin_right = 468.0
 margin_bottom = 19.0
-text = "test"
 align = 1
 
 [node name="BlankWalls" type="Node2D" parent="."]
