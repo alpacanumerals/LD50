@@ -9,9 +9,11 @@ const animate: bool = true
 const structure: bool = false
 
 var dead: bool = false
+var aflame: bool = false
 
 const texture: StreamTexture = preload("res://assets/noun/dragon.png")
 
 func _init(new_id):
     dead = false
+    aflame = false
     id = new_id
