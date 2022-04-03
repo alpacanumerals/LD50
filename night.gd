@@ -46,29 +46,30 @@ func _input(event):
         if (failed):
             match stage:
                 stages.START:
-                    $StoryText.text = "Sultan: This is terrible."
+                    $StoryText.text = "Sultan: This is terrible!"
                     stage = stages.STORY
                 stages.STORY:
-                    $SultanText.text = "You can't tell stories at a-"
+                    $SultanText.text = "Sultan: You can't tell stories at all!"
                     stage = stages.MOOD
                 stages.MOOD:
-                    $SultanMood.text = "Scheherazade: Oh shut up, you bloviating bore."
+                    $SultanMood.text = "Scheherazade: Oh shut up, you bloviating bore!"
                     stage = stages.END
                 stages.END:
                     Switcher.switch_scene("res://TitleScreen.tscn")
-        match stage:
-            stages.START:
-                $StoryText.text = compose_story_text()
-                stage = stages.STORY
-            stages.STORY:
-                $SultanText.text = compose_sultan_text()
-                stage = stages.MOOD
-            stages.MOOD:
-                $SultanMood.text = compose_sultan_mood()
-                stage = stages.END
-            stages.END:
-                emit_signal("night_over")
-                dawn_break()
+        else:
+            match stage:
+                stages.START:
+                    $StoryText.text = compose_story_text()
+                    stage = stages.STORY
+                stages.STORY:
+                    $SultanText.text = compose_sultan_text()
+                    stage = stages.MOOD
+                stages.MOOD:
+                    $SultanMood.text = compose_sultan_mood()
+                    stage = stages.END
+                stages.END:
+                    emit_signal("night_over")
+                    dawn_break()
     get_tree().set_input_as_handled()
 
 func compose_story_text():

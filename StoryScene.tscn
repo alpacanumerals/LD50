@@ -45,7 +45,8 @@ script = ExtResource( 12 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 1240.0
-margin_bottom = 680.0
+margin_bottom = 32.0
+size_flags_vertical = 0
 
 [node name="TimeLimit" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1240.0
@@ -62,6 +63,7 @@ margin_left = 40.0
 margin_right = 1240.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
+size_flags_vertical = 1
 percent_visible = false
 
 [node name="NightLabel" type="Label" parent="VBoxContainer"]
@@ -313,10 +315,12 @@ texture = ExtResource( 14 )
 [connection signal="player_click" from="WallCards/OpCard3" to="WallCards" method="_on_OpCard_player_click"]
 [connection signal="player_highlight" from="WallCards/OpCard3" to="WindowText" method="_on_OpCard_player_highlight"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="." method="_on_DoneButton_pressed"]
+[connection signal="pressed" from="DoneNode/DoneButton" to="VBoxContainer/TimeLimit" method="_on_DoneButton_pressed"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="WallCards" method="_on_DoneButton_pressed"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="DoneNode/DoneButton" method="_on_DoneButton_pressed"]
 [connection signal="mouse_entered" from="BlankWalls/WallTop" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="mouse_entered" from="BlankWalls/WallBottom" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="mouse_entered" from="BlankWalls/WallMid1" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="mouse_entered" from="BlankWalls/WallMid2" to="WindowText" method="_on_blank_walls_mouse_entered"]
+[connection signal="night_over" from="NightArea" to="VBoxContainer/TimeLimit" method="_on_NightArea_night_over"]
 [connection signal="night_over" from="NightArea" to="WindowText" method="_on_NightArea_night_over"]

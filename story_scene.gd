@@ -14,4 +14,3 @@ func _on_DoneButton_pressed():
 
 func _on_TimeLimit_time_up():
     $NightArea.night_fall(true)
-    
