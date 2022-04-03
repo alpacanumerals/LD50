@@ -8,7 +8,10 @@ func _on_DoneButton_pressed():
     var verb = Story.current_tale[Story.phase.VERB]
     var object = Story.current_tale[Story.phase.OBJECT]
     
-    #block interaction
-    $NightArea.night_fall()
+    var failed = Story.tell_story(subject, verb, object)
     
-    Story.tell_story(subject, verb, object)
+    $NightArea.night_fall(failed)
+
+func _on_TimeLimit_time_up():
+    $NightArea.night_fall(true)
+    

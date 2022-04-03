@@ -2,6 +2,7 @@ extends Area2D
 
 enum stages { START, STORY, SULTAN, MOOD, END, STAB }
 var stage : int
+var failed : bool
 
 const story_format = "Scheherazade: The %s %s the %s"
 
@@ -11,13 +12,15 @@ func _ready():
     $NightSprite.modulate.a = 0
     $NightSprite.visible = false
     set_process_input(false)
+    failed = false
 
 func initialise():
     blank_text()
     stage = stages.START
 
-func night_fall():
+func night_fall(has_failed):
     initialise()
+    failed = has_failed
     $NightSprite.visible = true
     $Dusk.interpolate_property($NightSprite,
         "modulate",
@@ -40,6 +43,19 @@ func dawn_break():
 
 func _input(event):
     if (event.is_pressed()):
+        if (failed):
+            match stage:
+                stages.START:
+                    $StoryText.text = "Sultan: This is terrible."
+                    stage = stages.STORY
+                stages.STORY:
+                    $SultanText.text = "You can't tell stories at a-"
+                    stage = stages.MOOD
+                stages.MOOD:
+                    $SultanMood.text = "Scheherazade: Oh shut up, you bloviating bore."
+                    stage = stages.END
+                stages.END:
+                    Switcher.switch_scene("res://TitleScreen.tscn")
         match stage:
             stages.START:
                 $StoryText.text = compose_story_text()

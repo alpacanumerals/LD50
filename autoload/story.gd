@@ -75,8 +75,7 @@ func tell_story(subject_id, verb_id, object_id):
     print("boredom: " + str(boredom))
     print("annoyance: " + str(annoyance))
     
-    if (threshold_exceeded()):
-        Switcher.switch_scene("res://TitleScreen.tscn")
+    return threshold_exceeded()
 
 func next_night():
     night += 1
