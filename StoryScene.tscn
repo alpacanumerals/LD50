@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://stat_bar.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
 [ext_resource path="res://plot_button.gd" type="Script" id=3]
-[ext_resource path="res://WordLabel.gd" type="Script" id=4]
+[ext_resource path="res://window_text.gd" type="Script" id=4]
 [ext_resource path="res://assets/chamber.png" type="Texture" id=5]
+[ext_resource path="res://blank_wall.gd" type="Script" id=6]
 [ext_resource path="res://window.gd" type="Script" id=7]
 [ext_resource path="res://assets/asset.png" type="Texture" id=8]
 [ext_resource path="res://OpCard.gd" type="Script" id=9]
@@ -15,6 +16,12 @@ extents = Vector2( 26, 26 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26, 26 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 77, 6.4375 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10, 80 )
 
 [node name="StoryScene" type="MarginContainer"]
 anchor_right = 1.0
@@ -76,32 +83,6 @@ max_value = 10.0
 step = 1.0
 script = ExtResource( 1 )
 stat_name = "annoyance"
-
-[node name="SubjectLabel" type="Label" parent="VBoxContainer"]
-margin_top = 54.0
-margin_right = 1240.0
-margin_bottom = 68.0
-text = "Subject: "
-script = ExtResource( 4 )
-label_text = "Subject: "
-
-[node name="VerbLabel" type="Label" parent="VBoxContainer"]
-margin_top = 72.0
-margin_right = 1240.0
-margin_bottom = 86.0
-text = "Verb: "
-script = ExtResource( 4 )
-part_of_speech = 1
-label_text = "Verb: "
-
-[node name="ObjectLabel" type="Label" parent="VBoxContainer"]
-margin_top = 90.0
-margin_right = 1240.0
-margin_bottom = 104.0
-text = "Object: "
-script = ExtResource( 4 )
-part_of_speech = 2
-label_text = "Object: "
 
 [node name="Sprite" type="Sprite" parent="."]
 z_index = -1
@@ -206,8 +187,9 @@ script = ExtResource( 3 )
 
 [node name="WindowText" type="Node2D" parent="."]
 position = Vector2( 437, 439 )
+script = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="WindowText"]
+[node name="SubjectLabel" type="Label" parent="WindowText"]
 margin_left = -13.0
 margin_top = 4.0
 margin_right = 101.0
@@ -215,14 +197,84 @@ margin_bottom = 18.0
 text = "test"
 align = 1
 
+[node name="VerbLabel" type="Label" parent="WindowText"]
+margin_left = 171.0
+margin_top = 3.0
+margin_right = 285.0
+margin_bottom = 17.0
+text = "test"
+align = 1
+
+[node name="ObjectLabel" type="Label" parent="WindowText"]
+margin_left = 354.0
+margin_top = 5.0
+margin_right = 468.0
+margin_bottom = 19.0
+text = "test"
+align = 1
+
+[node name="BlankWalls" type="Node2D" parent="."]
+
+[node name="WallTop" type="Area2D" parent="BlankWalls"]
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlankWalls/WallTop"]
+position = Vector2( 481, 28.5625 )
+shape = SubResource( 3 )
+
+[node name="WallBottom" type="Area2D" parent="BlankWalls"]
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlankWalls/WallBottom"]
+position = Vector2( 480, 202 )
+shape = SubResource( 3 )
+
+[node name="WallMid1" type="Area2D" parent="BlankWalls"]
+position = Vector2( 417, 114 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlankWalls/WallMid1"]
+position = Vector2( 0, 1 )
+shape = SubResource( 4 )
+
+[node name="WallMid2" type="Area2D" parent="BlankWalls"]
+position = Vector2( 543, 114 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlankWalls/WallMid2"]
+position = Vector2( 0, 1 )
+shape = SubResource( 4 )
+
 [connection signal="input_event" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_input_event"]
 [connection signal="mouse_entered" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_mouse_exited"]
 [connection signal="player_click" from="WallCards/OpCard" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard" to="WindowText" method="_on_OpCard_player_highlight"]
 [connection signal="input_event" from="WallCards/OpCard2" to="WallCards/OpCard2" method="_on_OpCard_input_event"]
 [connection signal="mouse_entered" from="WallCards/OpCard2" to="WallCards/OpCard2" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard2" to="WallCards/OpCard2" method="_on_OpCard_mouse_exited"]
 [connection signal="player_click" from="WallCards/OpCard2" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard2" to="WindowText" method="_on_OpCard_player_highlight"]
 [connection signal="input_event" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_input_event"]
 [connection signal="mouse_entered" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_mouse_exited"]
 [connection signal="player_click" from="WallCards/OpCard3" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard3" to="WindowText" method="_on_OpCard_player_highlight"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="WallCards" method="_on_DoneButton_pressed"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="DoneNode/DoneButton" method="_on_DoneButton_pressed"]
+[connection signal="mouse_entered" from="BlankWalls/WallTop" to="WindowText" method="_on_blank_walls_mouse_entered"]
+[connection signal="mouse_entered" from="BlankWalls/WallBottom" to="WindowText" method="_on_blank_walls_mouse_entered"]
+[connection signal="mouse_entered" from="BlankWalls/WallMid1" to="WindowText" method="_on_blank_walls_mouse_entered"]
+[connection signal="mouse_entered" from="BlankWalls/WallMid2" to="WindowText" method="_on_blank_walls_mouse_entered"]
