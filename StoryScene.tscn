@@ -24,10 +24,10 @@ extents = Vector2( 26, 26 )
 extents = Vector2( 26, 26 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 77, 6.4375 )
+extents = Vector2( 260.5, 6.4375 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 10, 80 )
+extents = Vector2( 38, 80 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 644.5, 364 )
@@ -171,6 +171,246 @@ shape = SubResource( 2 )
 [node name="Highlight" type="Sprite" parent="WallCards/OpCard3"]
 texture = ExtResource( 15 )
 
+[node name="OpCard4" type="Area2D" parent="WallCards"]
+position = Vector2( 506, 115 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard4"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard4"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard4"]
+texture = ExtResource( 15 )
+
+[node name="OpCard5" type="Area2D" parent="WallCards"]
+position = Vector2( 453, 168 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard5"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard5"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard5"]
+texture = ExtResource( 15 )
+
+[node name="OpCard6" type="Area2D" parent="WallCards"]
+position = Vector2( 506, 168 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard6"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard6"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard6"]
+texture = ExtResource( 15 )
+
+[node name="OpCard7" type="Area2D" parent="WallCards"]
+position = Vector2( 638, 62 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard7"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard7"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard7"]
+texture = ExtResource( 15 )
+
+[node name="OpCard8" type="Area2D" parent="WallCards"]
+position = Vector2( 691, 62 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard8"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard8"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard8"]
+texture = ExtResource( 15 )
+
+[node name="OpCard9" type="Area2D" parent="WallCards"]
+position = Vector2( 638, 115 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard9"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard9"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard9"]
+texture = ExtResource( 15 )
+
+[node name="OpCard10" type="Area2D" parent="WallCards"]
+position = Vector2( 691, 115 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard10"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard10"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard10"]
+texture = ExtResource( 15 )
+
+[node name="OpCard11" type="Area2D" parent="WallCards"]
+position = Vector2( 638, 168 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard11"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard11"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard11"]
+texture = ExtResource( 15 )
+
+[node name="OpCard12" type="Area2D" parent="WallCards"]
+position = Vector2( 691, 168 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard12"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard12"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard12"]
+texture = ExtResource( 15 )
+
+[node name="OpCard13" type="Area2D" parent="WallCards"]
+position = Vector2( 823, 62 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard13"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard13"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard13"]
+texture = ExtResource( 15 )
+
+[node name="OpCard14" type="Area2D" parent="WallCards"]
+position = Vector2( 876, 62 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard14"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard14"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard14"]
+texture = ExtResource( 15 )
+
+[node name="OpCard15" type="Area2D" parent="WallCards"]
+position = Vector2( 823, 115 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard15"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard15"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard15"]
+texture = ExtResource( 15 )
+
+[node name="OpCard16" type="Area2D" parent="WallCards"]
+position = Vector2( 876, 115 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard16"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard16"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard16"]
+texture = ExtResource( 15 )
+
+[node name="OpCard17" type="Area2D" parent="WallCards"]
+position = Vector2( 823, 168 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard17"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard17"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard17"]
+texture = ExtResource( 15 )
+
+[node name="OpCard18" type="Area2D" parent="WallCards"]
+position = Vector2( 876, 168 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="WallCards/OpCard18"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard18"]
+shape = SubResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="WallCards/OpCard18"]
+texture = ExtResource( 15 )
+
 [node name="DoneNode" type="Node2D" parent="."]
 position = Vector2( 1014, 324 )
 __meta__ = {
@@ -217,10 +457,11 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlankWalls/WallTop"]
-position = Vector2( 481, 28.5625 )
+position = Vector2( 664.5, 28.5625 )
 shape = SubResource( 3 )
 
 [node name="WallBottom" type="Area2D" parent="BlankWalls"]
+position = Vector2( 187, 0 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
@@ -231,7 +472,7 @@ position = Vector2( 480, 202 )
 shape = SubResource( 3 )
 
 [node name="WallMid1" type="Area2D" parent="BlankWalls"]
-position = Vector2( 417, 114 )
+position = Vector2( 387, 114 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
@@ -242,14 +483,36 @@ position = Vector2( 0, 1 )
 shape = SubResource( 4 )
 
 [node name="WallMid2" type="Area2D" parent="BlankWalls"]
-position = Vector2( 543, 114 )
+position = Vector2( 570, 114 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlankWalls/WallMid2"]
-position = Vector2( 0, 1 )
+position = Vector2( 2, 1 )
+shape = SubResource( 4 )
+
+[node name="WallMid3" type="Area2D" parent="BlankWalls"]
+position = Vector2( 755, 114 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlankWalls/WallMid3"]
+position = Vector2( 2, 1 )
+shape = SubResource( 4 )
+
+[node name="WallMid4" type="Area2D" parent="BlankWalls"]
+position = Vector2( 939, 114 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlankWalls/WallMid4"]
+position = Vector2( 2, 1 )
 shape = SubResource( 4 )
 
 [node name="NightArea" type="Area2D" parent="."]
@@ -314,6 +577,81 @@ texture = ExtResource( 14 )
 [connection signal="mouse_exited" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_mouse_exited"]
 [connection signal="player_click" from="WallCards/OpCard3" to="WallCards" method="_on_OpCard_player_click"]
 [connection signal="player_highlight" from="WallCards/OpCard3" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard4" to="WallCards/OpCard4" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard4" to="WallCards/OpCard4" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard4" to="WallCards/OpCard4" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard4" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard4" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard5" to="WallCards/OpCard5" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard5" to="WallCards/OpCard5" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard5" to="WallCards/OpCard5" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard5" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard5" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard6" to="WallCards/OpCard6" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard6" to="WallCards/OpCard6" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard6" to="WallCards/OpCard6" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard6" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard6" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard7" to="WallCards/OpCard7" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard7" to="WallCards/OpCard7" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard7" to="WallCards/OpCard7" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard7" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard7" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard8" to="WallCards/OpCard8" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard8" to="WallCards/OpCard8" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard8" to="WallCards/OpCard8" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard8" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard8" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard9" to="WallCards/OpCard9" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard9" to="WallCards/OpCard9" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard9" to="WallCards/OpCard9" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard9" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard9" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard10" to="WallCards/OpCard10" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard10" to="WallCards/OpCard10" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard10" to="WallCards/OpCard10" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard10" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard10" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard11" to="WallCards/OpCard11" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard11" to="WallCards/OpCard11" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard11" to="WallCards/OpCard11" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard11" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard11" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard12" to="WallCards/OpCard12" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard12" to="WallCards/OpCard12" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard12" to="WallCards/OpCard12" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard12" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard12" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard13" to="WallCards/OpCard13" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard13" to="WallCards/OpCard13" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard13" to="WallCards/OpCard13" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard13" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard13" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard14" to="WallCards/OpCard14" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard14" to="WallCards/OpCard14" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard14" to="WallCards/OpCard14" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard14" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard14" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard15" to="WallCards/OpCard15" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard15" to="WallCards/OpCard15" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard15" to="WallCards/OpCard15" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard15" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard15" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard16" to="WallCards/OpCard16" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard16" to="WallCards/OpCard16" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard16" to="WallCards/OpCard16" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard16" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard16" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard17" to="WallCards/OpCard17" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard17" to="WallCards/OpCard17" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard17" to="WallCards/OpCard17" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard17" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard17" to="WindowText" method="_on_OpCard_player_highlight"]
+[connection signal="input_event" from="WallCards/OpCard18" to="WallCards/OpCard18" method="_on_OpCard_input_event"]
+[connection signal="mouse_entered" from="WallCards/OpCard18" to="WallCards/OpCard18" method="_on_OpCard_mouse_entered"]
+[connection signal="mouse_exited" from="WallCards/OpCard18" to="WallCards/OpCard18" method="_on_OpCard_mouse_exited"]
+[connection signal="player_click" from="WallCards/OpCard18" to="WallCards" method="_on_OpCard_player_click"]
+[connection signal="player_highlight" from="WallCards/OpCard18" to="WindowText" method="_on_OpCard_player_highlight"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="." method="_on_DoneButton_pressed"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="VBoxContainer/TimeLimit" method="_on_DoneButton_pressed"]
 [connection signal="pressed" from="DoneNode/DoneButton" to="WallCards" method="_on_DoneButton_pressed"]
@@ -322,5 +660,7 @@ texture = ExtResource( 14 )
 [connection signal="mouse_entered" from="BlankWalls/WallBottom" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="mouse_entered" from="BlankWalls/WallMid1" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="mouse_entered" from="BlankWalls/WallMid2" to="WindowText" method="_on_blank_walls_mouse_entered"]
+[connection signal="mouse_entered" from="BlankWalls/WallMid3" to="WindowText" method="_on_blank_walls_mouse_entered"]
+[connection signal="mouse_entered" from="BlankWalls/WallMid4" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="night_over" from="NightArea" to="VBoxContainer/TimeLimit" method="_on_NightArea_night_over"]
 [connection signal="night_over" from="NightArea" to="WindowText" method="_on_NightArea_night_over"]
