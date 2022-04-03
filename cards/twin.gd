@@ -43,6 +43,7 @@ var resourceful_now
 var structure_now
 var weak_now
 
+var twinassign = []
 
 func _init(new_id):
     id = new_id
@@ -65,3 +66,4 @@ func _init(new_id):
     marriageable_now = marriageable
     lovelist_now = lovelist
     hatelist_now = hatelist
+    twinassign = []
