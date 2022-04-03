@@ -40,6 +40,7 @@ func _ready():
     pass
 
 func initialise():
+    new_id = 0
     night = 1
     boredom = 0
     annoyance = 0

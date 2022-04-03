@@ -5,6 +5,8 @@ var stage : int
 
 const story_format = "Scheherazade: The %s %s the %s"
 
+signal night_over
+
 func _ready():
     $NightSprite.modulate.a = 0
     $NightSprite.visible = false
@@ -49,6 +51,7 @@ func _input(event):
                 $SultanMood.text = compose_sultan_mood()
                 stage = stages.END
             stages.END:
+                emit_signal("night_over")
                 dawn_break()
     get_tree().set_input_as_handled()
 

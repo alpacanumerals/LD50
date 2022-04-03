@@ -1,5 +1,7 @@
 extends Node2D
 
+signal card_chosen(card_id)
+
 func _ready():
     setup(false)
 
@@ -18,6 +20,8 @@ func setup(verbs: bool):
 
 func _on_OpCard_player_click(card_id):
     var verb_toggle = Story.add_word(card_id)
+    
+    emit_signal("card_chosen", card_id)
     setup(verb_toggle)
 
 func _on_DoneButton_pressed():
