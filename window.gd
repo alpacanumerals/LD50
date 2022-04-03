@@ -3,7 +3,7 @@ extends Area2D
 export var part_of_speech: int
 
 func _ready():
-    print($Sprite.texture)
+    pass
 
 func _process(_delta):
     if (Story.current_tale.has(part_of_speech)):

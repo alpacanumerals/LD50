@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://stat_bar.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
 [ext_resource path="res://plot_button.gd" type="Script" id=3]
 [ext_resource path="res://WordLabel.gd" type="Script" id=4]
 [ext_resource path="res://assets/chamber.png" type="Texture" id=5]
-[ext_resource path="res://CardsContainer.gd" type="Script" id=6]
 [ext_resource path="res://window.gd" type="Script" id=7]
 [ext_resource path="res://assets/asset.png" type="Texture" id=8]
 [ext_resource path="res://OpCard.gd" type="Script" id=9]
@@ -77,22 +76,6 @@ max_value = 10.0
 step = 1.0
 script = ExtResource( 1 )
 stat_name = "annoyance"
-
-[node name="OperandContainer" type="GridContainer" parent="VBoxContainer"]
-visible = false
-margin_top = 54.0
-margin_right = 1240.0
-margin_bottom = 54.0
-columns = 2
-script = ExtResource( 6 )
-
-[node name="OperatorContainer2" type="HBoxContainer" parent="VBoxContainer"]
-visible = false
-margin_top = 116.0
-margin_right = 1240.0
-margin_bottom = 174.0
-script = ExtResource( 6 )
-verbs = true
 
 [node name="SubjectLabel" type="Label" parent="VBoxContainer"]
 margin_top = 54.0
@@ -209,17 +192,28 @@ texture = ExtResource( 8 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCards/OpCard3"]
 shape = SubResource( 2 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="DoneNode" type="Node2D" parent="."]
 position = Vector2( 1013, 391 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="DoneButton" type="Button" parent="Node2D"]
+[node name="DoneButton" type="Button" parent="DoneNode"]
 margin_right = 39.0
 margin_bottom = 20.0
 text = "Tell!"
 script = ExtResource( 3 )
+
+[node name="WindowText" type="Node2D" parent="."]
+position = Vector2( 437, 439 )
+
+[node name="Label" type="Label" parent="WindowText"]
+margin_left = -13.0
+margin_top = 4.0
+margin_right = 101.0
+margin_bottom = 18.0
+text = "test"
+align = 1
 
 [connection signal="input_event" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_input_event"]
 [connection signal="mouse_entered" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_mouse_entered"]
@@ -230,5 +224,5 @@ script = ExtResource( 3 )
 [connection signal="input_event" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_input_event"]
 [connection signal="mouse_entered" from="WallCards/OpCard3" to="WallCards/OpCard3" method="_on_OpCard_mouse_entered"]
 [connection signal="player_click" from="WallCards/OpCard3" to="WallCards" method="_on_OpCard_player_click"]
-[connection signal="pressed" from="Node2D/DoneButton" to="WallCards" method="_on_DoneButton_pressed"]
-[connection signal="pressed" from="Node2D/DoneButton" to="Node2D/DoneButton" method="_on_DoneButton_pressed"]
+[connection signal="pressed" from="DoneNode/DoneButton" to="WallCards" method="_on_DoneButton_pressed"]
+[connection signal="pressed" from="DoneNode/DoneButton" to="DoneNode/DoneButton" method="_on_DoneButton_pressed"]
