@@ -11,7 +11,7 @@ func setup(card_id):
     id = card.id
     $Sprite.set_texture(card.texture)
 
-func _on_OpCard_input_event(viewport, event, shape_idx):
+func _on_OpCard_input_event(_viewport, event, _shape_idx):
     if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
         Sound.play_button_jingle()
         emit_signal("player_click", id)
