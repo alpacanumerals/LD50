@@ -27,6 +27,12 @@ enum phase { SUBJECT, VERB, OBJECT, NONE }
 var current_phase: int = phase.SUBJECT
 var current_tale = {}
 
+enum rules { CHAUVANIST }
+var offenses = {}
+
+var repeats: int = 0
+var offense: int = 0
+
 func get_new_id():
     var id = new_id
     new_id += 1
@@ -45,9 +51,13 @@ func initialise():
     current_tale = {}
 
 func tell_story(subject_id, verb_id, object_id):
+    repeats = 0
+    offense = 0
+    offenses = {}
+    
     var story_key = subject_id*10000 + verb_id*100 + object_id
     
-    var repeats = memory.get(story_key, 0)
+    repeats = memory.get(story_key, 0)
     memory[story_key] = repeats+1
     
     var subject = cards[subject_id]
@@ -58,26 +68,23 @@ func tell_story(subject_id, verb_id, object_id):
     print("key: " + str(story_key))
     
     # handle logic based on repeats
-    if (repeats <= 0):
-        print("how interesting")
-    else:
-        print("didn't that aready happen?")
-        boredom += repeats
+    boredom += repeats
     
     # handle logic based on story content
-    if (verb is Love):
+    print(verb)
+    if (verb is Slay):
+        print("ping")
         if (subject.female == true
         && subject.monster == false
-        && object.monster == true):
-            print("a maiden would never love a monster")
-            annoyance += 1
-    else:
-        print("makes sense")
+        && object.female == false):
+            print("a woman could never overpower a man")
+            offenses[rules.CHAUVANIST] = true
+            offense += 1         
+                
+    annoyance += offense
     
     print("boredom: " + str(boredom))
     print("annoyance: " + str(annoyance))
-    
-    next_night()
     
     if (threshold_exceeded()):
         Switcher.switch_scene("res://TitleScreen.tscn")
