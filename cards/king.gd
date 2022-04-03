@@ -20,7 +20,9 @@ const noble: bool = true
 const resourceful: bool = false
 const structure: bool = false
 const weak: bool = false
+const marriageable: bool = true
 
+var marriageable_now
 var aflame_now
 var airborne_now
 var animate_now
@@ -56,3 +58,4 @@ func _init(new_id):
     resourceful_now = resourceful
     structure_now = structure
     weak_now = weak
+    marriageable_now = marriageable

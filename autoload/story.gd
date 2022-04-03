@@ -11,11 +11,43 @@ var annoyance: int
 const boredom_threshold: int = 10
 const annoyance_threshold: int = 10
 
-const princess = preload("res://cards/princess.gd")
-const knight = preload("res://cards/knight.gd")
+const castle = preload("res://cards/castle.gd")
+const cat = preload("res://cards/cat.gd")
+const cavern = preload("res://cards/cavern.gd")
 const dragon = preload("res://cards/dragon.gd")
+const fox = preload("res://cards/fox.gd")
+const giant = preload("res://cards/giant.gd")
+const king = preload("res://cards/king.gd")
+const knight = preload("res://cards/knight.gd")
+const labyrinth = preload("res://cards/labyrinth.gd")
+const magic = preload("res://cards/magic.gd")
+const peddler = preload("res://cards/peddler.gd")
+const prince = preload("res://cards/prince.gd")
+const princess = preload("res://cards/princess.gd")
+const queen = preload("res://cards/queen.gd")
+const sword = preload("res://cards/sword.gd")
+const tower = preload("res://cards/tower.gd")
+const twin = preload("res://cards/twin.gd")
+const witch = preload("res://cards/witch.gd")
 
+const burned = preload("res://cards2/burned.gd")
+const climbed = preload("res://cards2/climbed.gd")
+const despised = preload("res://cards2/despised.gd")
+const fell_upon = preload("res://cards2/fell_upon.gd")
+const found = preload("res://cards2/found.gd")
+const had = preload("res://cards2/had.gd")
+const loved = preload("res://cards2/loved.gd")
+const married = preload("res://cards2/married.gd")
+const pursued = preload("res://cards2/pursued.gd")
+const revived = preload("res://cards2/revived.gd")
 const rewarded = preload("res://cards2/rewarded.gd")
+const slew = preload("res://cards2/slew.gd")
+const spoke_with = preload("res://cards2/spoke_with.gd")
+const stole = preload("res://cards2/stole.gd")
+const struck = preload("res://cards2/struck.gd")
+const threw = preload("res://cards2/threw.gd")
+const turned_into = preload("res://cards2/turned_into.gd")
+const visited = preload("res://cards2/visited.gd")
 
 var cards = {}
 
@@ -93,12 +125,45 @@ func threshold_exceeded():
 
 func setup_cards():
     cards = {}
-    setup_card(princess.new(get_new_id()))
-    setup_card(knight.new(get_new_id()))
+    setup_card(castle.new(get_new_id()))
+    setup_card(cat.new(get_new_id()))
+    setup_card(cavern.new(get_new_id()))
     setup_card(dragon.new(get_new_id()))
-    
+    setup_card(fox.new(get_new_id()))
+    setup_card(giant.new(get_new_id()))
+    setup_card(king.new(get_new_id()))
+    setup_card(knight.new(get_new_id()))
+    setup_card(labyrinth.new(get_new_id()))
+    setup_card(magic.new(get_new_id()))
+    setup_card(peddler.new(get_new_id()))
+    setup_card(prince.new(get_new_id()))
+    setup_card(princess.new(get_new_id()))
+    setup_card(queen.new(get_new_id()))
+    setup_card(sword.new(get_new_id()))
+    setup_card(tower.new(get_new_id()))
+    setup_card(twin.new(get_new_id()))
+    setup_card(witch.new(get_new_id()))
+
     operator_id_start = new_id
+    
+    setup_card(burned.new(get_new_id()))
+    setup_card(climbed.new(get_new_id()))
+    setup_card(despised.new(get_new_id()))
+    setup_card(fell_upon.new(get_new_id()))
+    setup_card(found.new(get_new_id()))
+    setup_card(had.new(get_new_id()))
+    setup_card(loved.new(get_new_id()))
+    setup_card(married.new(get_new_id()))
+    setup_card(pursued.new(get_new_id()))
+    setup_card(revived.new(get_new_id()))
     setup_card(rewarded.new(get_new_id()))
+    setup_card(slew.new(get_new_id()))
+    setup_card(spoke_with.new(get_new_id()))
+    setup_card(stole.new(get_new_id()))
+    setup_card(struck.new(get_new_id()))
+    setup_card(threw.new(get_new_id()))
+    setup_card(turned_into.new(get_new_id()))
+    setup_card(visited.new(get_new_id()))
 
 func setup_card(card):
     cards[card.id] = card
