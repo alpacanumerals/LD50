@@ -27,8 +27,6 @@ enum phase { SUBJECT, VERB, OBJECT, NONE }
 var current_phase: int = phase.SUBJECT
 var current_tale = {}
 
-enum rules { CHAUVANIST }
-var offenses = {}
 
 var repeats: int = 0
 var offense: int = 0
@@ -53,7 +51,6 @@ func initialise():
 func tell_story(subject_id, verb_id, object_id):
     repeats = 0
     offense = 0
-    offenses = {}
     
     var story_key = subject_id*10000 + verb_id*100 + object_id
     
@@ -71,16 +68,7 @@ func tell_story(subject_id, verb_id, object_id):
     boredom += repeats
     
     # handle logic based on story content
-    print(verb)
-    if (verb is Slay):
-        print("ping")
-        if (subject.female == true
-        && subject.monster == false
-        && object.female == false):
-            print("a woman could never overpower a man")
-            offenses[rules.CHAUVANIST] = true
-            offense += 1         
-                
+    offense = Storyrules.ponder(subject, object, verb)     
     annoyance += offense
     
     print("boredom: " + str(boredom))

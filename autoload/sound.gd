@@ -10,7 +10,7 @@ func _ready():
 
 func setup_music():
     Orchestrion = AudioStreamPlayer.new()
-    var music = load("res://assets/amusic.mp3")
+    var music = load("res://assets/inevnite.mp3")
     yield(get_tree().create_timer(0.5), "timeout")
     add_child(Orchestrion)
     Orchestrion.set_stream(music)

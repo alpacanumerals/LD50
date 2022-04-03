@@ -73,7 +73,7 @@ func compose_sultan_text():
                 text += "I'm sure that already happened. "
             3, 4, 5:
                 text += "You're repeating yourself! "
-        if (Story.offenses.has(Story.rules.CHAUVANIST)):
+        if (Storyrules.offenses.has(Storyrules.rules.CHAUVANIST)):
             text += "A woman couldn't overpower a man!"
     return text
 
