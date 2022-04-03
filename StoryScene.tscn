@@ -257,6 +257,7 @@ margin_right = 318.0
 margin_bottom = 218.0
 text = "SultanMood"
 
+[connection signal="card_chosen" from="WallCards" to="WindowText" method="_on_WallCards_card_chosen"]
 [connection signal="input_event" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_input_event"]
 [connection signal="mouse_entered" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_mouse_entered"]
 [connection signal="mouse_exited" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_mouse_exited"]
@@ -279,3 +280,4 @@ text = "SultanMood"
 [connection signal="mouse_entered" from="BlankWalls/WallBottom" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="mouse_entered" from="BlankWalls/WallMid1" to="WindowText" method="_on_blank_walls_mouse_entered"]
 [connection signal="mouse_entered" from="BlankWalls/WallMid2" to="WindowText" method="_on_blank_walls_mouse_entered"]
+[connection signal="night_over" from="NightArea" to="WindowText" method="_on_NightArea_night_over"]
