@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/knocks.wav-c80ed11dbffe41274cad044de729a444.sample"
+
+[deps]
+
+source_file="res://assets/knocks.wav"
+dest_files=[ "res://.import/knocks.wav-c80ed11dbffe41274cad044de729a444.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
