@@ -24,38 +24,55 @@ func ponder(subject, object, verb):
     var confusion: int = 0
     offenses = {}
 
-
-
 #############
 #RULES BEGIN#
 #############
 
-#Broad Logic Rules 
+    #Broad Logic Rules 
     if option_basic == true:
-        #Action requires animation.
-        if verb.action == true && subject.animate == false:
+        #Action requiring animation.
+        if verb.action == true && subject.animate_now == false:
             print("A" + subject.card_name + "can't do that!")
-            offenses[rules.NONSENSE] = true
+            offenses[rules.ACTION_NONSENSE] = true
             offense += 3
             return offense
-        #Logic regarding what can be legitimately slain.
-        if (verb is Slew):
-            if object.dead == true:
-                print("Wasn't" + object.card_name + "already dead?") 
-                offenses[rules.NONSENSE] = true
+        #Verbs requiring animate objects.    
+        if verb.targetanimate == true && object.animate_now == false:
+            #Logic regarding what can be legitimately slain.
+            if (verb is Slew):
+                if object.dead == true:
+                    print("Wasn't" + object.card_name + "already dead?") 
+                    offenses[rules.SLEW_ALREADY_DEAD] = true
+                    offense += 3
+                    return offense
+                if object.animate_now == false:
+                    print("And just how does the" + subject.card_name + "plan to kill a" + object.card_name + "?") 
+                    offenses[rules.SLEW_UNKILLABLE] = true
+                    offense += 3
+                return offense            
+        #Verbs requiring animate objects.
+            if (verb is Married):
+                offenses[rules.MARRIED_INANIMATE] = true
                 offense += 3
                 return offense
-            if object.animate1 == false:
-                print("And just how does the" + subject.card_name + "plan to kill a" + object.card_name + "?") 
-                offenses[rules.NONSENSE] = true
+            if (verb is Pursued):
+                offenses[rules.PURSUED_INANIMATE] = true
                 offense += 3
-                return offense            
-
-
-
-
-
-
+                return offense
+            if (verb is Spoke_With):
+                offenses[rules.SPOKE_WITH_INANIMATE] = true
+                offense += 3
+                return offense
+            else:
+                offenses[rules.GENERIC_NONSENSE] = true
+                offense += 3
+                return offense
+    
+    #RULES Governing the possible but unreasonable.
+    
+    
+    
+    
 #Initial chauvinism rule. REVIEW LATER MAYBE
     if (verb is Slew):
         if (subject.female == true

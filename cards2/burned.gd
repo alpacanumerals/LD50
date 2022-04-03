@@ -6,6 +6,7 @@ const texture: StreamTexture = preload("res://assets/verb/burned.png")
 
 const action: bool = false
 const adventure: bool = true
+const targetanimate: bool = false
 
 func _init(new_id):
     id = new_id
