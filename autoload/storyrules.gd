@@ -117,6 +117,8 @@ func dead_action_rule(thing):
     return 3
 
 func ponder(subject, object, verb):
+    option_gender = Options.trad
+    
     #Initialize total offense back to 0 and clean the dictionary.
     #Also maybe use the validity flags if used.
     #var slay_valid: bool = false
