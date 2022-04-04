@@ -432,16 +432,53 @@ func ponder(subject, object, verb):
     ###SPOKE_WITH?    
     ###SPOKE_WITH?    
     
+    if (verb is Stole):
+        if object is Sword and subject.handy_now == true:
+            subject.weak_now = false
+        if object is Magic:
+            subject.magical_now = true
+        if subject.huge_now == false and object.huge_now == true:
+            offenses[rules.STOLE_HUGE] = true
+            offense += 2   
+        if object is King:
+            offenses[rules.KING_MISFORTUNE] = true
+            offense += 1                 
+        object.found_now = false    
+        return offense
+        
+    if (verb is Struck):
+        if subject.huge_now == true and object.huge_now == false and object.animate_now == true:
+            offenses[rules.STRUCK_HUGEDEAD] = true
+            object.dead_now = true
+        if object is King:
+            offenses[rules.KING_MISFORTUNE] = true
+            offense += 1   
+        return offense
+        
     if (verb is Threw):
-
+        if object.huge_now == true and subject.huge_now == false:
+            offenses[rules.THREW_HUGE] = true
+            offense += 2
+            return offense  
+        elif subject.huge_now == false and subject.handy_now == false:
+            offenses[rules.THREW_NOHANDS] = true
+            offense += 2
+            return offense 
+        
+        if option_gender == true:
+            if subject.female_now == true and not object is Fox or Cat:
+                offenses[rules.CHAUVANIST_THROW]
+                offense += 1
+        if object is King:
+            offenses[rules.KING_MISFORTUNE] = true
+            offense += 1
+        object.airborne_now = true
     
-    
-    if (verb is Threw):
-        if subject.weak_now == true:
-    
-    
-    #TURNED_INTO
-    
+    if (verb is Turned_Into):
+        if subject.magical_now == false:
+            offenses[rules.TURN_NOMAGIC] = true
+            offense += 1            
+        
     ###VISITED?
     ###VISITED?
     ###VISITED?
