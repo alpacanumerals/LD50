@@ -14,7 +14,7 @@ func speak(subject_id, verb_id, object_id):
         line = "Well I suppose the Cat's still got lives left."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.RESOURCEFUL_ESCAPEBURIAL):
-        line = "Ah a resourceful hero. I knew they wouldn't be buried so easily."
+        line = "Ah a resourceful "+subject.card_name+". I knew they wouldn't be buried so easily."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.TWIN_CONFUSED):
         line = "What? Whose twin? This makes no sense!"
@@ -32,7 +32,7 @@ func speak(subject_id, verb_id, object_id):
         line = "Wasn't the " + object.card_name + " already dead?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.ACTION_NONSENSE):
-        line = "A " + object.card_name + " can't do that!"
+        line = "A " + subject.card_name + " can't do that!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_GENERIC):
         if subject is Princess:

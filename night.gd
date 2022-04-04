@@ -133,7 +133,7 @@ func compose_sultan_mood():
         5, 6:
             text += "sceptical"
         7, 8:
-            text += "offended"
+            text += "irate"
         9, 10:
             text += "outraged"
     text += " and "
@@ -149,7 +149,7 @@ func compose_sultan_mood():
         7, 8:
             text += "miserable"
         9, 10:
-            text += "soporific"
+            text += "bored to tears"
     text += "."
     return text
     
