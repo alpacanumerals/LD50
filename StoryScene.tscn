@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://night.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/sultan2.png" type="Texture" id=17]
 [ext_resource path="res://assets/shez2.png" type="Texture" id=18]
 [ext_resource path="res://tutorial.gd" type="Script" id=19]
+[ext_resource path="res://assets/arrow.png" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 26, 26 )
@@ -623,6 +624,20 @@ margin_top = 293.0
 margin_right = 1099.0
 margin_bottom = 307.0
 text = "Now, tell the Sultan!"
+
+[node name="Arrows" type="Node2D" parent="Tutorial"]
+
+[node name="Arrow" type="Sprite" parent="Tutorial/Arrows"]
+position = Vector2( 481, 233 )
+texture = ExtResource( 20 )
+
+[node name="Arrow2" type="Sprite" parent="Tutorial/Arrows"]
+position = Vector2( 664, 234 )
+texture = ExtResource( 20 )
+
+[node name="Arrow3" type="Sprite" parent="Tutorial/Arrows"]
+position = Vector2( 850, 239 )
+texture = ExtResource( 20 )
 
 [connection signal="go_back" from="." to="WallCards" method="_on_StoryScene_go_back"]
 [connection signal="go_back" from="." to="WindowText" method="_on_StoryScene_go_back"]

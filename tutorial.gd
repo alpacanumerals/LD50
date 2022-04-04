@@ -12,6 +12,7 @@ func _process(_delta):
         $Label2.visible = false
         $Label3.visible = false
         $Label4.visible = false
+        $Arrows.visible = true
         match Story.current_phase:
             Story.phase.SUBJECT:
                 $Label1.visible = true
@@ -21,6 +22,7 @@ func _process(_delta):
                 $Label3.visible = true
             Story.phase.NONE:
                 $Label4.visible = true
+                $Arrows.visible = false
                 
     else:
         $Label0.visible = false
@@ -28,3 +30,4 @@ func _process(_delta):
         $Label2.visible = false
         $Label3.visible = false
         $Label4.visible = false
+        $Arrows.visible = false
