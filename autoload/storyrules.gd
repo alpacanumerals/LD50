@@ -390,15 +390,9 @@ func ponder(subject, object, verb):
         if object is King and not subject is Queen or Prince or Princess:
             offenses[rules.SLEW_UNSPICYREGICIDE] = true
             offense += 2
-        if subject is Peddler and not object is Fox or Cat:
+        if subject.weak_now == true and subject.handy_now == false and not object is Fox or Cat:
             offenses[rules.SLEW_STRANGE] = true
             offense += 1 
-        if subject is Cat and not object is Cat or Witch or Giant or Dragon:
-            offenses[rules.SLEW_STRANGE] = true
-            offense += 1
-        if subject is Fox and not object is Cat:
-            offenses[rules.SLEW_STRANGE] = true
-            offense += 1
         if subject == object:
             if subject is Cat:
                 offenses[rules.SLEW_SUICIDE_CAT] = true
@@ -409,13 +403,12 @@ func ponder(subject, object, verb):
             offense += 1
         object.dead_now = true
         
-        
-        
-        
-    #SPOKE WITH
+    ###SPOKE_WITH?    
+    ###SPOKE_WITH?    
+    ###SPOKE_WITH?    
+    
     #STOLE
     #STRUCK
-    
     
     if (verb is Threw):
         if subject.weak_now == true:
