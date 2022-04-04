@@ -17,6 +17,23 @@ var offenses = {}
 #var slay_valid: bool = false
 #var burn_valid: bool = false
 
+
+#these apply the rules when they happen to cut down pasta
+func revive_cat_rule(thing):
+    thing.catdeaths += 1
+    thing.dead_now = false
+    offenses[rules.CAT_LIFE] = true
+
+func animate_action_rule(thing):
+    print("A" + thing.card_name + "can't do that!")
+    offenses[rules.ACTION_NONSENSE] = true
+    return 3
+    
+func dead_action_rule(thing):
+    print("Wasn't" + thing.card_name + "already dead?")
+    offenses[rules.ACTION_DEAD] = true
+    return 3
+
 func ponder(subject, object, verb):
     #Initialize total offense back to 0 and clean the dictionary.
     #Also maybe use the validity flags if used.
@@ -34,13 +51,9 @@ func ponder(subject, object, verb):
     #CAT CHECK
     #Is the cat alive or dead?
     if object is Cat and object.dead_now == true and object.catdeaths < 9:
-        object.catdeaths += 1
-        object.dead_now = false
-        offenses[rules.CAT_LIFE] = true
+        revive_cat_rule(object)
     if subject is Cat and subject.dead_now == true and subject.catdeaths < 9:
-        subject.catdeaths += 1
-        subject.dead_now = false
-        offenses[rules.CAT_LIFE] = true
+        revive_cat_rule(subject)
         
     #RULES of logic: option_basic should never be turned off.
     #These instantly break the story without resolving anything else.
@@ -48,14 +61,10 @@ func ponder(subject, object, verb):
         #Action requiring animation.
         if verb.action == true:
             if subject.animate_now == false:
-                print("A" + subject.card_name + "can't do that!")
-                offenses[rules.ACTION_NONSENSE] = true
-                offense += 3
+                offense += animate_action_rule(subject)
                 return offense
             if subject.dead_now == true:
-                print("Wasn't" + subject.card_name + "already dead?")
-                offenses[rules.ACTION_DEAD] = true
-                offense += 3
+                offense += dead_action_rule(subject)
                 return offense                
         #Verbs requiring animate objects.    
         if verb.targetanimate == true && object.animate_now == false:
