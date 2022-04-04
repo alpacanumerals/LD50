@@ -40,6 +40,7 @@ func _on_LimitButton_toggled(button_pressed):
         Sound.play_button_jingle()
     else:
         Sound.play_cancel()
+    Options.finite_game = button_pressed
 
 func _on_VolumeSpinBox_value_changed(value):
     Sound.set_master_volume(value-35)

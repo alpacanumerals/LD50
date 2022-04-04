@@ -58,6 +58,7 @@ var current_phase: int = phase.SUBJECT
 var current_tale = {}
 
 var out_of_time: bool = false
+var out_of_nights: bool = false
 
 var repeats: int = 0
 var offense: int = 0
@@ -76,6 +77,7 @@ func initialise():
     boredom = 0
     annoyance = 0
     out_of_time = false
+    out_of_nights = false
     memory = {}
     setup_cards()
     current_phase = phase.SUBJECT
@@ -106,6 +108,10 @@ func tell_story(subject_id, verb_id, object_id):
     
     print("boredom: " + str(boredom))
     print("annoyance: " + str(annoyance))
+    
+    if night >= 1001 and Options.finite_game:
+        out_of_nights = true
+        return true
     
     return threshold_exceeded()
 

@@ -89,6 +89,8 @@ func _input(event):
 func compose_story_text():
     if Story.out_of_time:
         return "Scheherazade: The er... someone, did something..."
+    if Story.out_of_nights:
+        return "Scheherazade: Are you seriously going to make me tell you\na bedtime story for more than a thousand nights in a row?"
 
     var subject = Story.cards[Story.current_tale[Story.phase.SUBJECT]].card_name
     var verb = Story.cards[Story.current_tale[Story.phase.VERB]].card_name

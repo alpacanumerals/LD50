@@ -1,6 +1,7 @@
 extends Node
 
 var tutorial: bool = true
+var finite_game: bool = true
 
 var max_time: int = 20
 var min_time: int = 7
