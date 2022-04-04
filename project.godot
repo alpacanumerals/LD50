@@ -246,6 +246,7 @@ Sound="*res://autoload/sound.gd"
 Switcher="*res://autoload/switcher.gd"
 Story="*res://autoload/story.gd"
 Storyrules="*res://autoload/storyrules.gd"
+Sultanspeech="*res://autoload/sultanspeech.gd"
 
 [display]
 
