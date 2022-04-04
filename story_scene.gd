@@ -7,6 +7,8 @@ func _ready():
     set_start_sprites()
 
 func _on_DoneButton_pressed():
+    Sound.play_night()
+    
     var subject = Story.current_tale[Story.phase.SUBJECT]
     var verb = Story.current_tale[Story.phase.VERB]
     var object = Story.current_tale[Story.phase.OBJECT]

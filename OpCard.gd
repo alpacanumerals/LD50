@@ -18,6 +18,7 @@ func _on_OpCard_input_event(_viewport, event, _shape_idx):
 
 func _on_OpCard_mouse_entered():
     $Highlight.visible = true
+    Sound.play_mouseover()
     emit_signal("player_highlight", id)
 
 func _on_OpCard_mouse_exited():

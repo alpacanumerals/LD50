@@ -588,7 +588,6 @@ position = Vector2( 2, 1 )
 shape = SubResource( 4 )
 
 [node name="NightArea" type="Area2D" parent="."]
-visible = false
 script = ExtResource( 1 )
 
 [node name="NightSprite" type="Sprite" parent="NightArea"]
@@ -632,7 +631,7 @@ texture = ExtResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Shez"]
 position = Vector2( -9, -103 )
 frames = SubResource( 16 )
-frame = 5
+frame = 21
 playing = true
 
 [node name="Sultan" type="Sprite" parent="."]
@@ -652,7 +651,7 @@ texture = ExtResource( 17 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sultan2"]
 position = Vector2( 74, -19 )
 frames = SubResource( 16 )
-frame = 2
+frame = 18
 playing = true
 
 [node name="Tutorial" type="Node2D" parent="."]
