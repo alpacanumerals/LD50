@@ -11,7 +11,7 @@ SPOKE_WITH_INANIMATE, GENERIC_NONSENSE, CHAUVANIST, TWIN_CONFUSED, TWIN_SUBJECTA
 TWIN_OBJECTASSIGNED, TWIN_REVERSETRANSFORM, ACTION_DEAD, CAT_LIFE, CHAUVANIST_FICKLEWOMAN,
 CLIMBED_OVERSIZE, CLIMBED_OVEROVERSIZE, BURNED_CLEVER, BURNED_UNREASONABLE, DESPISED_INCONSISTENT,
 DESPISED_CAT, FELL_FROMNOWHERE, FELL_CLEVER, FELL_DAMOCLES, FELL_ALREADY, FELL_BURNINGSTRUCTURE,
-FELL_RUBBLE, HAD_PEDDLER, HAD_STRANGE, LOVED_INCONSISTENT, LOVED_CAT }
+FELL_RUBBLE, CHAUVANIST_SWORD, HAD_PEDDLER, HAD_STRANGE, LOVED_INCONSISTENT, LOVED_CAT, FOO, FOO }
 var offenses = {}
 
 #Validity Flags
@@ -200,7 +200,7 @@ func ponder(subject, object, verb):
     
     if (verb is Fell_Upon):
         if (subject.animate == false and subject.structure_now == false and subject.airborne_now == false
-         and not (subject is sword and object is King)):
+         and not (subject is Sword and object is King)):
             offenses[rules.FELL_FROMNOWHERE] = true
             offense += 2
         if subject.airborne_now == true:
