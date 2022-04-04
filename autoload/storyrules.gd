@@ -477,7 +477,21 @@ func ponder(subject, object, verb):
     if (verb is Turned_Into):
         if subject.magical_now == false:
             offenses[rules.TURN_NOMAGIC] = true
-            offense += 1            
+            offense += 1
+        subject.animate_now = object.animate_now
+        subject.female_now = object.female_now
+        subject.fiery_now = object.fiery_now
+        subject.handy_now = object.handy_now
+        subject.huge_now = object.huge_now
+        subject.magical_now = object.magical_now
+        subject.noble_now = object.noble_now
+        subject.resourceful_now = object.resourceful_now
+        subject.structure_now = object.structure_now
+        subject.weak_now = object.weak_now
+        if option_gender == true:
+            offenses[rules.CHAUVANIST_TURNGENDER] = true
+            offense += 1
+        return offense 
         
     ###VISITED?
     ###VISITED?
