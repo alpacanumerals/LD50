@@ -305,6 +305,7 @@ func ponder(subject, object, verb):
         else:
             if subject.female_now == object.female_now:
                 offenses[rules.MARRIED_Y_IS_FINE] = true
+       
         #RELATIONSHIPS CHECK    
         if subject.hatelist_now.has(object.id) or object.hatelist_now.has(subject.id):
             if subject.noble_now == true and object.noble_now == true:
@@ -323,7 +324,8 @@ func ponder(subject, object, verb):
         #NO BUILDUP
         if not subject.hatelist_now.has(object.id) and not object.hatelist_now.has(subject.id) and not subject.lovelist_now.has(object.id) and not object.lovelist_now.has(subject.id):
             offenses[rules.MARRIED_NOBUILDUP] = true
-            offense += 2
+            offense += 2 
+        #SPICY
         if (subject.lovelist_now.has(object.id) and object.hatelist_now.has(subject.id)
         or subject.hatelist_now.has(object.id) and object.lovelist_now.has(subject.id)):
             offenses[rules.MARRIED_SPICY] = true
