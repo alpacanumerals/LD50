@@ -181,13 +181,13 @@ func ponder(subject, object, verb):
         if subject.lovelist_now.has(object.id):
             if subject.female == false:
                 offenses[rules.DESPISED_INCONSISTENT]
-                offense -= 1
+                offense += 1
             if subject.female == true:
                 if option_gender == true:
                     offenses[rules.CHAUVINIST_FICKLEWOMAN]
                 else:
                     offenses[rules.DESPISED_INCONSISTENT]
-                    offense -= 1
+                    offense += 1
             subject.lovelist_now.remove(subject.lovelist_now.find(object.id))
         if object is Cat and not subject is Cat:
             offenses[rules.DESPISED_CAT]
@@ -226,6 +226,7 @@ func ponder(subject, object, verb):
         if object.structure_now == false and object.buried_now == true:
             object.buried_now = false
         object.found_now = true
+        return offense
         
     if (verb is Had):
         if object is Sword and subject.handy_now == true:
@@ -253,10 +254,42 @@ func ponder(subject, object, verb):
         if (subject is Magic) or (subject is object) or (subject is Sword and not object is Twin or Magic):
             offenses[rules.HAD_STRANGE]   
             offense += 2
-    
+        return offense
+        
     if (verb is Loved):
+        if subject.hatelist_now.has(object.id):
+            if subject.female == false:
+                offenses[rules.LOVED_INCONSISTENT]
+                offense += 1
+            if subject.female == true:
+                if option_gender == true:
+                    offenses[rules.CHAUVINIST_FICKLEWOMAN]
+                else:
+                    offenses[rules.LOVED_INCONSISTENT]
+                    offense += 1
+            subject.hatelist_now.remove(subject.hatelist_now.find(object.id))
+        if object is Cat:
+            offenses[rules.LOVED_CAT]
+            offense -= 1
+        subject.lovelist_now.append(object.id)
+        return offense
+        
+    #MARRIED
+    #PURSUED
+    #REVIVED
+    #REWARDED
+    #SLEW
+    #SPOKE WITH
+    #STOLEW
+    #STRUCK
     
     
+    if (verb is Threw):
+        if subject.weak_now == true:
+    
+    
+    #TURNED_INTO
+    #VISITED
     
     print("SOMETHING WENT WRONG HOLY SHIT OFFENSE SHOULD HAVE BEEN RETURNED BY NOW AHHH")
     return offense
