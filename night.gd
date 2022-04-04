@@ -128,30 +128,50 @@ func compose_sultan_mood():
     match Story.annoyance:
         0:
             text += "pleased"
-        1, 2:
-            text += "satisfied"
-        3, 4:
-            text += "doubtful"
-        5, 6:
-            text += "sceptical"
-        7, 8:
-            text += "irate"
-        9, 10:
+        1:
+            text += "slightly displeased"
+        2:
+            text += "displeased"
+        3:
+            text += "very displeased"
+        4:
+            text += "slightly upset"
+        5:
+            text += "upset"
+        6:
+            text += "very upset"
+        7:
+            text += "slightly angry"
+        8:
+            text += "angry"
+        9:
+            text += "very angry"
+        10:
             text += "outraged"
     text += " and "
     match Story.boredom:
         0:
-            text += "highly engaged"
-        1, 2: 
             text += "interested"
-        3, 4:
+        1:
+            text += "slightly distracted"
+        2:
+            text += "distracted"
+        3:
+            text += "very distracted"
+        4:
+            text += "slightly disengaged"
+        5:
             text += "disengaged"
-        5, 6:
+        6:
+            text += "very disengaged"
+        7:
+            text += "slightly bored"
+        8:
             text += "bored"
-        7, 8:
-            text += "miserable"
-        9, 10:
-            text += "bored to tears"
+        9:
+            text += "very bored"
+        10:
+            text += "desperate to be anywhere else"
     text += "."
     return text
     
