@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://night.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/arrow.png" type="Texture" id=20]
 [ext_resource path="res://assets/sparkle.png" type="Texture" id=21]
 [ext_resource path="res://arrow.gd" type="Script" id=22]
+[ext_resource path="res://fonts/OpenSans_title.tres" type="DynamicFont" id=23]
 
 [sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.596078, 0, 0, 1 )
@@ -603,25 +604,47 @@ shape = SubResource( 5 )
 
 [node name="Dawn" type="Tween" parent="NightArea"]
 
-[node name="StoryText" type="Label" parent="NightArea"]
-margin_left = 240.0
-margin_top = 121.0
-margin_right = 283.0
-margin_bottom = 135.0
+[node name="TextContainer" type="VBoxContainer" parent="NightArea"]
+margin_left = 286.0
+margin_top = 202.0
+margin_right = 432.0
+margin_bottom = 388.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StoryText" type="Label" parent="NightArea/TextContainer"]
+margin_right = 146.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 23 )
 text = "StoryText"
 
-[node name="SultanText" type="Label" parent="NightArea"]
-margin_left = 242.0
-margin_top = 162.0
-margin_right = 308.0
-margin_bottom = 176.0
+[node name="Filler1" type="Label" parent="NightArea/TextContainer"]
+margin_top = 30.0
+margin_right = 146.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 23 )
+align = 1
+
+[node name="SultanText" type="Label" parent="NightArea/TextContainer"]
+margin_top = 60.0
+margin_right = 146.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 23 )
 text = "SultanText"
 
-[node name="SultanMood" type="Label" parent="NightArea"]
-margin_left = 243.0
-margin_top = 204.0
-margin_right = 318.0
-margin_bottom = 218.0
+[node name="Filler2" type="Label" parent="NightArea/TextContainer"]
+margin_top = 90.0
+margin_right = 146.0
+margin_bottom = 116.0
+custom_fonts/font = ExtResource( 23 )
+align = 1
+
+[node name="SultanMood" type="Label" parent="NightArea/TextContainer"]
+margin_top = 120.0
+margin_right = 146.0
+margin_bottom = 146.0
+custom_fonts/font = ExtResource( 23 )
 text = "SultanMood"
 
 [node name="Shez" type="Sprite" parent="."]
@@ -631,7 +654,7 @@ texture = ExtResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Shez"]
 position = Vector2( -9, -103 )
 frames = SubResource( 16 )
-frame = 21
+frame = 17
 playing = true
 
 [node name="Sultan" type="Sprite" parent="."]
@@ -651,7 +674,7 @@ texture = ExtResource( 17 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sultan2"]
 position = Vector2( 74, -19 )
 frames = SubResource( 16 )
-frame = 18
+frame = 14
 playing = true
 
 [node name="Tutorial" type="Node2D" parent="."]

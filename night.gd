@@ -49,13 +49,13 @@ func _input(event):
         if (failed):
             match stage:
                 stages.START:
-                    $StoryText.text = "Sultan: This is terrible!"
+                    $TextContainer/StoryText.text = "Sultan: This is terrible!"
                     stage = stages.STORY
                 stages.STORY:
-                    $SultanText.text = "Sultan: You can't tell stories at all!"
+                    $TextContainer/SultanText.text = "Sultan: You can't tell stories at all!"
                     stage = stages.MOOD
                 stages.MOOD:
-                    $SultanMood.text = "Scheherazade: Oh shut up, you bloviating bore!"
+                    $TextContainer/SultanMood.text = "Scheherazade: Oh shut up, you bloviating bore!"
                     stage = stages.END
                 stages.END:
                     if (!block):
@@ -71,13 +71,13 @@ func _input(event):
         else:
             match stage:
                 stages.START:
-                    $StoryText.text = compose_story_text()
+                    $TextContainer/StoryText.text = compose_story_text()
                     stage = stages.STORY
                 stages.STORY:
-                    $SultanText.text = compose_sultan_text()
+                    $TextContainer/SultanText.text = compose_sultan_text()
                     stage = stages.MOOD
                 stages.MOOD:
-                    $SultanMood.text = compose_sultan_mood()
+                    $TextContainer/SultanMood.text = compose_sultan_mood()
                     stage = stages.END
                 stages.END:
                     emit_signal("night_over")
@@ -96,7 +96,7 @@ func compose_story_text():
 func compose_sultan_text():
     var text = ""
     if (Story.offense <= 0 && Story.repeats == 0):
-        text = "How interesting!"
+        text = "I see. Continue..."
     else:
         var comments = []
         match (Story.repeats):
@@ -151,9 +151,9 @@ func compose_sultan_mood():
     return text
     
 func blank_text():
-    $StoryText.text = ""
-    $SultanText.text = ""
-    $SultanMood.text = ""
+    $TextContainer/StoryText.text = ""
+    $TextContainer/SultanText.text = ""
+    $TextContainer/SultanMood.text = ""
 
 func add_comments(text, comments):
     var first = true
