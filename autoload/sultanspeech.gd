@@ -3,73 +3,76 @@ extends Node
 var finalopinion = []
 var line
 
-func speak():
+func speak(subject, object, verb):
     finalopinion.clear()
     if Storyrules.offenses.has(Storyrules.rules.CAT_LIFE):
-        line = "."
+        line = "Well I suppose the Cat's still got lives left."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.RESOURCEFUL_ESCAPEBURIAL):
-        line = "."
+        line = "Ah a resourceful hero. I knew they wouldn't be buried so easily."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.TWIN_CONFUSED):
-        line = "."
+        line = "What? Whose twin? This makes no sense!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.TWIN_SUBJECTASSIGNED):
-        line = "."
+        line = "Hmm, so it is the "+object.card_name+"'s twin."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.TWIN_OBJECTASSIGNED):
-        line = "."
+        line = "Hmm, so it is the "+subject.card_name+"'s twin."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.TWIN_REVERSETRANSFORM):
-        line = "."
+        line = "Hmph, so they've taken the place of their twin to escape their responsibilities."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.ACTION_DEAD):
-        line = "."
+        line = "Wasn't the " + object.card_name + "already dead?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.ACTION_NONSENSE):
-        line = "."
+        line = "The " + object.card_name + "can't do that!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_GENERIC):
-        line = "."
+        if subject is Princess:
+            line = "Hmph. Why is a princess doing that anyway?"
+        else:
+            line = "Hmph. Why is a woman doing that anyway?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_FICKLEWOMAN):
-        line = "."
+        line = "Hmph. Such is the fickleness of a woman's emotions!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_SWORD):
-        line = "."
+        line = "And? What shall a "+subject.card_name+" do with a sword?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_MAGICWARRIORPRINCESS):
-        line = "."
+        line = "Well, given at this point they're a Magical Warrior "+subject.card_name+", I suppose it's to be expected."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_SLAYHUGE):
-        line = "."
+        line = "And just how does she expect to slay a "+object.card_name+"?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_SLEWWITHSWORD):
-        line = "."
+        line = "Slain by that sword she got hold of is it?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_SLEWWITHMAGIC):
-        line = "."
+        line = "Slain by sorcery I suppose."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_SLAY):
-        line = "."
+        line = "I don't see how she could've slain them."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_THROW):
-        line = "."
+        line = "Just up and threw them bodily did she? Nonsense!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_TURNTOF):
-        line = "."
+        line = "So the "+subject.card_name+" has become a woman?! Preposterous!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_TURN):
-        line = "."
+        line = "Just like that the "+subject.card_name+" is longer a woman?! Preposterous!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.GENERIC_NONSENSE):
-        line = "."
+        line = "That doesn't make any sense!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.BURNED_CLEVER):
-        line = "."
+        line = "Oh I see, because the "+subject.card_name+" was set on fire before. Very clever."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.BURNED_UNREASONABLE):
-        line = "."
+        line = "I don't see how it could burn them but whatever."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.BURNED_HATELIST):
         line = "."

@@ -105,7 +105,7 @@ func animate_action_rule(thing):
     return 3
     
 func dead_action_rule(thing):
-    print("Wasn't" + thing.card_name + "already dead?")
+    print("Wasn't" + thing.string + "already dead?")
     offenses[rules.ACTION_DEAD] = true
     return 3
 
@@ -470,10 +470,14 @@ func ponder(subject, object, verb):
                         offense -= 1
                     else:
                         offenses[rules.CHAUVANIST_SLAYHUGE] = true
+                        offense += 1
                 elif object.female_now == false and object.weak_now == false:
-                    if subject.weak_now == false:
+                    if subject.weak_now == false and subject.magical == true and subject.noble_now == true:
+                        offenses[rules.CHAUVANIST_MAGICWARRIORPRINCESS] = true
+                        offense -= 1
+                    elif subject.weak_now == false:
                         offenses[rules.CHAUVANIST_SLEWWITHSWORD] = true
-                    if subject.magical == true:
+                    elif subject.magical == true:
                         offenses[rules.CHAUVANIST_SLEWWITHMAGIC] = true
                     else:
                         offenses[rules.CHAUVANIST_SLAY] = true
@@ -553,7 +557,7 @@ func ponder(subject, object, verb):
     if (verb is Turned_Into):
         if subject.magical_now == false:
             offenses[rules.TURN_NOMAGIC] = true
-            offense += 1
+            offense += 2
         else:
             offenses[rules.TURN_INTO] = true
         subject.animate_now = object.animate_now
