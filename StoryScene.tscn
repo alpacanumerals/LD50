@@ -572,6 +572,8 @@ position = Vector2( 748, 630 )
 z_index = -1
 texture = ExtResource( 17 )
 
+[connection signal="go_back" from="." to="WallCards" method="_on_StoryScene_go_back"]
+[connection signal="go_back" from="." to="WindowText" method="_on_StoryScene_go_back"]
 [connection signal="time_up" from="VBoxContainer/TimeLimit" to="." method="_on_TimeLimit_time_up"]
 [connection signal="card_chosen" from="WallCards" to="WindowText" method="_on_WallCards_card_chosen"]
 [connection signal="input_event" from="WallCards/OpCard" to="WallCards/OpCard" method="_on_OpCard_input_event"]

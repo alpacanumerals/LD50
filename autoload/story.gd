@@ -176,3 +176,13 @@ func add_word(card_id):
     elif current_phase == phase.OBJECT:
         current_phase = phase.NONE
     return current_phase == phase.VERB
+
+func remove_word():
+    if current_phase == phase.VERB:
+        current_phase = phase.SUBJECT
+    elif current_phase == phase.OBJECT:
+        current_phase = phase.VERB
+    elif current_phase == phase.NONE:
+        current_phase = phase.OBJECT
+    current_tale.erase(current_phase)
+    return current_phase == phase.VERB
