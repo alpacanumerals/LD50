@@ -42,7 +42,7 @@ func _on_LimitButton_toggled(button_pressed):
         Sound.play_cancel()
 
 func _on_VolumeSpinBox_value_changed(value):
-    Sound.set_master_volume(value - 10)
+    Sound.set_master_volume(value-35)
 
 func _on_MaxSpinBox_value_changed(value):
     Options.max_time = value

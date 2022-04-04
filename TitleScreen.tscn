@@ -102,8 +102,8 @@ align = 2
 margin_left = 66.0
 margin_right = 140.0
 margin_bottom = 24.0
-max_value = 20.0
-value = 10.0
+max_value = 50.0
+value = 35.0
 
 [node name="MaxTimeBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer4"]
 margin_top = 28.0
