@@ -8,7 +8,10 @@ var option_gender: bool = true
 #Rules dictionary. Every rule has a name and goes here.
 enum rules { ACTION_NONSENSE, SLEW_ALREADY_DEAD, SLEW_UNKILLABLE, MARRIED_INANIMATE, 
 SPOKE_WITH_INANIMATE, GENERIC_NONSENSE, CHAUVANIST, TWIN_CONFUSED, TWIN_SUBJECTASSIGNED, 
-TWIN_OBJECTASSIGNED, TWIN_REVERSETRANSFORM, ACTION_DEAD, CAT_LIFE, }
+TWIN_OBJECTASSIGNED, TWIN_REVERSETRANSFORM, ACTION_DEAD, CAT_LIFE, CHAUVANIST_FICKLEWOMAN,
+CLIMBED_OVERSIZE, CLIMBED_OVEROVERSIZE, BURNED_CLEVER, BURNED_UNREASONABLE, DESPISED_INCONSISTENT,
+DESPISED_CAT, FELL_FROMNOWHERE, FELL_CLEVER, FELL_DAMOCLES, FELL_ALREADY, FELL_BURNINGSTRUCTURE,
+FELL_RUBBLE, HAD_PEDDLER, HAD_STRANGE, LOVED_INCONSISTENT, LOVED_CAT }
 var offenses = {}
 
 #Validity Flags
@@ -103,25 +106,25 @@ func ponder(subject, object, verb):
         if subject.twinassign.empty() and object.animate == true:
             if verb is Married or Had or Stole or Rewarded or Climbed or Threw:
                 offenses[rules.TWIN_CONFUSED] = true
-                offense += 1    
-                confusion += 1     
+                offense += 1
+                confusion += 1
             else:
                  #Most actions assign the twin through presumption.       
                 offenses[rules.TWIN_SUBJECTASSIGNED] = true
                 subject.twinassign = [object.id]
-                subject.female_now = object.female
-                subject.fiery_now = object.fiery
-                subject.handy_now = object.handy
-                subject.huge_now = object.huge
-                subject.resourceful_now = object.resourceful
-                subject.weak_now = object.weak              
+                subject.female_now = object.female_now
+                subject.fiery_now = object.fiery_now
+                subject.handy_now = object.handy_now
+                subject.huge_now = object.huge_now
+                subject.resourceful_now = object.resourceful_now
+                subject.weak_now = object.weak_now
                 
     if (object is Twin):
         if object.twinassign.empty() and subject.animate == true:
             if verb is Stole:
                 offenses[rules.TWIN_CONFUSED] = true
-                offense += 1    
-                confusion += 1     
+                offense += 1
+                confusion += 1
             if verb is Turned_Into:
                 #Plot device where someone swaps with their twin to elope etc.
                 offenses[rules.TWIN_REVERSETRANSFORM] = true
@@ -131,12 +134,12 @@ func ponder(subject, object, verb):
                 #Most actions assign the twin through presumption.       
                 offenses[rules.TWIN_OBJECTASSIGNED] = true
                 object.twinassign = [subject.id]
-                object.female_now = subject.female
-                object.fiery_now = subject.fiery
-                object.handy_now = subject.handy
-                object.huge_now = subject.huge
-                object.resourceful_now = subject.resourceful
-                object.weak_now = subject.weak               
+                object.female_now = subject.female_now
+                object.fiery_now = subject.fiery_now
+                object.handy_now = subject.handy_now
+                object.huge_now = subject.huge_now
+                object.resourceful_now = subject.resourceful_now
+                object.weak_now = subject.weak_now
         elif object.twinassign.empty() and subject is Sword:
             object.twinassign = [subject.id]
             object.animate_now = false
@@ -171,7 +174,7 @@ func ponder(subject, object, verb):
         if subject.huge_now == true && object.huge_now == false:
             offenses[rules.CLIMBED_OVEROVERSIZE] = true
             offense += 2
-        elif (subject.huge_now == false && object.huge_now == false 
+        elif (subject.huge_now == false && object.huge_now == false
         || subject.huge_now == true && object.huge_now == true && object.structure_now == false):
             offenses[rules.CLIMBED_OVERSIZE] = true
             offense += 1
@@ -180,13 +183,13 @@ func ponder(subject, object, verb):
     if (verb is Despised):
         if subject.lovelist_now.has(object.id):
             if subject.female == false:
-                offenses[rules.DESPISED_INCONSISTENT]
+                offenses[rules.DESPISED_INCONSISTENT] = true
                 offense += 1
             if subject.female == true:
                 if option_gender == true:
-                    offenses[rules.CHAUVINIST_FICKLEWOMAN]
+                    offenses[rules.CHAUVANIST_FICKLEWOMAN] = true
                 else:
-                    offenses[rules.DESPISED_INCONSISTENT]
+                    offenses[rules.DESPISED_INCONSISTENT] = true
                     offense += 1
             subject.lovelist_now.remove(subject.lovelist_now.find(object.id))
         if object is Cat and not subject is Cat:
@@ -197,23 +200,23 @@ func ponder(subject, object, verb):
     
     if (verb is Fell_Upon):
         if subject.animate == false and subject.structure_now == false and subject.airborne_now == false and not object is King:
-            offenses[rules.FELL_FROMNOWHERE]
+            offenses[rules.FELL_FROMNOWHERE] = true
             offense += 2
         if subject.airborne_now == true:
-            offenses[rules.FELL_CLEVER]
+            offenses[rules.FELL_CLEVER] = true
             offense -= 1
         if subject is Sword and object is King:
-            offenses[rules.FELL_DAMOCLES]
+            offenses[rules.FELL_DAMOCLES] = true
             offense -= 1
         if subject.structure_now == true:
             if subject.buried_now == true:
-                offenses[rules.FELL_ALREADY]
+                offenses[rules.FELL_ALREADY] = true
                 offense += 2
             if subject.aflame_now == true:
-                offenses[rules.FELL_BURNINGSTRUCTURE]
+                offenses[rules.FELL_BURNINGSTRUCTURE] = true
                 offense -= 1                
             else:
-                offenses[rules.FELL_RUBBLE]
+                offenses[rules.FELL_RUBBLE] = true
             subject.buried_now == true
             object.buried_now == true
         return offense
@@ -232,8 +235,8 @@ func ponder(subject, object, verb):
         if object is Sword and subject.handy_now == true:
             subject.weak_now = false
             if option_gender == true and subject.female == true:
-                offenses[rules.CHAUVANIST_SWORD]
-                offense += 1               
+                offenses[rules.CHAUVANIST_SWORD] = true
+                offense += 1
         if object is Magic:
             subject.magical_now = true
             
@@ -249,27 +252,27 @@ func ponder(subject, object, verb):
             subject.marriageable_now = false
             
         if subject is Peddler and not object is Magic or Cat or Fox or Twin:
-            offenses[rules.HAD_PEDDLER]
-            offense += 2        
+            offenses[rules.HAD_PEDDLER] = true
+            offense += 2
         if (subject is Magic) or (subject is object) or (subject is Sword and not object is Twin or Magic):
-            offenses[rules.HAD_STRANGE]   
+            offenses[rules.HAD_STRANGE] = true
             offense += 2
         return offense
         
     if (verb is Loved):
         if subject.hatelist_now.has(object.id):
             if subject.female == false:
-                offenses[rules.LOVED_INCONSISTENT]
+                offenses[rules.LOVED_INCONSISTENT] = true
                 offense += 1
             if subject.female == true:
                 if option_gender == true:
-                    offenses[rules.CHAUVINIST_FICKLEWOMAN]
+                    offenses[rules.CHAUVINIST_FICKLEWOMAN] = true
                 else:
-                    offenses[rules.LOVED_INCONSISTENT]
+                    offenses[rules.LOVED_INCONSISTENT] = true
                     offense += 1
             subject.hatelist_now.remove(subject.hatelist_now.find(object.id))
         if object is Cat:
-            offenses[rules.LOVED_CAT]
+            offenses[rules.LOVED_CAT] = true
             offense -= 1
         subject.lovelist_now.append(object.id)
         return offense
