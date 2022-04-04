@@ -97,7 +97,7 @@ func tell_story(subject_id, verb_id, object_id):
     
     var verb = cards[verb_id]
     
-    print("key: " + str(story_key))
+    #print("key: " + str(story_key))
     
     # handle logic based on repeats
     boredom += repeats
@@ -111,8 +111,8 @@ func tell_story(subject_id, verb_id, object_id):
     if annoyance < 0:
         annoyance = 0
     
-    print("boredom: " + str(boredom))
-    print("annoyance: " + str(annoyance))
+    #print("boredom: " + str(boredom))
+    #print("annoyance: " + str(annoyance))
     
     if night >= 1001 and Options.finite_game:
         out_of_nights = true
@@ -128,10 +128,8 @@ func next_night():
 func threshold_exceeded():
     var exceeded: bool = false
     if (boredom > boredom_threshold):
-        print("this is too boring!")
         exceeded = true
     if (annoyance > annoyance_threshold):
-        print("this is too silly!")
         exceeded = true
     return exceeded
 

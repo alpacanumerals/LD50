@@ -108,12 +108,10 @@ func revive_cat_rule(thing):
     offenses[rules.CAT_LIFE] = true
 
 func animate_action_rule(thing):
-    print("A" + thing.card_name + "can't do that!")
     offenses[rules.ACTION_NONSENSE] = true
     return 3
     
 func dead_action_rule(thing):
-    print("Wasn't" + thing.string + "already dead?")
     offenses[rules.ACTION_DEAD] = true
     return 3
 
@@ -156,12 +154,10 @@ func ponder(subject, object, verb):
             #Logic regarding what can be legitimately slain.
             if (verb is Slew):
                 if object.dead == true:
-                    print("Wasn't" + object.card_name + "already dead?") 
                     offenses[rules.SLEW_ALREADY_DEAD] = true
                     offense += 3
                     return offense
                 if object.animate_now == false:
-                    print("And just how does the" + subject.card_name + "plan to kill a" + object.card_name + "?") 
                     offenses[rules.SLEW_UNKILLABLE] = true
                     offense += 3
                 return offense            
@@ -236,7 +232,6 @@ func ponder(subject, object, verb):
     if option_gender == true:
         if subject.female_now == true:
             if verb.adventure == true:
-                print("But why is a woman doing that anyway?")
                 offenses[rules.CHAUVANIST_GENERIC] = true
                 offense += 1 
                 
@@ -615,5 +610,5 @@ func ponder(subject, object, verb):
     ###VISITED?
     ###VISITED?
     
-    print("SOMETHING WENT WRONG HOLY SHIT OFFENSE SHOULD HAVE BEEN RETURNED BY NOW AHHH")
+    print("SOMETHING WENT WRONG")
     return offense
