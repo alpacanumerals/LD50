@@ -290,8 +290,7 @@ func ponder(subject, object, verb):
             offenses[rules.MARRIED_OBJECTALREADY] = true
             offense += 2
         #SUITABILITY CHECK
-        if ((subject.noble_now == true and object.noble_now == false) or
-        (subject.noble_now == false and object.noble_now == true)):
+        if (subject.noble_now != object.noble_now):
             offenses[rules.MARRIED_BADMATCH] = true
             offense += 1
         
@@ -322,7 +321,8 @@ func ponder(subject, object, verb):
                 offenses[rules.MARRIED_SAPPY] = true
                 offense += 1        
         #NO BUILDUP
-        if not subject.hatelist_now.has(object.id) and not object.hatelist_now.has(subject.id) and not subject.lovelist_now.has(object.id) and not object.lovelist_now.has(subject.id):
+        if (not subject.hatelist_now.has(object.id) and not object.hatelist_now.has(subject.id)
+        and not subject.lovelist_now.has(object.id) and not object.lovelist_now.has(subject.id)):
             offenses[rules.MARRIED_NOBUILDUP] = true
             offense += 2 
         #SPICY
