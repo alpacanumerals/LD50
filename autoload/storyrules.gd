@@ -199,7 +199,8 @@ func ponder(subject, object, verb):
         return offense
     
     if (verb is Fell_Upon):
-        if subject.animate == false and subject.structure_now == false and subject.airborne_now == false and not object is King:
+        if (subject.animate == false and subject.structure_now == false and subject.airborne_now == false
+         and not (subject is sword and object is King)):
             offenses[rules.FELL_FROMNOWHERE] = true
             offense += 2
         if subject.airborne_now == true:
