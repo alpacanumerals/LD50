@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://night.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
@@ -23,6 +23,10 @@
 [ext_resource path="res://assets/sparkle.png" type="Texture" id=21]
 [ext_resource path="res://arrow.gd" type="Script" id=22]
 [ext_resource path="res://fonts/OpenSans_title.tres" type="DynamicFont" id=23]
+[ext_resource path="res://firesprite.gd" type="Script" id=24]
+[ext_resource path="res://assets/droplet.png" type="Texture" id=25]
+[ext_resource path="res://assets/chamber-title.png" type="Texture" id=26]
+[ext_resource path="res://assets/Flame.png" type="Texture" id=27]
 
 [sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.596078, 0, 0, 1 )
@@ -103,6 +107,147 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 46, 48 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 46, 0, 46, 48 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 92, 0, 46, 48 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 138, 0, 46, 48 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 184, 0, 46, 48 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 230, 0, 46, 48 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 276, 0, 46, 48 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 322, 0, 46, 48 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 368, 0, 46, 48 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 414, 0, 46, 48 )
+
+[sub_resource type="SpriteFrames" id=37]
+animations = [ {
+"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ), SubResource( 36 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 0, 0, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 6, 0, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 12, 0, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 18, 0, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 24, 0, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 0, 12, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 6, 12, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 12, 12, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 18, 12, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 24, 12, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 0, 24, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 6, 24, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 12, 24, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 18, 24, 6, 12 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 24, 24, 6, 12 )
+
+[sub_resource type="SpriteFrames" id=45]
+animations = [ {
+"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="StoryScene" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -147,10 +292,11 @@ text = "Night: "
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 111, 194 )
 z_index = -1
 texture = ExtResource( 5 )
 centered = false
-offset = Vector2( -20, -20 )
+offset = Vector2( -131, -214 )
 
 [node name="SubjectWindow" type="Area2D" parent="."]
 position = Vector2( 479, 404 )
@@ -654,7 +800,7 @@ texture = ExtResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Shez"]
 position = Vector2( -9, -103 )
 frames = SubResource( 16 )
-frame = 17
+frame = 1
 playing = true
 
 [node name="Sultan" type="Sprite" parent="."]
@@ -674,7 +820,7 @@ texture = ExtResource( 17 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sultan2"]
 position = Vector2( 74, -19 )
 frames = SubResource( 16 )
-frame = 14
+frame = 23
 playing = true
 
 [node name="Tutorial" type="Node2D" parent="."]
@@ -751,6 +897,53 @@ script = ExtResource( 22 )
 position = Vector2( 850, 239 )
 texture = ExtResource( 20 )
 script = ExtResource( 22 )
+
+[node name="AnimSprites" type="Sprite" parent="."]
+z_index = -1
+texture = ExtResource( 26 )
+centered = false
+offset = Vector2( -20, -20 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="AnimSprites"]
+position = Vector2( 662, 485 )
+frames = SubResource( 37 )
+frame = 40
+playing = true
+
+[node name="FireSprite1" type="AnimatedSprite" parent="AnimSprites"]
+position = Vector2( 201, 372 )
+frames = SubResource( 45 )
+script = ExtResource( 24 )
+
+[node name="FireSprite2" type="AnimatedSprite" parent="AnimSprites"]
+position = Vector2( 386, 372 )
+frames = SubResource( 45 )
+frame = 7
+script = ExtResource( 24 )
+
+[node name="FireSprite3" type="AnimatedSprite" parent="AnimSprites"]
+position = Vector2( 571, 372 )
+frames = SubResource( 45 )
+frame = 2
+script = ExtResource( 24 )
+
+[node name="FireSprite4" type="AnimatedSprite" parent="AnimSprites"]
+position = Vector2( 756, 372 )
+frames = SubResource( 45 )
+frame = 10
+script = ExtResource( 24 )
+
+[node name="FireSprite5" type="AnimatedSprite" parent="AnimSprites"]
+position = Vector2( 941, 372 )
+frames = SubResource( 45 )
+frame = 5
+script = ExtResource( 24 )
+
+[node name="FireSprite6" type="AnimatedSprite" parent="AnimSprites"]
+position = Vector2( 1126, 372 )
+frames = SubResource( 45 )
+frame = 12
+script = ExtResource( 24 )
 
 [connection signal="go_back" from="." to="WallCards" method="_on_StoryScene_go_back"]
 [connection signal="go_back" from="." to="WindowText" method="_on_StoryScene_go_back"]
