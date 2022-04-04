@@ -23,7 +23,7 @@ margin_bottom = 680.0
 margin_right = 1240.0
 margin_bottom = 67.0
 custom_fonts/font = ExtResource( 2 )
-text = "=< 1001 Nights"
+text = "≤ 1001 Nights"
 align = 1
 valign = 1
 
