@@ -45,7 +45,7 @@ func dawn_break():
     blank_text()
 
 func _input(event):
-    if (event.is_pressed()):
+    if (event.is_action_pressed("left_click")):
         if (failed):
             match stage:
                 stages.START:
