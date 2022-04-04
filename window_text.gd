@@ -24,16 +24,22 @@ func update_text_by_card_id(card_id):
     update_text(text)
 
 func update_text(text):
-    match Story.current_phase:
+    update_text_by_phase(Story.current_phase, text)
+
+func update_text_by_phase(phase, text):
+    match phase:
         Story.phase.SUBJECT:
             $SubjectLabel.text = text
         Story.phase.VERB:
             $VerbLabel.text = text
         Story.phase.OBJECT:
             $ObjectLabel.text = text
-
+                
 func blank_text():
     $SubjectLabel.text = ""
     $VerbLabel.text = ""
     $ObjectLabel.text = ""
 
+func _on_StoryScene_go_back(phase):
+    update_text_by_phase(phase, "")
+    update_text_by_phase(phase-1, "")

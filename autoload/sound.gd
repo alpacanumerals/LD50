@@ -3,12 +3,14 @@ extends Node
 var Orchestrion : AudioStreamPlayer
 var Jingler : AudioStreamPlayer
 var Stabber : AudioStreamPlayer
+var Canceller : AudioStreamPlayer
 
 func _ready():
     pause_mode = Node.PAUSE_MODE_PROCESS
     setup_music()
     setup_button_jingle()
     setup_stab()
+    setup_cancel()
 
 func setup_music():
     Orchestrion = AudioStreamPlayer.new()
@@ -36,11 +38,22 @@ func setup_stab():
     Stabber.volume_db = -15
     Stabber.pitch_scale = 1
 
+func setup_cancel():
+    Canceller = AudioStreamPlayer.new()
+    var cancel = load("res://assets/cancel.wav")
+    add_child(Canceller)
+    Canceller.set_stream(cancel)
+    Canceller.volume_db = -15
+    Canceller.pitch_scale = 1
+
 func play_button_jingle():
     Jingler.play()
 
 func play_stab():
     Stabber.play()
+
+func play_cancel():
+    Canceller.play()
 
 func master_volume_up():
     var volume = AudioServer.get_bus_volume_db(
