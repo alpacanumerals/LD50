@@ -155,7 +155,7 @@ func ponder(subject, object, verb):
         if subject.female_now == true:
             if verb.adventure == true:
                 print("But why is a woman doing that anyway?")
-                offenses[rules.CHAUVANIST] = true
+                offenses[rules.CHAUVANIST_GENERIC] = true
                 offense += 1 
                 
 
@@ -168,6 +168,7 @@ func ponder(subject, object, verb):
             else:    
                 offenses[rules.BURNED_UNREASONABLE] = true
                 offense += 2
+        offenses[rules.BURNED] = true
         if subject.hatelist.has(object.id):
             offenses[rules.BURNED_HATELIST] = true
             offense -= 1
@@ -181,10 +182,12 @@ func ponder(subject, object, verb):
         if subject.huge_now == true && object.huge_now == false:
             offenses[rules.CLIMBED_OVEROVERSIZE] = true
             offense += 2
-        elif (subject.huge_now == false && object.huge_now == false
+            return offense
+        if (subject.huge_now == false && object.huge_now == false
         || subject.huge_now == true && object.huge_now == true && object.structure_now == false):
             offenses[rules.CLIMBED_OVERSIZE] = true
             offense += 1
+        offenses[rules.CLIMBED] = true
         return offense
         
     if (verb is Despised):
@@ -200,7 +203,7 @@ func ponder(subject, object, verb):
                     offense += 1
             subject.lovelist_now.remove(subject.lovelist_now.find(object.id))
         if object is Cat and not subject is Cat:
-            offenses[rules.DESPISED_CAT]
+            offenses[rules.DESPISED_CAT] = true
             offense += 1
         subject.hatelist_now.append(object.id)
         return offense
@@ -228,19 +231,22 @@ func ponder(subject, object, verb):
             if object is King:
                 offenses[rules.KING_MISFORTUNE] = true
                 offense += 1
-            subject.buried_now == true
-            object.buried_now == true
+            subject.buried_now = true
+            object.buried_now = true
         if subject.huge_now == true and subject.structure_now == false and object.huge_now == false:
             offenses[rules.FELL_CRUSHEDBY] = true
             if object is King:
                 offenses[rules.KING_MISFORTUNE] = true
                 offense += 1
-            object.buried_now == true            
+            object.buried_now = true            
         return offense
     
     if (verb is Found):
         if object is Sword and subject.handy_now == true:
             subject.weak_now = false
+            if option_gender == true and subject.female == true:
+                offenses[rules.CHAUVANIST_SWORD] = true
+                offense += 1
         if object is Magic:
             subject.magical_now = true
         if object.structure_now == false and object.buried_now == true:
@@ -269,7 +275,7 @@ func ponder(subject, object, verb):
             subject.marriageable_now = false
             
         if subject is Peddler and not object is Magic or Cat or Fox or Twin:
-            offenses[rules.HAD_PEDDLER] = true
+            offenses[rules.HAD_STRANGE] = true
             offense += 2
         if (subject is Magic) or (subject is object) or (subject is Sword and not object is Twin or Magic):
             offenses[rules.HAD_STRANGE] = true
@@ -400,7 +406,7 @@ func ponder(subject, object, verb):
                     if subject.magical == true:
                         offenses[rules.CHAUVANIST_SLEWWITHMAGIC] = true
                     else:
-                        offenses[rules.CHAUVANIST_SLAY]
+                        offenses[rules.CHAUVANIST_SLAY] = true
                         offense += 1
         if subject is King or Queen or Prince or Princess and object is King or Queen or Prince or Princess:
             offenses[rules.SLEW_COURTSPICE] = true
@@ -467,7 +473,7 @@ func ponder(subject, object, verb):
         
         if option_gender == true:
             if subject.female_now == true and not object is Fox or Cat:
-                offenses[rules.CHAUVANIST_THROW]
+                offenses[rules.CHAUVANIST_THROW] = true
                 offense += 1
         if object is King:
             offenses[rules.KING_MISFORTUNE] = true
@@ -478,6 +484,8 @@ func ponder(subject, object, verb):
         if subject.magical_now == false:
             offenses[rules.TURN_NOMAGIC] = true
             offense += 1
+        else:
+            offenses[rules.TURN_INTO] = true
         subject.animate_now = object.animate_now
         subject.female_now = object.female_now
         subject.fiery_now = object.fiery_now
@@ -489,8 +497,13 @@ func ponder(subject, object, verb):
         subject.structure_now = object.structure_now
         subject.weak_now = object.weak_now
         if option_gender == true:
-            offenses[rules.CHAUVANIST_TURNGENDER] = true
-            offense += 1
+            if subject.female_now != subject.female:
+                if subject.female_now == true:
+                    offenses[rules.CHAUVANIST_TURNTOF] = true
+                    offense += 1
+                if subject.female_now == false:    
+                    offenses[rules.CHAUVANIST_TURN] = true
+                    offense += 1
         return offense 
         
     ###VISITED?
