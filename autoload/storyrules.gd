@@ -82,7 +82,13 @@ TURN_INTO,
 MARRIED_INANIMATE,
 PURSUED_INANIMATE,
 SPOKE_WITH_INANIMATE,
-}
+THREW_HATE,
+THREW,
+STRUCK_LOVE,
+STRUCK_HATE,
+SLEW_LOVE,
+SLEW_HATE,
+BURNED,}
 
 var offenses = {}
 
@@ -246,7 +252,8 @@ func ponder(subject, object, verb):
         object.aflame_now = true
         if object is King:
             offenses[rules.KING_MISFORTUNE] = true
-            offense += 1        
+            offense += 1   
+        offenses[rules.BURNED] = true     
         return offense
     
     if (verb is Climbed):
@@ -503,8 +510,7 @@ func ponder(subject, object, verb):
             else:
                 offenses[rules.SLEW_SUICIDE] = true
         if subject.lovelist_now.has(object.id):
-                offenses[rules.SLEW_LOVE] = true
-                offense += 1            
+                offenses[rules.SLEW_LOVE] = true           
         if subject.hatelist_now.has(object.id):
                 offenses[rules.SLEW_HATE] = true
                 offense -= 1           
@@ -536,6 +542,12 @@ func ponder(subject, object, verb):
         if subject.huge_now == true and object.huge_now == false and object.animate_now == true:
             offenses[rules.STRUCK_HUGEDEAD] = true
             object.dead_now = true
+        if subject.lovelist_now.has(object.id):
+                offenses[rules.STRUCK_LOVE] = true
+                offense += 1            
+        if subject.hatelist_now.has(object.id):
+                offenses[rules.STRUCK_HATE] = true
+                offense -= 1       
         if object is King:
             offenses[rules.KING_MISFORTUNE] = true
             offense += 1   
@@ -558,6 +570,10 @@ func ponder(subject, object, verb):
         if object is King:
             offenses[rules.KING_MISFORTUNE] = true
             offense += 1
+        if subject.hatelist_now.has(object.id):
+                offenses[rules.THREW_HATE] = true
+                offense -= 1  
+        offenses[rules.THREW] = true
         object.airborne_now = true
     
     if (verb is Turned_Into):

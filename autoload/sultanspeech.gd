@@ -75,19 +75,22 @@ func speak(subject, object, verb):
         line = "I don't see how it could burn them but whatever."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.BURNED_HATELIST):
-        line = "."
+        line = "And the "+subject.card_name+" lit the "+object.card_name+" they despised on fire. I like it."
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.BURNED):
+        line = "I suppose now the "+object.card_name+" is ablaze."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CLIMBED_OVEROVERSIZE):
-        line = "."
+        line = "I can't even picture how a "+subject.card_name+" climbs a "+object.card_name+"."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CLIMBED_OVERSIZE):
-        line = "."
-        finalopinion.append(line)
-    if Storyrules.offenses.has(Storyrules.rules.DESPISED_CAT):
-        line = "."
+        line = "Don't you think the "+subject.card_name+" is a bit large to climb the "+object.card_name+"?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.DESPISED_INCONSISTENT):
-        line = "."
+        line = "I thought the "+subject.card_name+" loved the "+object.card_name+"?"
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.DESPISED_CAT):
+        line = "I also don't appreciate those who despise cats."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.FELL_FROMNOWHERE):
         line = "."
@@ -200,6 +203,12 @@ func speak(subject, object, verb):
     if Storyrules.offenses.has(Storyrules.rules.SLEW_SUICIDE):
         line = "."
         finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.SLEW_LOVE):
+        line = "."
+        finalopinion.append(line)   
+    if Storyrules.offenses.has(Storyrules.rules.SLEW_HATE):
+        line = "."
+        finalopinion.append(line)   
     if Storyrules.offenses.has(Storyrules.rules.SLEW_CAT):
         line = "."
         finalopinion.append(line)
@@ -209,11 +218,23 @@ func speak(subject, object, verb):
     if Storyrules.offenses.has(Storyrules.rules.STRUCK_HUGEDEAD):
         line = "."
         finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.STRUCK_LOVE):
+        line = "."
+        finalopinion.append(line)   
+    if Storyrules.offenses.has(Storyrules.rules.STRUCK_HATE):
+        line = "."
+        finalopinion.append(line)   
     if Storyrules.offenses.has(Storyrules.rules.THREW_HUGE):
         line = "."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.THREW_NOHANDS):
         line = "."
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.THREW_HATE):
+        line = "."
+        finalopinion.append(line)      
+    if Storyrules.offenses.has(Storyrules.rules.THREW):
+        line = "I suppose the "+object.card_name+" is now sailing through the air."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.TURN_NOMAGIC):
         line = "."
