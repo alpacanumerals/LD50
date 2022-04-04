@@ -20,6 +20,7 @@ func _on_DoneButton_pressed():
     $NightArea.night_fall(failed)
 
 func _on_TimeLimit_time_up():
+    Story.out_of_time = true
     $NightArea.night_fall(true)
 
 func _on_NightArea_game_over():

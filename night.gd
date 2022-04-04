@@ -49,10 +49,10 @@ func _input(event):
         if (failed):
             match stage:
                 stages.START:
-                    $TextContainer/StoryText.text = "Sultan: This is terrible!"
+                    $TextContainer/StoryText.text = compose_story_text()
                     stage = stages.STORY
                 stages.STORY:
-                    $TextContainer/SultanText.text = "Sultan: You can't tell stories at all!"
+                    $TextContainer/SultanText.text = "Sultan: Ugh, this is terrible. I may as well go ask a peddler at the market!"
                     stage = stages.MOOD
                 stages.MOOD:
                     $TextContainer/SultanMood.text = "Scheherazade: Oh shut up, you bloviating bore!"
@@ -87,10 +87,13 @@ func _input(event):
     get_tree().set_input_as_handled()
 
 func compose_story_text():
+    if Story.out_of_time:
+        return "Scheherazade: The er... someone, did something..."
+
     var subject = Story.cards[Story.current_tale[Story.phase.SUBJECT]].card_name
     var verb = Story.cards[Story.current_tale[Story.phase.VERB]].card_name
     var object = Story.cards[Story.current_tale[Story.phase.OBJECT]].card_name
-    
+
     return story_format % [subject, verb, object]
     
 func compose_sultan_text():

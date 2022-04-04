@@ -57,6 +57,7 @@ enum phase { SUBJECT, VERB, OBJECT, NONE }
 var current_phase: int = phase.SUBJECT
 var current_tale = {}
 
+var out_of_time: bool = false
 
 var repeats: int = 0
 var offense: int = 0
@@ -74,6 +75,7 @@ func initialise():
     night = 1
     boredom = 0
     annoyance = 0
+    out_of_time = false
     memory = {}
     setup_cards()
     current_phase = phase.SUBJECT
