@@ -100,7 +100,11 @@ func ponder(subject, object, verb):
                 offense += 3
                 return offense
 
-                
+    #Resourceful hero
+    if subject.resourceful_now == true and subject.dead_now == false and subject.buried_now == true:
+        offenses[rules.RESOURCEFUL_ESCAPEBURIAL] = true
+        subject.buried_now = false
+    
     #Unassigned Twin Handling.
     if (subject is Twin):
         if subject.twinassign.empty() and object.animate == true:
@@ -168,6 +172,9 @@ func ponder(subject, object, verb):
             offenses[rules.BURNED_HATELIST] = true
             offense -= 1
         object.aflame_now = true
+        if object is King:
+            offenses[rules.KING_MISFORTUNE] = true
+            offense += 1        
         return offense
     
     if (verb is Climbed):
@@ -213,13 +220,22 @@ func ponder(subject, object, verb):
             if subject.buried_now == true:
                 offenses[rules.FELL_ALREADY] = true
                 offense += 2
-            if subject.aflame_now == true:
+            elif subject.aflame_now == true:
                 offenses[rules.FELL_BURNINGSTRUCTURE] = true
                 offense -= 1                
             else:
                 offenses[rules.FELL_RUBBLE] = true
+            if object is King:
+                offenses[rules.KING_MISFORTUNE] = true
+                offense += 1
             subject.buried_now == true
             object.buried_now == true
+        if subject.huge_now == true and subject.structure_now == false and object.huge_now == false:
+            offenses[rules.FELL_CRUSHEDBY] = true
+            if object is King:
+                offenses[rules.KING_MISFORTUNE] = true
+                offense += 1
+            object.buried_now == true            
         return offense
     
     if (verb is Found):
@@ -360,13 +376,15 @@ func ponder(subject, object, verb):
         else:
             offenses[rules.REVIVED_USEMAGIC] = true
         object.dead_now = false
+        return offense
     
     if (verb is Rewarded):
         if object.noble_now == true:
             if subject.noble_now == false and subject.magical_now == false:
                 offenses[rules.REWARDED_DUBIOUS] = true
                 offense += 1
-                
+        return offense
+             
     if (verb is Slew):
         if option_gender == true:
             if subject.female_now == true:
@@ -408,14 +426,15 @@ func ponder(subject, object, verb):
             offenses[rules.SLEW_CAT] = true
             offense += 1
         object.dead_now = true
-        
+        return offense
+    
     ###SPOKE_WITH?    
     ###SPOKE_WITH?    
     ###SPOKE_WITH?    
     
     if (verb is Threw):
-        
-    #STRUCK
+
+    
     
     if (verb is Threw):
         if subject.weak_now == true:
