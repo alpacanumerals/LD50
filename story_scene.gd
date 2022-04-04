@@ -11,7 +11,7 @@ func _on_DoneButton_pressed():
     var verb = Story.current_tale[Story.phase.VERB]
     var object = Story.current_tale[Story.phase.OBJECT]
     
-    $Tutorial.tutorial_on = false
+    $Tutorial.night = true
     
     var failed = Story.tell_story(subject, verb, object)
     

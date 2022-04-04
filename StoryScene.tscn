@@ -631,7 +631,7 @@ texture = ExtResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Shez"]
 position = Vector2( -9, -103 )
 frames = SubResource( 16 )
-frame = 4
+frame = 23
 playing = true
 
 [node name="Sultan" type="Sprite" parent="."]
@@ -651,7 +651,7 @@ texture = ExtResource( 17 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sultan2"]
 position = Vector2( 74, -19 )
 frames = SubResource( 16 )
-frame = 1
+frame = 20
 playing = true
 
 [node name="Tutorial" type="Node2D" parent="."]
@@ -704,6 +704,13 @@ margin_top = 293.0
 margin_right = 1099.0
 margin_bottom = 307.0
 text = "Now, tell the Sultan!"
+
+[node name="Label5" type="Label" parent="Tutorial"]
+margin_left = 580.0
+margin_top = 82.0
+margin_right = 752.0
+margin_bottom = 96.0
+text = "Click anywhere to continue"
 
 [node name="Arrows" type="Node2D" parent="Tutorial"]
 
@@ -833,3 +840,4 @@ script = ExtResource( 22 )
 [connection signal="game_over" from="NightArea" to="WindowText" method="_on_NightArea_game_over"]
 [connection signal="night_over" from="NightArea" to="VBoxContainer/TimeLimit" method="_on_NightArea_night_over"]
 [connection signal="night_over" from="NightArea" to="WindowText" method="_on_NightArea_night_over"]
+[connection signal="night_over" from="NightArea" to="Tutorial" method="_on_NightArea_night_over"]
