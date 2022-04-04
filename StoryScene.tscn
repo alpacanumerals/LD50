@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://night.gd" type="Script" id=1]
 [ext_resource path="res://nightlabel.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://tutorial.gd" type="Script" id=19]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=20]
 [ext_resource path="res://assets/sparkle.png" type="Texture" id=21]
+[ext_resource path="res://arrow.gd" type="Script" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 26, 26 )
@@ -622,7 +623,6 @@ texture = ExtResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Shez"]
 position = Vector2( -12, -107 )
 frames = SubResource( 16 )
-frame = 4
 playing = true
 
 [node name="Sultan" type="Sprite" parent="."]
@@ -642,7 +642,7 @@ texture = ExtResource( 17 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sultan2"]
 position = Vector2( 74, -19 )
 frames = SubResource( 16 )
-frame = 3
+frame = 8
 playing = true
 
 [node name="Tutorial" type="Node2D" parent="."]
@@ -701,14 +701,17 @@ text = "Now, tell the Sultan!"
 [node name="Arrow" type="Sprite" parent="Tutorial/Arrows"]
 position = Vector2( 481, 233 )
 texture = ExtResource( 20 )
+script = ExtResource( 22 )
 
 [node name="Arrow2" type="Sprite" parent="Tutorial/Arrows"]
 position = Vector2( 664, 234 )
 texture = ExtResource( 20 )
+script = ExtResource( 22 )
 
 [node name="Arrow3" type="Sprite" parent="Tutorial/Arrows"]
 position = Vector2( 850, 239 )
 texture = ExtResource( 20 )
+script = ExtResource( 22 )
 
 [connection signal="go_back" from="." to="WallCards" method="_on_StoryScene_go_back"]
 [connection signal="go_back" from="." to="WindowText" method="_on_StoryScene_go_back"]

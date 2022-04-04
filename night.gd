@@ -107,8 +107,8 @@ func compose_sultan_text():
                 text = "I'm sure that already happened."
             3, 4, 5:
                 text = "You're repeating yourself!"
-        var comments = Sultanspeech.speak()
-        text = add_comments(text, comments)
+        #var comments = Sultanspeech.speak()
+        #text = add_comments(text, comments)
     return "Sultan: " + text
 
 func compose_sultan_mood():
