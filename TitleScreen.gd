@@ -35,6 +35,12 @@ func _on_GenderButton_toggled(button_pressed):
         Sound.play_cancel()
     Options.trad = button_pressed
 
+func _on_LimitButton_toggled(button_pressed):
+    if button_pressed:
+        Sound.play_button_jingle()
+    else:
+        Sound.play_cancel()
+
 func _on_VolumeSpinBox_value_changed(value):
     Sound.set_master_volume(value - 10)
 
