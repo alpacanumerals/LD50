@@ -106,6 +106,11 @@ func tell_story(subject_id, verb_id, object_id):
     offense = Storyrules.ponder(subject, object, verb)     
     annoyance += offense
     
+    if boredom < 0:
+        boredom = 0
+    if annoyance < 0:
+        annoyance = 0
+    
     print("boredom: " + str(boredom))
     print("annoyance: " + str(annoyance))
     
