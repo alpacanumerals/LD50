@@ -57,12 +57,14 @@ text = "Start"
 margin_top = 24.0
 margin_right = 97.0
 margin_bottom = 48.0
+pressed = true
 text = "Tutorial"
 
 [node name="GenderButton" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 52.0
 margin_right = 97.0
 margin_bottom = 76.0
+pressed = true
 text = "Chauvanist"
 align = 1
 

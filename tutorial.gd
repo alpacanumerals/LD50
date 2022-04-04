@@ -3,7 +3,7 @@ extends Node2D
 var tutorial_on : bool = true
 
 func _ready():
-    tutorial_on = true
+    tutorial_on = Options.tutorial
 
 func _process(_delta):
     if tutorial_on:
