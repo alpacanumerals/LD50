@@ -98,17 +98,24 @@ func compose_sultan_text():
     if (Story.offense <= 0 && Story.repeats == 0):
         text = "How interesting!"
     else:
+        var comments = []
         match (Story.repeats):
             0: 
                 pass
             1:
-                text = "Didn't that happen before?"
+                comments.append("Didn't that happen before?")
             2:
-                text = "I'm sure that already happened."
+                comments.append("I'm sure that already happened.")
             3, 4, 5:
-                text = "You're repeating yourself!"
-        #var comments = Sultanspeech.speak()
-        #text = add_comments(text, comments)
+                comments.append("You're repeating yourself!")
+        comments.append_array(
+                Sultanspeech.speak(
+                    Story.current_tale[Story.phase.SUBJECT],
+                    Story.current_tale[Story.phase.VERB],
+                    Story.current_tale[Story.phase.OBJECT]
+                )
+            )
+        text = add_comments(text, comments)
     return "Sultan: " + text
 
 func compose_sultan_mood():
@@ -149,12 +156,10 @@ func blank_text():
     $SultanMood.text = ""
 
 func add_comments(text, comments):
+    var first = true
     for comment in comments:
-        text = text + "And " + comment
+        if first:
+            text += comment
+        else:
+            text += "\n" + comment
     return text
-
-func add_opinion(text, addition):
-    if text == "":
-        return addition
-    else:
-        return text + " And " + addition.to_lower()

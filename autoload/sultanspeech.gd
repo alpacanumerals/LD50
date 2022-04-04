@@ -4,7 +4,11 @@ var finalopinion = []
 var line
 var catno
 
-func speak(subject, object, verb):
+func speak(subject_id, verb_id, object_id):
+    var subject = Story.cards[subject_id]
+    var verb = Story.cards[verb_id]
+    var object = Story.cards[object_id]
+    
     finalopinion.clear()
     if Storyrules.offenses.has(Storyrules.rules.CAT_LIFE):
         line = "Well I suppose the Cat's still got lives left."
@@ -25,10 +29,10 @@ func speak(subject, object, verb):
         line = "Hmph, so they've taken the place of their twin to escape their responsibilities."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.ACTION_DEAD):
-        line = "Wasn't the " + object.card_name + "already dead?"
+        line = "Wasn't the " + object.card_name + " already dead?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.ACTION_NONSENSE):
-        line = "The " + object.card_name + "can't do that!"
+        line = "A " + object.card_name + " can't do that!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.CHAUVANIST_GENERIC):
         if subject is Princess:
