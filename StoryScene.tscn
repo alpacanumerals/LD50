@@ -829,7 +829,7 @@ custom_fonts/font = ExtResource( 23 )
 text = "SultanMood"
 
 [node name="Shez" type="Sprite" parent="."]
-position = Vector2( 249, 484 )
+position = Vector2( 286, 482 )
 texture = ExtResource( 13 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Shez"]
@@ -903,11 +903,11 @@ text = "Now, choose an OBJECT
 align = 1
 
 [node name="Label4" type="Label" parent="Tutorial"]
-margin_left = 970.0
-margin_top = 293.0
-margin_right = 1099.0
-margin_bottom = 307.0
-text = "Now, tell the Sultan!"
+margin_left = 966.0
+margin_top = 294.0
+margin_right = 1108.0
+margin_bottom = 308.0
+text = "Finally, tell the Sultan!"
 
 [node name="Label5" type="Label" parent="Tutorial"]
 margin_left = 580.0
@@ -941,7 +941,7 @@ offset = Vector2( -20, -20 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="AnimSprites"]
 position = Vector2( 662, 485 )
 frames = SubResource( 37 )
-frame = 30
+frame = 7
 playing = true
 
 [node name="FireSprite1" type="AnimatedSprite" parent="AnimSprites"]
