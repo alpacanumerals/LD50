@@ -324,7 +324,10 @@ func ponder(subject, object, verb):
         if not subject.hatelist_now.has(object.id) and not object.hatelist_now.has(subject.id) and not subject.lovelist_now.has(object.id) and not object.lovelist_now.has(subject.id):
             offenses[rules.MARRIED_NOBUILDUP] = true
             offense += 2
-
+        if (subject.lovelist_now.has(object.id) and object.hatelist_now.has(subject.id)
+        or subject.hatelist_now.has(object.id) and object.lovelist_now.has(subject.id)):
+            offenses[rules.MARRIED_SPICY] = true
+            offense -= 1           
         
         #SET MARITAL STATUS
         subject.marriageable_now = false
