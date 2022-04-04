@@ -67,6 +67,7 @@ SLEW_ALREADY_DEAD,
 SLEW_UNKILLABLE,
 SLEW_COURTSPICE,
 SLEW_HIGHLYTOPICAL,
+SLEW_HIGHLYTOPICAL2,
 SLEW_UNSPICYREGICIDE,
 SLEW_STRANGE,
 SLEW_SUICIDE_CAT,
@@ -300,16 +301,17 @@ func ponder(subject, object, verb):
             if subject.buried_now == true:
                 offenses[rules.FELL_ALREADY] = true
                 offense += 2
+                return offense
             elif subject.aflame_now == true:
                 offenses[rules.FELL_BURNINGSTRUCTURE] = true
                 offense -= 1                
-            else:
-                offenses[rules.FELL_RUBBLE] = true
+            offenses[rules.FELL_RUBBLE] = true
             if object is King:
                 offenses[rules.KING_MISFORTUNE] = true
                 offense += 1
             subject.buried_now = true
             object.buried_now = true
+            return offense
         if subject.huge_now == true and subject.structure_now == false and object.huge_now == false:
             offenses[rules.FELL_CRUSHEDBY] = true
             if object is King:
@@ -495,6 +497,9 @@ func ponder(subject, object, verb):
         if subject is King and object is Queen or Princess:
             offenses[rules.SLEW_HIGHLYTOPICAL] = true
             offense -= 1
+        if subject is Princess and object is King:
+            offenses[rules.SLEW_HIGHLYTOPICAL2] = true
+            offense += 1            
         if object is King and not subject is Queen or Prince or Princess:
             offenses[rules.SLEW_UNSPICYREGICIDE] = true
             offense += 2

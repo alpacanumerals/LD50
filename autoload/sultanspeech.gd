@@ -2,6 +2,7 @@ extends Node
 
 var finalopinion = []
 var line
+var catno
 
 func speak(subject, object, verb):
     finalopinion.clear()
@@ -93,165 +94,169 @@ func speak(subject, object, verb):
         line = "I also don't appreciate those who despise cats."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.FELL_FROMNOWHERE):
-        line = "."
+        line = "Really? The "+subject.card_name+" just fell onto the "+object.card_name+" from nowhere?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.FELL_CLEVER):
-        line = "."
+        line = "So the "+subject.card_name+" landed on the "+object.card_name+"? Clever."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.FELL_DAMOCLES):
-        line = "."
+        line = "Ah, the Sword above the Throne. So close to home. I appreciate it."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.FELL_ALREADY):
-        line = "."
+        line = "Didn't that fall over already?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.FELL_BURNINGSTRUCTURE):
-        line = "."
+        line = "Ah, the burning "+subject.card_name+" collapses."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.FELL_RUBBLE):
-        line = "."
+        line = "Now the "+object.card_name+" is buried in rubble."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.FELL_CRUSHEDBY):
-        line = "."
+        line = "The "+object.card_name+" crushed beneath the enormous "+subject.card_name+"."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.HAD_STRANGE):
-        line = "."
+        line = "I don't see how a "+subject.card_name+" can have a "+object.card_name+"."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.LOVED_INCONSISTENT):
-        line = "."
+        line = "I thought the "+subject.card_name+" despised the "+object.card_name+"?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.LOVED_CAT):
-        line = "."
+        line = "One who appreciates cats is a protagonist."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_BOTHALREADY):
-        line = "."
+        line = "Hmph! Weren't they both already married?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_SUBJECTALREADY):
-        line = "."
+        line = "Hmph, wasn't the "+subject.card_name+" already married?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_OBJECTALREADY):
-        line = "."
+        line = "Hmph, wasn't the "+object.card_name+" already married?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_BADMATCH):
-        line = "."
+        line = "A person of noble standing with a commoner? I don't approve."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_YURINO):
-        line = "."
+        line = "But they're both women! P-Preposterous!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_YAOIMAYBE):
-        line = "."
+        line = "Hmph. Yes. I suppose that is a fascinating match."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_Y_IS_FINE):
-        line = "."
+        line = "Excellent! A good match! I appreciate it very much."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_POLITICAL):
-        line = "."
+        line = "Hah! Forced together by politics no doubt, despite their antipathy."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_BOTHHATE):
-        line = "."
+        line = "There was antipathy between the two as I recall. A marriage of convenience."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_LOVEGROSS):
-        line = "."
+        line = "Hmph! As if nobility marry for love!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_SAPPY):
-        line = "."
+        line = "So they love each other very much and are married. One expects such a sappy story from you."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_NOBUILDUP):
-        line = "."
+        line = "So they just got married all of a sudden? Bah!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_SPICY):
-        line = "."
+        line = "As I recall one's love is requitted only by hate. This will be a fascinating relationship I'm sure."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.REVIVED_CAT):
-        line = "."
+        catno = 9-subject.catdeaths
+        line = "Ah of course, our friend still has "+catno.string()+" lives remaining."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.REVIVED_CATDEAD):
-        line = "."
+        line = "Oh to hell with it! The cat is dead!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.REVIVED_DEUSEX):
-        line = "."
+        line = "Really, do all your characters simply come back to life when it's convenient?!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.REVIVED_USEMAGIC):
-        line = "."
+        line = "Hmph. Revived through sorcery I suppose."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.REWARDED_DUBIOUS):
-        line = "."
+        line = "Just what would they have as a worthwhile reward for a "+object.card_name+"?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_ALREADY_DEAD):
-        line = "."
+        line = "Wasn't the " + object.card_name + " already dead?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_UNKILLABLE):
-        line = "."
+        line = "And just how does the " + subject.card_name + " plan to kill a " + object.card_name + "?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_COURTSPICE):
-        line = "."
+        line = "The "+subject.card_name+" slays the "+object.card_name+"? Ah! The spice of court intrigue!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_HIGHLYTOPICAL):
-        line = "."
+        line = "Sometimes such acts are appropriate. I hope you understand..."
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.SLEW_HIGHLYTOPICAL2):
+        line = "But of course, I hope this doesn't mean you are planning something..."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_UNSPICYREGICIDE):
-        line = "."
+        line = "Truly? Such an ignoble death does not be befit a king!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_STRANGE):
-        line = "."
+        line = "I am not certain how they managed that."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_SUICIDE_CAT):
-        line = "."
+        line = "Hmph, the ever mysterious cat. But it always returns."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_SUICIDE_KING):
-        line = "."
+        line = "A king dead by his own hand?! Nonsense! It must have been treachery!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_SUICIDE):
-        line = "."
+        line = "By their own hand. Such a way to go."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SLEW_LOVE):
-        line = "."
+        line = "I do recall that "+subject.card_name+" loved "+object.card_name+". I do hope it was necessary."
         finalopinion.append(line)   
     if Storyrules.offenses.has(Storyrules.rules.SLEW_HATE):
-        line = "."
+        line = "Well! The "+subject.card_name+" has certainly made good on their antipathy towards the "+object.card_name+"!"
         finalopinion.append(line)   
     if Storyrules.offenses.has(Storyrules.rules.SLEW_CAT):
-        line = "."
+        line = "To slay a cat is to be cursed with misfortune."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.STOLE_HUGE):
-        line = "."
+        line = "And just how have they stolen that?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.STRUCK_HUGEDEAD):
-        line = "."
+        line = "I suppose, having been struck by a "+subject.card_name+", the "+object.card_name+" is now dead."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.STRUCK_LOVE):
-        line = "."
+        line = "To strike one's love is not the way!"
         finalopinion.append(line)   
     if Storyrules.offenses.has(Storyrules.rules.STRUCK_HATE):
-        line = "."
+        line = "The "+subject.card_name+"'s antipathy towards "+object.card_name+" is certainly palpable."
         finalopinion.append(line)   
     if Storyrules.offenses.has(Storyrules.rules.THREW_HUGE):
-        line = "."
+        line = "And just how have they managed to throw a "+object.card_name+"?!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.THREW_NOHANDS):
-        line = "."
+        line = "And just how does a "+subject.card_name+" manage to throw anything?!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.THREW_HATE):
-        line = "."
+        line = "Well, that's one way to show you despise them."
         finalopinion.append(line)      
     if Storyrules.offenses.has(Storyrules.rules.THREW):
         line = "I suppose the "+object.card_name+" is now sailing through the air."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.TURN_NOMAGIC):
-        line = "."
+        line = "Just up and transformed into something else did they? Ridiculous!"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.TURN_INTO):
-        line = "."
+        line = "So the "+subject.card_name+" has turned into a "+object.card_name+"..."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.MARRIED_INANIMATE):
-        line = "."
+        line = "And who presided over that ceremony? A tree?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.PURSUED_INANIMATE):
-        line = "."
+        line = "Doesn't sound like it will be much of a chase."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SPOKE_WITH_INANIMATE):
-        line = "."
+        line = "I'm sure it was a terrific conversation."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.KING_MISFORTUNE):
-        line = "."
+        line = "But I do not appreciate such a thing happening to a king."
         finalopinion.append(line)
     return finalopinion
