@@ -347,7 +347,7 @@ func ponder(subject, object, verb):
         if subject is Peddler and not object is Magic or Cat or Fox or Twin:
             offenses[rules.HAD_STRANGE] = true
             offense += 2
-        if (subject is Magic) or (subject is object) or (subject is Sword and not object is Twin or Magic):
+        if (subject is Magic) or (subject == object) or (subject is Sword and not object is Twin or Magic):
             offenses[rules.HAD_STRANGE] = true
             offense += 2
         return offense
