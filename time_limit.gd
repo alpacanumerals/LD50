@@ -22,7 +22,7 @@ func reset():
     running = true
     
 func _process(delta):
-    if (running):
+    if (running && Story.night > 1):
         time_remaining -= delta
     if (time_remaining < 0):
         time_remaining = 0
