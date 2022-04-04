@@ -63,7 +63,7 @@ func setup_night():
     var night = load("res://assets/jingle.wav")
     add_child(Night)
     Night.set_stream(night)
-    Night.volume_db = -15
+    Night.volume_db = -5
     Night.pitch_scale = 1
 
 func play_button_jingle():
