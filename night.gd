@@ -58,7 +58,7 @@ func _input(event):
                     $TextContainer/SultanText.text = "Sultan: Ugh, this is terrible. I may as well go ask a peddler at the market!"
                     stage = stages.MOOD
                 stages.MOOD:
-                    $TextContainer/SultanMood.text = "Scheherazade: Oh shut up, you bloviating bore!"
+                    update_sultan_mood(["Scheherazade: Oh shut up, you bloviating bore!", "", "", "", ""])
                     stage = stages.END
                 stages.END:
                     if (!block):
