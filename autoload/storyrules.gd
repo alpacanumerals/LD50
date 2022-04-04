@@ -8,7 +8,7 @@ var option_gender: bool = true
 #Rules dictionary. Every rule has a name and goes here.
 enum rules { ACTION_NONSENSE, SLEW_ALREADY_DEAD, SLEW_UNKILLABLE, MARRIED_INANIMATE, 
 SPOKE_WITH_INANIMATE, GENERIC_NONSENSE, CHAUVANIST, TWIN_CONFUSED, TWIN_SUBJECTASSIGNED, 
-TWIN_OBJECTASSIGNED, TWIN_REVERSETRANSFORM, ACTION_DEAD, }
+TWIN_OBJECTASSIGNED, TWIN_REVERSETRANSFORM, ACTION_DEAD, CAT_LIFE, }
 var offenses = {}
 
 #Validity Flags
@@ -30,7 +30,18 @@ func ponder(subject, object, verb):
 #############
 #RULES BEGIN#
 #############
-
+    
+    #CAT CHECK
+    #Is the cat alive or dead?
+    if object is Cat and object.dead_now == true and object.catdeaths < 9:
+        object.catdeaths += 1
+        object.dead_now = false
+        offenses[rules.CAT_LIFE] = true
+    if subject is Cat and subject.dead_now == true and subject.catdeaths < 9:
+        subject.catdeaths += 1
+        subject.dead_now = false
+        offenses[rules.CAT_LIFE] = true
+        
     #RULES of logic: option_basic should never be turned off.
     #These instantly break the story without resolving anything else.
     if option_basic == true:
@@ -80,7 +91,7 @@ func ponder(subject, object, verb):
                 
     #Unassigned Twin Handling.
     if (subject is Twin):
-        if empty(subject.twinassign) and object.animate == true:
+        if subject.twinassign.empty() and object.animate == true:
             if verb is Married or Had or Stole or Rewarded or Climbed or Threw:
                 offenses[rules.TWIN_CONFUSED] = true
                 offense += 1    
@@ -97,7 +108,7 @@ func ponder(subject, object, verb):
                 subject.weak_now = object.weak              
                 
     if (object is Twin):
-        if empty(object.twinassign) and subject.animate == true:
+        if object.twinassign.empty() and subject.animate == true:
             if verb is Stole:
                 offenses[rules.TWIN_CONFUSED] = true
                 offense += 1    
@@ -117,8 +128,13 @@ func ponder(subject, object, verb):
                 object.huge_now = subject.huge
                 object.resourceful_now = subject.resourceful
                 object.weak_now = subject.weak               
-   
-    #The Chauvinism Rule. Doesn't like women doing adventurous things.
+        elif object.twinassign.empty() and subject is Sword:
+            object.twinassign = [subject.id]
+            object.animate_now = false
+            object.handy_now = false
+            object.resourceful_now = false
+            
+    #The General Chauvinism Rule. Doesn't like women doing adventurous things.
     if option_gender == true:
         if subject.female_now == true:
             if verb.adventure == true:
@@ -135,7 +151,7 @@ func ponder(subject, object, verb):
                 offense -= 1
             else:    
                 offenses[rules.BURNED_UNREASONABLE] = true
-                offense += 1
+                offense += 2
         if subject.hatelist.has(object.id):
             offenses[rules.BURNED_HATELIST] = true
             offense -= 1
@@ -145,17 +161,93 @@ func ponder(subject, object, verb):
     if (verb is Climbed):
         if subject.huge_now == true && object.huge_now == false:
             offenses[rules.CLIMBED_OVEROVERSIZE] = true
-            offense -= 2
+            offense += 2
         elif (subject.huge_now == false && object.huge_now == false 
         || subject.huge_now == true && object.huge_now == true && object.structure_now == false):
             offenses[rules.CLIMBED_OVERSIZE] = true
-            offense -= 1
+            offense += 1
         return offense
         
-#SET STATES
- #   if (verb is Slay) && object.dead == false:
-  #      object.dead = true
-   #     print("I suppose" + object.card_name + "is dead.")     
+    if (verb is Despised):
+        if subject.lovelist_now.has(object.id):
+            if subject.female == false:
+                offenses[rules.DESPISED_INCONSISTENT]
+                offense -= 1
+            if subject.female == true:
+                if option_gender == true:
+                    offenses[rules.CHAUVINIST_FICKLEWOMAN]
+                else:
+                    offenses[rules.DESPISED_INCONSISTENT]
+                    offense -= 1
+            subject.lovelist_now.remove(subject.lovelist_now.find(object.id))
+        if object is Cat and not subject is Cat:
+            offenses[rules.DESPISED_CAT]
+            offense += 1
+        subject.hatelist_now.append(object.id)
+        return offense
+    
+    if (verb is Fell_Upon):
+        if subject.animate == false and subject.structure_now == false and subject.airborne_now == false and not object is King:
+            offenses[rules.FELL_FROMNOWHERE]
+            offense += 2
+        if subject.airborne_now == true:
+            offenses[rules.FELL_CLEVER]
+            offense -= 1
+        if subject is Sword and object is King:
+            offenses[rules.FELL_DAMOCLES]
+            offense -= 1
+        if subject.structure_now == true:
+            if subject.buried_now == true:
+                offenses[rules.FELL_ALREADY]
+                offense += 2
+            if subject.aflame_now == true:
+                offenses[rules.FELL_BURNINGSTRUCTURE]
+                offense -= 1                
+            else:
+                offenses[rules.FELL_RUBBLE]
+            subject.buried_now == true
+            object.buried_now == true
+        return offense
+    
+    if (verb is Found):
+        if object is Sword and subject.handy_now == true:
+            subject.weak_now = false
+        if object is Magic:
+            subject.magical_now = true
+        if object.structure_now == false and object.buried_now == true:
+            object.buried_now = false
+        object.found_now = true
+        
+    if (verb is Had):
+        if object is Sword and subject.handy_now == true:
+            subject.weak_now = false
+            if option_gender == true and subject.female == true:
+                offenses[rules.CHAUVANIST_SWORD]
+                offense += 1               
+        if object is Magic:
+            subject.magical_now = true
             
-#Return total value of offenses!    
+        if object is King and subject is Queen:
+            object.marriageable_now = false
+            subject.marriageable_now = false
+        if object is Queen and subject is King:
+            object.marriageable_now = false
+            subject.marriageable_now = false
+        if object is King or Queen and subject is Prince or Princess:
+            object.marriageable_now = false
+        if object is Prince or Princess and subject is King or Queen:
+            subject.marriageable_now = false
+            
+        if subject is Peddler and not object is Magic or Cat or Fox or Twin:
+            offenses[rules.HAD_PEDDLER]
+            offense += 2        
+        if (subject is Magic) or (subject is object) or (subject is Sword and not object is Twin or Magic):
+            offenses[rules.HAD_STRANGE]   
+            offense += 2
+    
+    if (verb is Loved):
+    
+    
+    
+    print("SOMETHING WENT WRONG HOLY SHIT OFFENSE SHOULD HAVE BEEN RETURNED BY NOW AHHH")
     return offense
