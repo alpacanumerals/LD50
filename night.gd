@@ -160,6 +160,7 @@ func add_comments(text, comments):
     for comment in comments:
         if first:
             text += comment
+            first = false
         else:
             text += "\n" + comment
     return text

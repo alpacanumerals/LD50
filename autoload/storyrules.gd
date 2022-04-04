@@ -351,15 +351,15 @@ func ponder(subject, object, verb):
         if object is Queen and subject is King:
             object.marriageable_now = false
             subject.marriageable_now = false
-        if object is King or Queen and subject is Prince or Princess:
+        if (object is King or object is Queen) and (subject is Prince or subject is Princess):
             object.marriageable_now = false
-        if object is Prince or Princess and subject is King or Queen:
+        if (object is Prince or object is Princess) and (subject is King or subject is Queen):
             subject.marriageable_now = false
             
-        if subject is Peddler and not object is Magic or Cat or Fox or Twin:
+        if subject is Peddler and not (object is Magic or object is Cat or object is Fox or object is Twin):
             offenses[rules.HAD_STRANGE] = true
             offense += 2
-        if (subject is Magic) or (subject == object) or (subject is Sword and not object is Twin or Magic):
+        if (subject is Magic) or (subject == object) or (subject is Sword and not (object is Twin or object is Magic)):
             offenses[rules.HAD_STRANGE] = true
             offense += 2
         return offense
@@ -494,19 +494,20 @@ func ponder(subject, object, verb):
                     else:
                         offenses[rules.CHAUVANIST_SLAY] = true
                         offense += 1
-        if subject is King or Queen or Prince or Princess and object is King or Queen or Prince or Princess:
+        if ((subject is King or subject is Queen or subject is Prince or subject is Princess)
+         and (object is King or object is Queen or object is Prince or object is Princess)):
             offenses[rules.SLEW_COURTSPICE] = true
-            offense -= 1    
-        if subject is King and object is Queen or Princess:
+            offense -= 1
+        if (subject is King) and (object is Queen or object is Princess):
             offenses[rules.SLEW_HIGHLYTOPICAL] = true
             offense -= 1
-        if subject is Princess and object is King:
+        if (subject is Princess) and (object is King):
             offenses[rules.SLEW_HIGHLYTOPICAL2] = true
             offense += 1            
-        if object is King and not subject is Queen or Prince or Princess:
+        if (object is King) and not (subject is Queen or subject is Prince or subject is Princess):
             offenses[rules.SLEW_UNSPICYREGICIDE] = true
             offense += 2
-        if subject.weak_now == true and subject.handy_now == false and not object is Fox or Cat:
+        if subject.weak_now == true and subject.handy_now == false and not (object is Fox or object is Cat):
             offenses[rules.SLEW_STRANGE] = true
             offense += 1 
         if subject == object:
@@ -522,7 +523,7 @@ func ponder(subject, object, verb):
         if subject.hatelist_now.has(object.id):
                 offenses[rules.SLEW_HATE] = true
                 offense -= 1           
-        if object == Cat and not subject is Cat or Fox:
+        if object is Cat and not (subject is Cat or subject is Fox):
             offenses[rules.SLEW_CAT] = true
             offense += 1
         object.dead_now = true
