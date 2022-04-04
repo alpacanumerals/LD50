@@ -242,6 +242,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Options="*res://autoload/options.gd"
 Sound="*res://autoload/sound.gd"
 Switcher="*res://autoload/switcher.gd"
 Story="*res://autoload/story.gd"

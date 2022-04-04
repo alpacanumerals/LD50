@@ -55,22 +55,10 @@ func play_stab():
 func play_cancel():
     Canceller.play()
 
-func master_volume_up():
-    var volume = AudioServer.get_bus_volume_db(
-        AudioServer.get_bus_index("Master"))
-    if (volume < 10):
-        volume = volume + 1
-    print (volume)
+func set_master_volume(volume):
+    if volume > 10:
+        volume = 10
+    if volume < -10:
+        volume = -10
     AudioServer.set_bus_volume_db(
         AudioServer.get_bus_index("Master"), volume)
-    pass
-
-func master_volume_down():
-    var volume = AudioServer.get_bus_volume_db(
-    AudioServer.get_bus_index("Master"))
-    if (volume > -10):
-        volume = volume - 1
-    print (volume)
-    AudioServer.set_bus_volume_db(
-        AudioServer.get_bus_index("Master"), volume)
-    pass
