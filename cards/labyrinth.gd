@@ -1,7 +1,7 @@
 extends Card
 class_name Labyrinth
 
-const card_name: String = "Labyrinth"
+const card_name: String = "labyrinth"
 const texture: StreamTexture = preload("res://assets/noun/labyrinth.png")
 
 

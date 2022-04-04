@@ -29,7 +29,7 @@ func speak(subject_id, verb_id, object_id):
         line = "Hmph, so they've taken the place of their twin to escape their responsibilities."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.ACTION_DEAD):
-        line = "Wasn't the " + object.card_name + " already dead?"
+        line = "Wasn't the " + subject.card_name + " already dead?"
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.ACTION_NONSENSE):
         line = "A " + subject.card_name + " can't do that!"

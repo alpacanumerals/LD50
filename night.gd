@@ -6,7 +6,7 @@ var failed : bool
 
 var block : bool
 
-const story_format = "Scheherazade: The %s %s the %s"
+const story_format = "Scheherazade: The %s %s the %s."
 
 signal night_over
 signal game_over
