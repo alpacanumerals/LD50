@@ -274,13 +274,47 @@ func ponder(subject, object, verb):
         subject.lovelist_now.append(object.id)
         return offense
         
-    #MARRIED
+    if (verb is Married):
+        #MARITAL STATUS CHECK
+        if subject.marriageable_now == false and object.marriageable_now == false:
+            offenses[rules.MARRIED_BOTHALREADY] = true
+            offense += 3
+        elif subject.marriageable_now == false:
+            offenses[rules.MARRIED_SUBJECTALREADY] = true
+            offense += 2
+        elif object.marriageable_now == false:
+            offenses[rules.MARRIED_OBJECTALREADY] = true
+            offense += 2
+        #SUITABILITY CHECK
+        if ((subject.noble_now == true and object.noble_now == false) or
+        (subject.noble_now == false and object.noble_now == true)):
+            offenses[rules.MARRIED_BADMATCH] = true
+            offense += 1
+        #GENDERCHECK
+        if option_gender == true:
+            if subject.female_now == true and object.female_now == true:
+                offenses[rules.MARRIED_YURINO] = true
+                offense += 1
+            if subject.female_now == false and object.female_now == false:
+                offenses[rules.MARRIED_YAOIMAYBE] = true
+        else:
+            if subject.female_now == object.female_now:
+                offenses[rules.MARRIED_Y_IS_FINE] = true
+        #RELATIONSHIPS CHECK    
+        if subject.noble_now == 
+        
+        
+        #SET MARITAL STATUS
+        subject.marriageable_now = false
+        object.marriageable_now = false
+        return offense 
+            
     #PURSUED
     #REVIVED
     #REWARDED
     #SLEW
     #SPOKE WITH
-    #STOLEW
+    #STOLE
     #STRUCK
     
     
@@ -289,7 +323,9 @@ func ponder(subject, object, verb):
     
     
     #TURNED_INTO
-    #VISITED
+    
+    #if (verb is Visited):
+    #return offense    
     
     print("SOMETHING WENT WRONG HOLY SHIT OFFENSE SHOULD HAVE BEEN RETURNED BY NOW AHHH")
     return offense
