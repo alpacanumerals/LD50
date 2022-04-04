@@ -360,7 +360,13 @@ func ponder(subject, object, verb):
         else:
             offenses[rules.REVIVED_USEMAGIC] = true
         object.dead_now = false
-        
+    
+    if (verb is Rewarded):
+        if object.noble_now == true:
+            if subject.noble_now == false and subject.magical_now == false:
+                offenses[rules.REWARDED_DUBIOUS] = true
+                offense += 1
+                
     if (verb is Slew):
         if option_gender == true:
             if subject.female_now == true:
@@ -377,8 +383,35 @@ func ponder(subject, object, verb):
                         offenses[rules.CHAUVANIST_SLEWWITHMAGIC] = true
                     else:
                         offenses[rules.CHAUVANIST_SLAY]
+                        offense += 1
+        if subject is King or Queen or Prince or Princess and object is King or Queen or Prince or Princess:
+            offenses[rules.SLEW_COURTSPICE] = true
+            offense -= 1    
+        if object is King and not subject is Queen or Prince or Princess:
+            offenses[rules.SLEW_UNSPICYREGICIDE] = true
+            offense += 2
+        if subject is Peddler and not object is Fox or Cat:
+            offenses[rules.SLEW_STRANGE] = true
+            offense += 1 
+        if subject is Cat and not object is Cat or Witch or Giant or Dragon:
+            offenses[rules.SLEW_STRANGE] = true
+            offense += 1
+        if subject is Fox and not object is Cat:
+            offenses[rules.SLEW_STRANGE] = true
+            offense += 1
+        if subject == object:
+            if subject is Cat:
+                offenses[rules.SLEW_SUICIDE_CAT] = true
+            else:
+                offenses[rules.SLEW_SUICIDE] = true
+        if object == Cat and not subject is Cat or Fox:
+            offenses[rules.SLEW_CAT] = true
+            offense += 1
+        object.dead_now = true
         
-    #SLEW
+        
+        
+        
     #SPOKE WITH
     #STOLE
     #STRUCK
@@ -390,8 +423,9 @@ func ponder(subject, object, verb):
     
     #TURNED_INTO
     
-    #if (verb is Visited):
-    #return offense    
+    ###VISITED?
+    ###VISITED?
+    ###VISITED?
     
     print("SOMETHING WENT WRONG HOLY SHIT OFFENSE SHOULD HAVE BEEN RETURNED BY NOW AHHH")
     return offense
