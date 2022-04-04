@@ -331,14 +331,53 @@ func ponder(subject, object, verb):
             offenses[rules.MARRIED_SPICY] = true
             offense -= 1           
         
-        #SET MARITAL STATUS
+        #SET MARITAL STATUS AND NOBILITY
+        if subject.noble_now == true or object.noble_now == true:
+            subject.noble_now = true
+            object.noble_now = true
         subject.marriageable_now = false
         object.marriageable_now = false
         return offense 
             
-    #PURSUED
-    #REVIVED
-    #REWARDED
+    ###PURSUED?
+    ###PURSUED?
+    ###PURSUED?
+    
+    if (verb is Revived):
+        if subject is Cat and object is Cat:
+            if object.catdeaths < 9:
+                offenses[rules.REVIVED_CAT] = true
+                offense -= 1
+                object.dead_now = false
+                return offense
+            else:
+                offenses[rules.REVIVED_CATDEAD] = true
+                offense += 3      
+                return offense
+        if subject.magical_now == false:
+            offenses[rules.REVIVED_DEUSEX] = true
+            offense += 3
+        else:
+            offenses[rules.REVIVED_USEMAGIC] = true
+        object.dead_now = false
+        
+    if (verb is Slew):
+        if option_gender == true:
+            if subject.female_now == true:
+                if object.huge_now == true:
+                    if subject.weak_now == false and subject.magical == true and subject.noble_now == true:
+                        offenses[rules.CHAUVANIST_MAGICWARRIORPRINCESS] = true
+                        offense -= 1
+                    else:
+                        offenses[rules.CHAUVANIST_SLAYHUGE] = true
+                elif object.female_now == false and object.weak_now == false:
+                    if subject.weak_now == false:
+                        offenses[rules.CHAUVANIST_SLEWWITHSWORD] = true
+                    if subject.magical == true:
+                        offenses[rules.CHAUVANIST_SLEWWITHMAGIC] = true
+                    else:
+                        offenses[rules.CHAUVANIST_SLAY]
+        
     #SLEW
     #SPOKE WITH
     #STOLE
