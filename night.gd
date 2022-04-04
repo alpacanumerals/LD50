@@ -103,7 +103,7 @@ func compose_story_text():
     
 func compose_sultan_text():
     var text = ""
-    if (Story.offense <= 0 && Story.repeats == 0):
+    if (Storyrules.offenses.keys().size() <= 0 && Story.repeats == 0):
         text = "I see. Continue..."
     else:
         var comments = []

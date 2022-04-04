@@ -28,4 +28,4 @@ func _on_DoneButton_pressed():
     setup(false)
 
 func _on_StoryScene_go_back(phase):
-    setup(phase != Story.phase.VERB)
+    setup(phase == Story.phase.OBJECT)

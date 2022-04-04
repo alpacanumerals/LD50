@@ -295,7 +295,7 @@ offset = Vector2( -20, -20 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Background"]
 position = Vector2( 662, 485 )
 frames = SubResource( 11 )
-frame = 19
+frame = 25
 playing = true
 
 [node name="FireSprite1" type="AnimatedSprite" parent="Background"]
@@ -336,8 +336,6 @@ script = ExtResource( 6 )
 [connection signal="max_time_changed" from="." to="VBoxContainer/HBoxContainer/VBoxContainer/MinTimeBox/MinSpinBox" method="_on_TitleScreen_max_time_changed"]
 [connection signal="min_time_changed" from="." to="VBoxContainer/HBoxContainer/VBoxContainer/MaxTimeBox/MaxSpinBox" method="_on_TitleScreen_min_time_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" to="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" method="_on_TutorialButton_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" to="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" method="_on_TutorialButton_mouse_exited"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" to="." method="_on_TutorialButton_toggled"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/GenderButton" to="." method="_on_GenderButton_toggled"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/LimitButton" to="." method="_on_LimitButton_toggled"]
