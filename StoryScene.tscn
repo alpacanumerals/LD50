@@ -90,7 +90,7 @@ region = Rect2( 128, 32, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=16]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -106,6 +106,9 @@ margin_bottom = -20.0
 mouse_filter = 2
 mouse_default_cursor_shape = 2
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 1240.0
@@ -621,8 +624,9 @@ position = Vector2( 269, 483 )
 texture = ExtResource( 13 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Shez"]
-position = Vector2( -12, -107 )
+position = Vector2( -9, -103 )
 frames = SubResource( 16 )
+frame = 16
 playing = true
 
 [node name="Sultan" type="Sprite" parent="."]
@@ -642,7 +646,7 @@ texture = ExtResource( 17 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sultan2"]
 position = Vector2( 74, -19 )
 frames = SubResource( 16 )
-frame = 8
+frame = 13
 playing = true
 
 [node name="Tutorial" type="Node2D" parent="."]
