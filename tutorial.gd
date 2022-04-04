@@ -2,8 +2,10 @@ extends Node2D
 
 var tutorial_on : bool = true
 
+func _ready():
+    tutorial_on = true
+
 func _process(_delta):
-    tutorial_on = Story.night == 1
     if tutorial_on:
         $Label0.visible = true
         $Label1.visible = false
