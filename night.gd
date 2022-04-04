@@ -11,6 +11,9 @@ const story_format = "Scheherazade: The %s %s the %s"
 signal night_over
 signal game_over
 
+var annoy_colour
+var bored_colour
+
 func _ready():
     $NightSprite.modulate.a = 0
     $NightSprite.visible = false
@@ -77,7 +80,7 @@ func _input(event):
                     $TextContainer/SultanText.text = compose_sultan_text()
                     stage = stages.MOOD
                 stages.MOOD:
-                    $TextContainer/SultanMood.text = compose_sultan_mood()
+                    update_sultan_mood(compose_sultan_mood())
                     stage = stages.END
                 stages.END:
                     emit_signal("night_over")
@@ -124,61 +127,83 @@ func compose_sultan_text():
     return "Sultan: " + text
 
 func compose_sultan_mood():
-    var text = "The sultan seems "
+    var text = ["The sultan seems "]
     match Story.annoyance:
         0:
-            text += "pleased"
+            text.append("pleased")
         1:
-            text += "slightly displeased"
+            text.append("slightly displeased")
         2:
-            text += "displeased"
+            text.append("displeased")
         3:
-            text += "very displeased"
+            text.append("very displeased")
         4:
-            text += "slightly upset"
+            text.append("slightly upset")
         5:
-            text += "upset"
+            text.append("upset")
         6:
-            text += "very upset"
+            text.append("very upset")
         7:
-            text += "slightly angry"
+            text.append("slightly angry")
         8:
-            text += "angry"
+            text.append("angry")
         9:
-            text += "very angry"
+            text.append("very angry")
         10:
-            text += "outraged"
-    text += " and "
+            text.append("outraged")
+    annoy_colour = get_feedback_color(Story.annoyance)
+    text.append(" and ")
     match Story.boredom:
         0:
-            text += "interested"
+            text.append("interested")
         1:
-            text += "slightly distracted"
+            text.append("slightly distracted")
         2:
-            text += "distracted"
+            text.append("distracted")
         3:
-            text += "very distracted"
+            text.append("very distracted")
         4:
-            text += "slightly disengaged"
+            text.append("slightly disengaged")
         5:
-            text += "disengaged"
+            text.append("disengaged")
         6:
-            text += "very disengaged"
+            text.append("very disengaged")
         7:
-            text += "slightly bored"
+            text.append("slightly bored")
         8:
-            text += "bored"
+            text.append("bored")
         9:
-            text += "very bored"
+            text.append("very bored")
         10:
-            text += "desperate to be anywhere else"
-    text += "."
+            text.append("desperate to be anywhere else")
+    bored_colour = get_feedback_color(Story.boredom)
+    text.append(".")
     return text
     
+func get_feedback_color(value):
+    if value > 10:
+        value = 10
+    if value < 0:
+        value = 0
+    return Color8(55+value*20, 200-value*20, 0)
+
+func update_sultan_mood(text_array):
+    $TextContainer/SultanMood/Start.text = text_array[0]
+    $TextContainer/SultanMood/AnnoyMood.text = text_array[1]
+    $TextContainer/SultanMood/Conjunction.text = text_array[2]
+    $TextContainer/SultanMood/BoreMood.text = text_array[3]
+    $TextContainer/SultanMood/FullStop.text = text_array[4]
+    $TextContainer/SultanMood/AnnoyMood.add_color_override("font_color", annoy_colour)
+    $TextContainer/SultanMood/BoreMood.add_color_override("font_color", bored_colour)
+
 func blank_text():
     $TextContainer/StoryText.text = ""
     $TextContainer/SultanText.text = ""
-    $TextContainer/SultanMood.text = ""
+    $TextContainer/SultanMood/Start.text = ""
+    $TextContainer/SultanMood/AnnoyMood.text = ""
+    $TextContainer/SultanMood/Conjunction.text = ""
+    $TextContainer/SultanMood/BoreMood.text = ""
+    $TextContainer/SultanMood/FullStop.text = ""
 
 func add_comments(text, comments):
     var first = true
