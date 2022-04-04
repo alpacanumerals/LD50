@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pod.png-736df2d1594e9c2d4d94004e848b1829.stex"
+path="res://.import/sparkle.png-af136f5f90e6793ac717cc01398cdab8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pod.png"
-dest_files=[ "res://.import/pod.png-736df2d1594e9c2d4d94004e848b1829.stex" ]
+source_file="res://assets/sparkle.png"
+dest_files=[ "res://.import/sparkle.png-af136f5f90e6793ac717cc01398cdab8.stex" ]
 
 [params]
 
