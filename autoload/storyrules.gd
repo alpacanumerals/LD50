@@ -502,6 +502,12 @@ func ponder(subject, object, verb):
                 offense += 2
             else:
                 offenses[rules.SLEW_SUICIDE] = true
+        if subject.lovelist_now.has(object.id):
+                offenses[rules.SLEW_LOVE] = true
+                offense += 1            
+        if subject.hatelist_now.has(object.id):
+                offenses[rules.SLEW_HATE] = true
+                offense -= 1           
         if object == Cat and not subject is Cat or Fox:
             offenses[rules.SLEW_CAT] = true
             offense += 1
