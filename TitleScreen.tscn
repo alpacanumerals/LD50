@@ -177,45 +177,48 @@ margin_top = 222.0
 margin_right = 1240.0
 margin_bottom = 458.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_right = 157.0
 margin_bottom = 236.0
 
-[node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 157.0
 margin_bottom = 20.0
 text = "Start"
 
-[node name="TutorialButton" type="CheckButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="TutorialButton" type="CheckButton" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 157.0
 margin_bottom = 64.0
+hint_tooltip = "Tutorial text will appear on the first night"
 pressed = true
 text = "Tutorial"
 align = 2
 
-[node name="GenderButton" type="CheckButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="GenderButton" type="CheckButton" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 157.0
 margin_bottom = 108.0
+hint_tooltip = "The Sultan has some traditional views that will affect his responses to your story"
 pressed = true
 text = "Chauvanist"
 align = 2
 
-[node name="LimitButton" type="CheckButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="LimitButton" type="CheckButton" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 112.0
 margin_right = 157.0
 margin_bottom = 152.0
+hint_tooltip = "The game will end after 1001 nights. But could anyone tell stories for that long?"
 pressed = true
 text = "1001 Nights"
 align = 1
 
-[node name="VolumeBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="VolumeBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 156.0
 margin_right = 157.0
 margin_bottom = 180.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VolumeBox"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/VolumeBox"]
 margin_top = 5.0
 margin_right = 79.0
 margin_bottom = 19.0
@@ -223,19 +226,20 @@ size_flags_horizontal = 3
 text = "Volume"
 align = 2
 
-[node name="VolumeSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VolumeBox"]
+[node name="VolumeSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/VolumeBox"]
 margin_left = 83.0
 margin_right = 157.0
 margin_bottom = 24.0
 max_value = 50.0
 value = 35.0
 
-[node name="MaxTimeBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MaxTimeBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 184.0
 margin_right = 157.0
 margin_bottom = 208.0
+hint_tooltip = "The maximum time available per night"
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/MaxTimeBox"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MaxTimeBox"]
 margin_top = 5.0
 margin_right = 79.0
 margin_bottom = 19.0
@@ -243,20 +247,22 @@ size_flags_horizontal = 3
 text = "Max Time"
 align = 2
 
-[node name="MaxSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/VBoxContainer2/MaxTimeBox"]
+[node name="MaxSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/MaxTimeBox"]
 margin_left = 83.0
 margin_right = 157.0
 margin_bottom = 24.0
 min_value = 10.0
 value = 20.0
+suffix = "sec"
 script = ExtResource( 5 )
 
-[node name="MinTimeBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MinTimeBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 212.0
 margin_right = 157.0
 margin_bottom = 236.0
+hint_tooltip = "The minimum time available per night"
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/MinTimeBox"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MinTimeBox"]
 margin_top = 5.0
 margin_right = 79.0
 margin_bottom = 19.0
@@ -264,13 +270,14 @@ size_flags_horizontal = 3
 text = "Min Time"
 align = 2
 
-[node name="MinSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/VBoxContainer2/MinTimeBox"]
+[node name="MinSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/MinTimeBox"]
 margin_left = 83.0
 margin_right = 157.0
 margin_bottom = 24.0
 min_value = 1.0
 max_value = 60.0
 value = 7.0
+suffix = "sec"
 script = ExtResource( 4 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
@@ -288,7 +295,7 @@ offset = Vector2( -20, -20 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="AnimSprites"]
 position = Vector2( 662, 485 )
 frames = SubResource( 11 )
-frame = 31
+frame = 48
 playing = true
 
 [node name="FireSprite1" type="AnimatedSprite" parent="AnimSprites"]
@@ -326,12 +333,14 @@ frames = SubResource( 45 )
 frame = 12
 script = ExtResource( 6 )
 
-[connection signal="max_time_changed" from="." to="VBoxContainer/HBoxContainer/VBoxContainer2/MinTimeBox/MinSpinBox" method="_on_TitleScreen_max_time_changed"]
-[connection signal="min_time_changed" from="." to="VBoxContainer/HBoxContainer/VBoxContainer2/MaxTimeBox/MaxSpinBox" method="_on_TitleScreen_min_time_changed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer2/TutorialButton" to="." method="_on_TutorialButton_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer2/GenderButton" to="." method="_on_GenderButton_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer2/LimitButton" to="." method="_on_LimitButton_toggled"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/VolumeBox/VolumeSpinBox" to="." method="_on_VolumeSpinBox_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/MaxTimeBox/MaxSpinBox" to="." method="_on_MaxSpinBox_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/MinTimeBox/MinSpinBox" to="." method="_on_MinSpinBox_value_changed"]
+[connection signal="max_time_changed" from="." to="VBoxContainer/HBoxContainer/VBoxContainer/MinTimeBox/MinSpinBox" method="_on_TitleScreen_max_time_changed"]
+[connection signal="min_time_changed" from="." to="VBoxContainer/HBoxContainer/VBoxContainer/MaxTimeBox/MaxSpinBox" method="_on_TitleScreen_min_time_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" to="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" method="_on_TutorialButton_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" to="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" method="_on_TutorialButton_mouse_exited"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" to="." method="_on_TutorialButton_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/GenderButton" to="." method="_on_GenderButton_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/LimitButton" to="." method="_on_LimitButton_toggled"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/VolumeBox/VolumeSpinBox" to="." method="_on_VolumeSpinBox_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/MaxTimeBox/MaxSpinBox" to="." method="_on_MaxSpinBox_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/MinTimeBox/MinSpinBox" to="." method="_on_MinSpinBox_value_changed"]
