@@ -245,14 +245,7 @@ func ponder(subject, object, verb):
             else:    
                 offenses[rules.BURNED_UNREASONABLE] = true
                 offense += 2
-        print(subject.hatelist)
-        print(object.id)
-        var a = subject.hatelist
-        var b = object.id
-        if (a.has(b)):
-            print("ping")
         if subject.hatelist.has(object.id):
-            print("pong")
             offenses[rules.BURNED_HATELIST] = true
             offense -= 1
         object.aflame_now = true
