@@ -751,10 +751,10 @@ shape = SubResource( 5 )
 [node name="Dawn" type="Tween" parent="NightArea"]
 
 [node name="TextContainer" type="VBoxContainer" parent="NightArea"]
-margin_left = 286.0
-margin_top = 202.0
-margin_right = 432.0
-margin_bottom = 388.0
+margin_left = 322.0
+margin_top = 201.0
+margin_right = 893.0
+margin_bottom = 387.0
 __meta__ = {
 "_edit_group_": true
 }
@@ -835,7 +835,7 @@ texture = ExtResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Shez"]
 position = Vector2( -9, -103 )
 frames = SubResource( 16 )
-frame = 24
+frame = 22
 playing = true
 
 [node name="Sultan" type="Sprite" parent="."]
@@ -855,7 +855,7 @@ texture = ExtResource( 17 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sultan2"]
 position = Vector2( 74, -19 )
 frames = SubResource( 16 )
-frame = 21
+frame = 19
 playing = true
 
 [node name="Tutorial" type="Node2D" parent="."]
@@ -941,7 +941,7 @@ offset = Vector2( -20, -20 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="AnimSprites"]
 position = Vector2( 662, 485 )
 frames = SubResource( 37 )
-frame = 7
+frame = 28
 playing = true
 
 [node name="FireSprite1" type="AnimatedSprite" parent="AnimSprites"]
