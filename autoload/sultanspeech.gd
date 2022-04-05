@@ -104,7 +104,7 @@ func speak(subject_id, verb_id, object_id):
         line = "So did it chase its own tail around or something?"
         finalopinion.append(line)    
     if Storyrules.offenses.has(Storyrules.rules.REWARDED_SELF):
-        line = "Let me guess, they indulged in a sweetroll."
+        line = "Let me guess, they indulged in a sweet roll."
         finalopinion.append(line)
     if Storyrules.offenses.has(Storyrules.rules.SPOKE_SELF):
         line = "To lose oneself in the abyss of madness..."
