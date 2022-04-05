@@ -73,6 +73,60 @@ func speak(subject_id, verb_id, object_id):
     if Storyrules.offenses.has(Storyrules.rules.GENERIC_NONSENSE):
         line = "That doesn't make any sense!"
         finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.BURNED_SELF):
+        line = "Perhaps they should stop playing with fire."
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.CLIMBED_SELF):
+        line = "The "+subject.card_name+" climbed themself did they? Really..."
+        finalopinion.append(line)    
+    if Storyrules.offenses.has(Storyrules.rules.DESPISED_SELF):
+        line = "To be consumed by self loathing. I do not envy them."
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.FELL_SELF):
+        line = "Amazing the things they find to trip themselves over..."
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.FOUND_SELF):
+        line = "To be at peace with oneself is not so bad I suppose."
+        finalopinion.append(line)        
+    if Storyrules.offenses.has(Storyrules.rules.HAD_SELF):
+        line = "A metaphor for loneliness."
+        finalopinion.append(line)        
+    if Storyrules.offenses.has(Storyrules.rules.LOVED_SELF):
+        line = "Ah, a narcissist! A rare vice it is not."
+        finalopinion.append(line)        
+    if Storyrules.offenses.has(Storyrules.rules.MARRIED_SELF):
+        line = "They married themselves. Of course. Really now..."
+        finalopinion.append(line)             
+    if Storyrules.offenses.has(Storyrules.rules.PURSUED_SELF):
+        line = "They chased themselves did they? Bah!"
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.PURSUED_TAIL):
+        line = "So did it chase its own tail around or something?"
+        finalopinion.append(line)    
+    if Storyrules.offenses.has(Storyrules.rules.REWARDED_SELF):
+        line = "Let me guess, they indulged in a sweetroll."
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.SPOKE_SELF):
+        line = "To lose oneself in the abyss of madness..."
+        finalopinion.append(line)
+    if Storyrules.offenses.has(Storyrules.rules.STOLE_SELF):
+        line = "Really, is this some sort of staged kidnapping scheme?"
+        finalopinion.append(line)        
+    if Storyrules.offenses.has(Storyrules.rules.STRUCK_SELF):
+        line = "Self harm really is a sorry thing."
+        finalopinion.append(line)        
+    if Storyrules.offenses.has(Storyrules.rules.THREW_SELF):
+        line = "Threw themself at what exactly?"
+        finalopinion.append(line)        
+    if Storyrules.offenses.has(Storyrules.rules.TURNED_INTO_SELF):
+        line = "The "+subject.card_name+" returns to their original form."
+        finalopinion.append(line)    
+    if Storyrules.offenses.has(Storyrules.rules.VISIT_SELF):
+        line = "Did they have tea with themself as well?"
+        finalopinion.append(line)     
+    if Storyrules.offenses.has(Storyrules.rules.BURNED_WITCH):
+        line = "A sensible end for a witch, I suppose."
+        finalopinion.append(line)        
     if Storyrules.offenses.has(Storyrules.rules.BURNED_CLEVER):
         line = "Oh I see, because the "+subject.card_name+" was set on fire before. Very clever."
         finalopinion.append(line)

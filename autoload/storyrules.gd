@@ -90,6 +90,24 @@ enum rules {
     SLEW_LOVE,
     SLEW_HATE,
     BURNED,
+    BURNED_WITCH,
+    BURNED_SELF,
+    CLIMBED_SELF,
+    DESPISED_SELF,
+    FELL_SELF,
+    FOUND_SELF,
+    HAD_SELF,
+    LOVED_SELF,
+    MARRIED_SELF,
+    PURSUED_SELF,
+    PURSUED_TAIL,
+    REWARDED_SELF,
+    SPOKE_SELF,
+    STOLE_SELF,
+    STRUCK_SELF,
+    THREW_SELF,
+    TURNED_INTO_SELF,
+    VISIT_SELF,
 }
 
 var offenses = {}
@@ -235,7 +253,66 @@ func ponder(subject, object, verb):
                 offenses[rules.CHAUVANIST_GENERIC] = true
                 offense += 1 
                 
-
+    #SELF CHECK
+    if subject == object:
+        if verb is Burned:
+            offenses[rules.BURNED_SELF] = true
+        if verb is Climbed:  
+            offenses[rules.CLIMBED_SELF] = true
+            offense += 3 
+        if verb is Despised:
+            offenses[rules.DESPISED_SELF] = true
+            offense -= 2 
+        if verb is Fell_Upon: 
+            offenses[rules.FELL_SELF] = true
+            offense += 1             
+        if verb is Found:
+            offenses[rules.FOUND_SELF] = true
+            offense -= 1             
+        if verb is Had:  
+            offenses[rules.HAD_SELF] = true
+            offense -= 2                
+        if verb is Loved:
+            offenses[rules.LOVED_SELF] = true
+            offense -= 1             
+        if verb is Married: 
+            offenses[rules.MARRIED_SELF] = true
+            offense += 3           
+        if verb is Pursued:
+            if subject is Cat or subject is Fox or subject is Dragon:
+                offenses[rules.PURSUED_TAIL] = true   
+            else:     
+                offenses[rules.PURSUED_SELF] = true
+                offense += 3       
+        if verb is Rewarded:  
+            offenses[rules.REWARDED_SELF] = true             
+        if verb is Spoke_With:
+            offenses[rules.SPOKE_SELF] = true
+            offense -= 1            
+        if verb is Stole: 
+            offenses[rules.STOLE_SELF] = true
+            offense += 3           
+        if verb is Struck:
+            offenses[rules.STRUCK_SELF] = true       
+        if verb is Threw:  
+            offenses[rules.THREW_SELF] = true    
+            offense += 1            
+        if verb is Turned_Into:
+            offenses[rules.TURNED_INTO_SELF] = true 
+            subject.animate_now = subject.animate
+            subject.female_now = subject.female
+            subject.fiery_now = subject.fiery
+            subject.handy_now = subject.handy
+            subject.huge_now = subject.huge
+            subject.magical_now = subject.magical
+            subject.noble_now = subject.noble
+            subject.resourceful_now = subject.resourceful
+            subject.structure_now = subject.structure
+            subject.weak_now = subject.weak
+        if verb is Visited:
+            offenses[rules.VISIT_SELF] = true
+            offense += 3        
+                      
     #RULES per action.
     if (verb is Burned):
         if subject.fiery_now == false && subject.magical_now == false && subject.handy_now == false:
@@ -252,6 +329,10 @@ func ponder(subject, object, verb):
         if object is King:
             offenses[rules.KING_MISFORTUNE] = true
             offense += 1   
+        if object is Witch:
+            offenses[rules.BURNED_WITCH] = true
+            offense -= 1   
+            object.dead_now = true            
         offenses[rules.BURNED] = true     
         return offense
     
